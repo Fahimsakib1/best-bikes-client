@@ -50,6 +50,24 @@ const Login = () => {
     }
 
 
+
+
+    const handleSignInByGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log("User Sign in By Google", user);
+                toast.success("Successfully Sign In By Google")
+                navigate(from, { replace: true });
+
+            })
+            .catch(error => {
+                toast.error("Google Sign In Failed")
+                setLoginError(error.message)
+            })
+    }
+
+
     return (
         <div className='flex-col lg:flex-row-reverse grid md:grid-cols-2'>
 
@@ -113,7 +131,7 @@ const Login = () => {
                     <div className="divider">OR</div>
 
                     <div>
-                        <button  className='btn btn-outline btn-primary uppercase w-full'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
+                        <button onClick={handleSignInByGoogle}  className='btn btn-outline btn-primary uppercase w-full'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
                     </div>
 
 

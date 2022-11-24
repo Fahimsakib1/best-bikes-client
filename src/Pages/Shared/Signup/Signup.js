@@ -33,7 +33,7 @@ const Signup = () => {
         setError('');
         createUser(data.email, data.password)
             .then(result => {
-                
+
                 // const user = result.user;
                 // console.log("User from Sign Up Page", user)
                 //toast.success("User Created Successfully")
@@ -43,25 +43,26 @@ const Signup = () => {
                 }
 
                 updateUser(userInfo)
-                .then( () => {
-                    // Swal.fire(
-                    //     'Nice',
-                    //     'User Created and Updated Users Name Successfully',
-                    //     'success'
-                    // )
-                    toast.success("User Created Successfully")
-                    const user = result.user;
+                    .then(() => {
+                        // Swal.fire(
+                        //     'Nice',
+                        //     'User Created and Updated Users Name Successfully',
+                        //     'success'
+                        // )
+                        addUserToDataBase(data.name, data.email, data.accountType)
+                        toast.success("User Created Successfully")
+                        const user = result.user;
                         console.log("User from Sign Up Page After Update Name", user);
                         reset();
                         navigate('/login')
-                })
-                
-                .catch(error => {
-                    console.error(error);
-                    setError(error.message);
-                    toast.error("User name Update Failed")
-                })
-            
+                    })
+
+                    .catch(error => {
+                        console.error(error);
+                        setError(error.message);
+                        toast.error("User name Update Failed")
+                    })
+
             })
 
             .catch(error => {
@@ -69,6 +70,57 @@ const Signup = () => {
                 setError(error.message)
             })
     }
+
+
+
+
+    const handleSignInByGoogle = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log("User Sign in By Google", user);
+                toast.success("Successfully Sign In By Google");
+                addUserToDataBase(user.displayName, user.email, 'Buyer')
+            })
+
+            .catch(error => {
+                toast.error("Google Sign In Failed")
+                setError(error.message)
+            })
+    }
+
+
+
+    const addUserToDataBase = (name, email, role) => {
+        const user = {name:name, email:email, role:role};
+
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.acknowledged){
+                toast.success('User Added to Database');
+                navigate('/');
+            }
+            else {
+
+                Swal.fire({
+                    icon: 'error',
+                    title: `${data.message}`,
+                    text: 'Please Sign Up with a new Email'
+                })
+
+            }
+        })
+    }
+
+
 
 
 
@@ -81,16 +133,16 @@ const Signup = () => {
                 transition={{ duration: 0.5 }}
 
                 className="text-center lg:text-left">
-                <img className='w-full mt-12' src={image} alt="" />
+                <img className='w-full mt-4' src={image} alt="" />
             </motion.div>
 
-            <div className='mt-8 flex justify-center items-center '>
+            <div className='mt-4 flex justify-center items-center '>
                 <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4 sm:mx-auto lg:w-full md:w-full md:mx-auto '>
                     <h2 className='text-2xl text-center font-bold uppercase'>Sign up</h2>
 
                     <form onSubmit={handleSubmit(handleSignup)}>
 
-                        <div className="form-control w-full mb-2">
+                        <div className="form-control w-full mb-1">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
@@ -103,7 +155,7 @@ const Signup = () => {
                         </div>
 
 
-                        <div className="form-control w-full mb-2">
+                        <div className="form-control w-full mb-1">
                             <label className="label">
                                 <span className="label-text ">Email</span>
                             </label>
@@ -116,7 +168,7 @@ const Signup = () => {
                         </div>
 
 
-                        <div className="form-control w-full mb-6">
+                        <div className="form-control w-full mb-1">
                             <label className="label">
                                 <span className="label-text ">Password</span>
                             </label>
@@ -131,14 +183,33 @@ const Signup = () => {
 
                         </div>
 
+                        <div className="form-control w-full mb-1">
+                            <label className="label">
+                                <span className="label-text">Choose Account Type</span>
+                            </label>
+
+                            <select
+                                type="text"
+                                {...register("accountType", { required: "Account Type is Required" })}
+                                name='accountType' className="select select-bordered w-full">
+                                <option value='Buyer'>Buyer</option>
+                                <option value='Seller'>Seller</option>
+                            </select>
+
+                            {errors.accountType && <p className='text-red-600'>{errors.accountType?.message}</p>}
+
+                        </div>
+
+
+
                         {
                             error && <p className='text-red-600'>{error}</p>
                         }
 
 
                         <input type="submit"
-                        value='Sign up'
-                        className='btn btn-primary w-full text-white uppercase py-3 rounded-md' />
+                            value='Sign up'
+                            className='btn btn-primary w-full text-white uppercase py-3 rounded-md mt-4' />
 
 
                         {/* <button type='submit' className='btn btn-primary w-full text-white uppercase py-3 rounded-md'>
@@ -156,7 +227,7 @@ const Signup = () => {
                     <div className="divider">OR</div>
 
                     <div>
-                        <button className='btn btn-outline btn-dark uppercase w-full'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
+                        <button onClick={handleSignInByGoogle}  className='btn btn-outline btn-dark uppercase w-full'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
                     </div>
 
                 </div>
