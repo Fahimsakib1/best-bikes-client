@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MdOutlineWavingHand } from 'react-icons/md';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import logo from '../../../images/Logo/Logo1.png';
+import toast from 'react-hot-toast';
 
 
 
@@ -19,7 +20,10 @@ const Header = () => {
             .then(() => {
                 navigate('/')
             })
-            .catch(error => console.error(error.message))
+            .catch(error => {
+                console.error(error.message)
+                toast.error("Logout Failed")
+            })
 
     }
 
@@ -29,23 +33,21 @@ const Header = () => {
     const menuItems = <React.Fragment>
 
         <li className='text-md font-bold px-2'><Link to='/'>Home</Link></li>
-        <li className='text-md font-bold px-2'><Link to='/appointment'>Appointment</Link></li>
-        <li className='text-md font-bold px-2'><Link to='/review'>Review</Link></li>
-        <li className='text-md font-bold px-2'><Link to='/signup'>Signup</Link></li>
+        <li className='text-md font-bold px-2'><Link to='/blogs'>Blogs</Link></li>
 
-        {/* {
+        {
             user?.uid ?
                 <>
                     {
                         user?.uid &&
                         <div className='flex'>
-                            <p className='text-md text-blue-600 block lg:hidden'>Hello, {user.displayName ? user.displayName : user.email}
+                            <p className='text-md text-green-600 block lg:hidden'>Hello, {user.displayName ? user.displayName : user.email}
                             </p>
                             <MdOutlineWavingHand className='text-2xl text-green-600 ml-2 lg:hidden'></MdOutlineWavingHand>
                         </div>
                     }
 
-                    <li className='dark:text-white dark:hover:text-orange-500'><Link to='/dashboard'>Dashboard</Link></li>
+                    <li className='font-bold px-2'><Link to='/dashboard'>Dashboard</Link></li>
 
                     <li className='text-red-600 font-bold'><button onClick={handleLogOut} className='bg-red-600 text-white rounded-lg'>Sign Out</button></li>
 
@@ -55,7 +57,7 @@ const Header = () => {
                     <li className='font-bold'><Link to='/login' className='bg-green-600 text-white rounded-lg lg:mr-2'>Login</Link></li>
                     <li className='font-bold'><Link to='/signup' className='bg-blue-700 text-white rounded-lg sm:mt-2 md:mt-2 lg:mt-0 mt-2'>Signup</Link></li>
                 </>
-        } */}
+        }
 
 
     </React.Fragment>
@@ -86,13 +88,13 @@ const Header = () => {
 
 
                 <div className='hidden lg:block'>
-                    {/* {
+                    {
                         user?.uid && <div className='flex'>
                             <p className='text-3xl text-green-600 font-semibold'>Hello, {user.displayName ? user.displayName : user.email} </p>
                             <MdOutlineWavingHand className='text-3xl text-green-600 mt-1 ml-2'></MdOutlineWavingHand>
                         </div>
 
-                    } */}
+                    }
                 </div>
 
 
