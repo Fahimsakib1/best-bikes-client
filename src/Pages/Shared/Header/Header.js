@@ -40,7 +40,7 @@ const Header = () => {
                 <>
                     {
                         user?.uid &&
-                        <div className='flex'>
+                        <div className='flex mt-1'>
                             <p className='text-md text-green-600 block lg:hidden'>Hello, {user.displayName ? user.displayName : user.email}
                             </p>
                             <MdOutlineWavingHand className='text-2xl text-green-600 ml-2 lg:hidden'></MdOutlineWavingHand>
@@ -87,7 +87,7 @@ const Header = () => {
                 </div>
 
 
-                <div className='hidden lg:block'>
+                <div className='hidden lg:block mt-4'>
                     {
                         user?.uid && <div className='flex'>
                             <p className='text-3xl text-green-600 font-semibold'>Hello, {user.displayName ? user.displayName : user.email} </p>

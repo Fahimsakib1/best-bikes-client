@@ -22,12 +22,12 @@ const BikeDetailsCard = ({ details }) => {
                         <span className="text-sm text-center text-gray-400">{posted_Time}</span>
                     </div>
 
-                    <div className='my-auto text-center  lg:my-auto md:my-2 sm:my-2'>
+                    <div className='my-auto text-center  lg:my-auto md:my-4 sm:my-2'>
                         <p className='text-lg'>Seller <span className='text-blue-600'>{seller_Name}</span></p>
                     </div>
                 </div>
                 <div>
-                    <img src={img} alt="" className="object-cover w-full mb-4 h-60 sm:h-96 bg-gray-500 rounded-lg" />
+                    <img src={img} alt="" className="object-cover w-full mb-4 h-[250px] bg-gray-500 rounded-lg" />
                     <div className='flex justify-between items-center'>
                         <h2 className="mb-1 text-xl font-semibold">Brand: {category_name}</h2>
                         <h2 className="mb-1 text-xl font-semibold text-blue-700">Model : {model}</h2>

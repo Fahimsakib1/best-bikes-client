@@ -26,6 +26,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
 
+
     const handleLogin = (data) => {
         console.log(data);
         setLoginError('');
@@ -35,7 +36,7 @@ const Login = () => {
             const user = result.user;
             console.log("User From Login Page", user);
             reset();
-            navigate('/')
+            navigate(from, { replace: true });
         })
         .catch(error => {
             Swal.fire({
