@@ -31,6 +31,7 @@ const Header = () => {
         <li className='text-md font-bold px-2'><Link to='/'>Home</Link></li>
         <li className='text-md font-bold px-2'><Link to='/appointment'>Appointment</Link></li>
         <li className='text-md font-bold px-2'><Link to='/review'>Review</Link></li>
+        <li className='text-md font-bold px-2'><Link to='/signup'>Signup</Link></li>
 
         {/* {
             user?.uid ?
