@@ -1,11 +1,13 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import image from '../../../images/LoginImage/signup.webp';
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
+import SmallSpinner from '../../../components/Spinners/SmallSpinner';
 
 
 
@@ -14,16 +16,58 @@ import { motion } from 'framer-motion';
 
 const Signup = () => {
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUser, googleSignIn, loading, setLoading } = useContext(AuthContext)
 
     const [error, setError] = useState('');
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
 
+    const navigate = useNavigate();
+
+
+
 
     const handleSignup = (data) => {
-        console.log(data);
+        //console.log(data);
+        setError('');
+        createUser(data.email, data.password)
+            .then(result => {
+                
+                // const user = result.user;
+                // console.log("User from Sign Up Page", user)
+                //toast.success("User Created Successfully")
+
+                const userInfo = {
+                    displayName: data.name
+                }
+
+                updateUser(userInfo)
+                .then( () => {
+                    // Swal.fire(
+                    //     'Nice',
+                    //     'User Created and Updated Users Name Successfully',
+                    //     'success'
+                    // )
+                    toast.success("User Created Successfully")
+                    const user = result.user;
+                        console.log("User from Sign Up Page After Update Name", user);
+                        reset();
+                        navigate('/login')
+                })
+                
+                .catch(error => {
+                    console.error(error);
+                    setError(error.message);
+                    toast.error("User name Update Failed")
+                })
+            
+            })
+
+            .catch(error => {
+                toast.error(error.message)
+                setError(error.message)
+            })
     }
 
 
@@ -42,7 +86,7 @@ const Signup = () => {
 
             <div className='mt-8 flex justify-center items-center '>
                 <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4 sm:mx-auto lg:w-full md:w-full md:mx-auto '>
-                    <h2 className='text-2xl text-center mb-4 font-bold uppercase'>Sign up</h2>
+                    <h2 className='text-2xl text-center font-bold uppercase'>Sign up</h2>
 
                     <form onSubmit={handleSubmit(handleSignup)}>
 
@@ -91,27 +135,29 @@ const Signup = () => {
                             error && <p className='text-red-600'>{error}</p>
                         }
 
+
                         <input type="submit"
-                            value='Sign up'
-                            className='btn btn-accent w-full uppercase py-3 rounded-md' />
+                        value='Sign up'
+                        className='btn btn-primary w-full text-white uppercase py-3 rounded-md' />
 
-                        {/* <button type='submit' className='btn btn-accent w-full text-white uppercase py-3 rounded-md dark:bg-black dark:border-2 dark:border-green-600'>
 
-                        {loading ? <SmallSpinner></SmallSpinner> : 'Sign up'}
+                        {/* <button type='submit' className='btn btn-primary w-full text-white uppercase py-3 rounded-md'>
 
-                    </button> */}
+                            {loading ? <SmallSpinner></SmallSpinner> : 'Sign up'}
+
+                        </button> */}
 
                     </form>
 
                     <div className='mt-3'>
-                        <p className='text-sm text-center font-semibold'>Already Have An Account ? <Link to='/login' className='text-secondary font-semibold'>Please Login</Link></p>
+                        <p className='text-sm text-center font-semibold'>Already Have An Account ? <Link to='/login' className='text-blue-600 font-semibold'>Please Login</Link></p>
                     </div>
 
                     <div className="divider">OR</div>
 
-                    {/* <div>
-                    <button onClick={handleSignInByGoogle} className='btn btn-outline btn-accent uppercase w-full dark:bg-black dark:text-white'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
-                </div> */}
+                    <div>
+                        <button className='btn btn-outline btn-dark uppercase w-full'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
+                    </div>
 
                 </div>
             </div>
