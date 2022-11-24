@@ -3,12 +3,17 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import BikeDetails from "../../Pages/BikeDetails/BikeDetails";
 import Blogs from "../../Pages/Blogs/Blogs";
+import BuyerOrders from "../../Pages/BuyerPage/BuyerOrders/BuyerOrders";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
+import AddProducts from "../../Pages/SellerPage/AddProducts/AddProducts";
+import MyProducts from "../../Pages/SellerPage/MyProducts/MyProducts";
 import Login from "../../Pages/Shared/Login/Login";
 import Signup from "../../Pages/Shared/Signup/Signup";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 const routes = createBrowserRouter([
     {
@@ -50,9 +55,26 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <MyOrders></MyOrders>
+            },
+
+            {
+                path: '/dashboard/addProducts',
+                element: <SellerRoute><AddProducts></AddProducts></SellerRoute>
+            },
+
+            {
+                path: '/dashboard/myProducts',
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
+            },
+
+            {
+                path: '/dashboard/myOrders',
+                element: <BuyerRoute><BuyerOrders></BuyerOrders></BuyerRoute>
             }
+
         ]
     },
+
 
     {
         path: '*',
