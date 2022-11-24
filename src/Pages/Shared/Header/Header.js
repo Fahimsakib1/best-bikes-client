@@ -28,9 +28,9 @@ const Header = () => {
 
     const menuItems = <React.Fragment>
 
-        <li className=''><Link to='/'>Home</Link></li>
-        <li className=''><Link to='/appointment'>Appointment</Link></li>
-        <li className=''><Link to='/review'>Review</Link></li>
+        <li className='text-md font-bold px-2'><Link to='/'>Home</Link></li>
+        <li className='text-md font-bold px-2'><Link to='/appointment'>Appointment</Link></li>
+        <li className='text-md font-bold px-2'><Link to='/review'>Review</Link></li>
 
         {/* {
             user?.uid ?
@@ -63,7 +63,7 @@ const Header = () => {
     return (
 
         <div>
-            <div className="navbar  flex justify-between  pb-6 bg-base-200">
+            <div className="navbar  flex justify-between  pb-6 bg-base-100">
 
                 <div className="navbar-start w-[400px]">
                     <div className="dropdown">

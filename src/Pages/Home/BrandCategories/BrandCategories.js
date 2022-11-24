@@ -1,8 +1,8 @@
 import React from 'react';
 import { RiMotorbikeFill } from 'react-icons/ri';
 import yamaha from '../../../images/Brand-Logo/Yamaha.jpg';
-import bajaj from '../../../images/Brand-Logo/Bajaj.png';
-import apache from '../../../images/Brand-Logo/Apache.webp';
+import bajaj from '../../../images/Brand-Logo/Bajaj1.png';
+import apache from '../../../images/Brand-Logo/Apche2.jpg';
 import suzuki from '../../../images/Brand-Logo/Suzuki.png';
 import { useQuery } from '@tanstack/react-query';
 import BrandCategoriesCard from './BrandCategoriesCard';
