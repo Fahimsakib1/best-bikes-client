@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
+import AllBuyers from "../../Pages/AdminPage/AllBuyers/AllBuyers";
+import AllSellers from "../../Pages/AdminPage/AllSellers/AllSellers";
 import BikeDetails from "../../Pages/BikeDetails/BikeDetails";
 import Blogs from "../../Pages/Blogs/Blogs";
 import BuyerOrders from "../../Pages/BuyerPage/BuyerOrders/BuyerOrders";
@@ -11,6 +13,7 @@ import AddProducts from "../../Pages/SellerPage/AddProducts/AddProducts";
 import MyProducts from "../../Pages/SellerPage/MyProducts/MyProducts";
 import Login from "../../Pages/Shared/Login/Login";
 import Signup from "../../Pages/Shared/Signup/Signup";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
@@ -70,6 +73,16 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/myOrders',
                 element: <BuyerRoute><BuyerOrders></BuyerOrders></BuyerRoute>
+            },
+
+            {
+                path: '/dashboard/allSellers',
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
+            },
+
+            {
+                path: '/dashboard/allBuyers',
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             }
 
         ]
