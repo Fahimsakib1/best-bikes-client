@@ -28,10 +28,17 @@ const Header = () => {
 
     }
 
-    const {data: users = null } = useQuery({
+    const {data: users ={} } = useQuery({
+        // queryKey: ['users', user?.email],
+        // queryFn: () => fetch(`http://localhost:5000/users?email=${user?.email}`)
+        // .then(res => res.json())
         queryKey: ['users', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/users?email=${user?.email}`)
-        .then(res => res.json())
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/users?email=${user?.email}`);
+            const data = await res.json();
+            return data;
+        
+        }
     })
 
 
@@ -51,7 +58,7 @@ const Header = () => {
                             <p className='text-md text-green-600 block lg:hidden'>Hello, {user.displayName ? user.displayName : user.email}
                             </p>
                             <MdOutlineWavingHand className='text-2xl text-green-600 ml-2 lg:hidden'></MdOutlineWavingHand>
-                            {users && <div className="badge badge-primary -mt-2 lg:hidden">{users.role}</div>}
+                            {users.role && <div className="badge badge-primary -mt-2 lg:hidden">{users.role}</div>}
                         </div>
                     }
 
@@ -101,7 +108,7 @@ const Header = () => {
                         user?.uid && <div className='flex'>
                             <p className='text-3xl text-green-600 font-semibold'>Hello, {user.displayName ? user.displayName : user.email} </p>
                             <MdOutlineWavingHand className='text-3xl text-green-600 mt-1 ml-2'></MdOutlineWavingHand>
-                            {users && <div className="badge badge-primary  -mt-2">{users.role}</div>}
+                            {users.role && <div className="badge badge-primary  -mt-2">{users.role}</div>}
                         </div>
 
                     }

@@ -21,7 +21,7 @@ const DeleteBuyerModal = ({closeModal, handleDeleteBuyer, buyerInfo }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     );
 };
 

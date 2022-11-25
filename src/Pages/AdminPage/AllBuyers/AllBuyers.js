@@ -61,7 +61,7 @@ const AllBuyers = () => {
 
     return (
         <div>
-            <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-blue-900 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-0'> Total Buyers {buyers?.length}</h1>
+            <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-violet-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-0'> Total Buyers {buyers?.length}</h1>
 
             <div className="overflow-x-auto">
                 <table className="table w-full mb-12  ">

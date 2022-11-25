@@ -60,7 +60,7 @@ const DashboardLayout = () => {
 
                                 <Link to='/dashboard/allBuyers'><button className='btn btn-md btn-ghost  border-0 text-lg text-purple-700 font-semibold '><BsPeopleFill className='text-2xl mr-2'></BsPeopleFill> All Buyers</button></Link>
 
-                                <Link to='/dashboard/allBuyers'><button className='btn btn-md btn-ghost  border-0 text-lg text-red-700 font-semibold '><MdReport className='text-2xl mr-2'></MdReport> Reported Items</button></Link>
+                                <Link to='/dashboard/reportedItems'><button className='btn btn-md btn-ghost  border-0 text-lg text-red-700 font-semibold '><MdReport className='text-2xl mr-2'></MdReport> Reported Items</button></Link>
                             </>
                         }
 
