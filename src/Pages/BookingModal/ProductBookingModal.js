@@ -1,5 +1,11 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import Swal from 'sweetalert2';
+
+
+
+
 
 const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
     const { user } = useContext(AuthContext);
@@ -18,6 +24,12 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
 
         console.log(name, email, productName, mobile, location);
         event.target.reset();
+        //toast.success(`Congratulations!! ${user?.displayName} You Have Booked ${product_name}`)
+        Swal.fire(
+            'Great',
+            `Congratulations ${user?.displayName},  You Have Booked ${product_name}`,
+            'success'
+        )
         setBikeInfoDetails(null);
 
     }
@@ -31,7 +43,7 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
                     <div className='flex justify-center items-center gap-x-4'>
                         <h3 className="text-lg font-bold text-blue-800">Booking For: {product_name}</h3>
                         <div className="avatar">
-                            <div className="w-16 rounded-full">
+                            <div className="w-16 rounded-md">
                                 <img src={img} alt='' />
                             </div>
                         </div>
@@ -54,9 +66,9 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
                             disabled type="text" name='productName' placeholder="Product Name" className="input input-bordered font-semibold w-full my-3 "
                         />
 
-                        <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full my-3 " />
+                        <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full my-3 " required />
 
-                        <input type="text" name='location' placeholder="Meeting Location" className="input input-bordered w-full my-3 " />
+                        <input type="text" name='location' placeholder="Meeting Location" className="input input-bordered w-full my-3 " required />
 
                         <input type="submit" value="Submit" className='w-full bg-gray-800 text-white text-xl py-2 rounded-md mt-4 mb-2 '
                         />

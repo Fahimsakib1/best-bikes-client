@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ProductBookingModal from '../BookingModal/ProductBookingModal';
 import BikeDetailsCard from './BikeDetailsCard';
+import Swal from 'sweetalert2';
+
+
 
 const BikeDetails = () => {
 
