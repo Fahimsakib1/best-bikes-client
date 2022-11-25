@@ -25,51 +25,100 @@ const Signup = () => {
 
     const navigate = useNavigate();
 
+    const imageHostKey = process.env.REACT_APP_imagebb_key
+    //console.log("Image BB Key From Sign Up Page", imageHostKey);
 
 
 
     const handleSignup = (data) => {
-        //console.log(data);
+        console.log(data);
         setError('');
-        createUser(data.email, data.password)
-            .then(result => {
 
-                // const user = result.user;
-                // console.log("User from Sign Up Page", user)
-                //toast.success("User Created Successfully")
+        const image = data.photo[0];
+        const formData = new FormData();
+        formData.append('image', image);
 
-                const userInfo = {
-                    displayName: data.name
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imageData => {
+                if (imageData.success) {
+                    //console.log(imageData.data.url)
+                    createUser(data.email, data.password)
+                        .then(result => {
+                            const userInfo = {
+                                displayName: data.name,
+                                photoURL: imageData.data.url
+                            }
+                            updateUser(userInfo)
+                            .then( () => {
+                                addUserToDataBase(data.name, data.email, data.accountType, imageData.data.url )
+                                toast.success("User Created Successfully")
+                                const user = result.user;
+                                console.log("User from Sign Up Page After Update Name and Photo Upload", user);
+                                reset();
+                                //navigate('/login')
+                            })
+                            .catch(error => {
+                                toast.error("User name Update Failed")
+                                setError(error.message)
+                            })
+
+                        })
+
+                        .catch(error => {
+                            toast.error(error.message)
+                            setError(error.message)
+                        })
                 }
-
-                updateUser(userInfo)
-                    .then(() => {
-                        // Swal.fire(
-                        //     'Nice',
-                        //     'User Created and Updated Users Name Successfully',
-                        //     'success'
-                        // )
-                        addUserToDataBase(data.name, data.email, data.accountType)
-                        toast.success("User Created Successfully")
-                        const user = result.user;
-                        console.log("User from Sign Up Page After Update Name", user);
-                        reset();
-                        navigate('/login')
-                    })
-
-                    .catch(error => {
-                        console.error(error);
-                        setError(error.message);
-                        toast.error("User name Update Failed")
-                    })
-
             })
 
-            .catch(error => {
-                toast.error(error.message)
-                setError(error.message)
-            })
+
     }
+
+
+
+
+    // const handleSignup = (data) => {
+    //     console.log(data);
+    //     setError('');
+    //     createUser(data.email, data.password)
+    //         .then(result => {
+
+    //             // const user = result.user;
+    //             // console.log("User from Sign Up Page", user)
+    //             //toast.success("User Created Successfully")
+
+    //             const userInfo = {
+    //                 displayName: data.name
+    //             }
+
+    //             updateUser(userInfo)
+    //                 .then(() => {
+    //                     //addUserToDataBase(data.name, data.email, data.accountType)
+    //                     toast.success("User Created Successfully")
+    //                     const user = result.user;
+    //                     console.log("User from Sign Up Page After Update Name", user);
+    //                     reset();
+    //                     //navigate('/login')
+    //                 })
+
+    //                 .catch(error => {
+    //                     console.error(error);
+    //                     setError(error.message);
+    //                     toast.error("User name Update Failed")
+    //                 })
+
+    //         })
+
+    //         .catch(error => {
+    //             toast.error(error.message)
+    //             setError(error.message)
+    //         })
+    // }
 
 
 
@@ -80,7 +129,7 @@ const Signup = () => {
                 const user = result.user;
                 console.log("User Sign in By Google", user);
                 toast.success("Successfully Sign In By Google");
-                addUserToDataBase(user.displayName, user.email, 'Buyer')
+                addUserToDataBase(user.displayName, user.email, 'Buyer', user?.photoURL)
             })
 
             .catch(error => {
@@ -91,8 +140,8 @@ const Signup = () => {
 
 
 
-    const addUserToDataBase = (name, email, role) => {
-        const user = {name:name, email:email, role:role};
+    const addUserToDataBase = (name, email, role, photo) => {
+        const user = { name: name, email: email, role: role, photo: photo };
 
         fetch('http://localhost:5000/users', {
             method: 'POST',
@@ -101,23 +150,23 @@ const Signup = () => {
             },
             body: JSON.stringify(user)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if(data.acknowledged){
-                toast.success('User Added to Database');
-                navigate('/');
-            }
-            else {
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    toast.success('User Added to Database');
+                    navigate('/login');
+                }
+                else {
 
-                Swal.fire({
-                    icon: 'error',
-                    title: `${data.message}`,
-                    text: 'Please Sign Up with a new Email'
-                })
+                    Swal.fire({
+                        icon: 'error',
+                        title: `${data.message}`,
+                        text: 'Please Sign Up with a new Email'
+                    })
 
-            }
-        })
+                }
+            })
     }
 
 
@@ -144,7 +193,7 @@ const Signup = () => {
 
                         <div className="form-control w-full mb-1">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text font-semibold">Name</span>
                             </label>
 
                             <input type="text" {...register("name", { required: "Name is Required" })}
@@ -157,7 +206,7 @@ const Signup = () => {
 
                         <div className="form-control w-full mb-1">
                             <label className="label">
-                                <span className="label-text ">Email</span>
+                                <span className="label-text font-semibold">Email</span>
                             </label>
 
                             <input type="email" {...register("email", { required: "Email is Required" })}
@@ -168,36 +217,48 @@ const Signup = () => {
                         </div>
 
 
-                        <div className="form-control w-full mb-1">
-                            <label className="label">
-                                <span className="label-text ">Password</span>
-                            </label>
+                        <div className='flex justify-between items-center gap-x-6'>
+                            <div className="form-control w-full mb-1">
+                                <label className="label">
+                                    <span className="label-text font-semibold">Password</span>
+                                </label>
 
-                            <input type="password" {...register("password", {
-                                required: "Password is Required",
-                                minLength: { value: 8, message: 'Password must be 8 characters or longer' },
-                                // pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: "Password Should Contain at least 1 A-Z, 0-9 and [!@#$&*] character " }
-                            })} placeholder="Enter Password" className="input input-bordered w-full " />
+                                <input type="password" {...register("password", {
+                                    required: "Password is Required",
+                                    minLength: { value: 8, message: 'Password must be 8 characters or longer' },
+                                    // pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: "Password Should Contain at least 1 A-Z, 0-9 and [!@#$&*] character " }
+                                })} placeholder="Enter Password" className="input input-bordered w-full " />
 
-                            {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
+                                {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
 
+                            </div>
+
+                            <div className="form-control w-full mb-1">
+                                <label className="label">
+                                    <span className="label-text font-semibold">Choose Account Type</span>
+                                </label>
+
+                                <select
+                                    type="text"
+                                    {...register("accountType", { required: "Account Type is Required" })}
+                                    name='accountType' className="select select-bordered w-full">
+                                    <option value='Buyer'>Buyer</option>
+                                    <option value='Seller'>Seller</option>
+                                </select>
+
+                                {errors.accountType && <p className='text-red-600'>{errors.accountType?.message}</p>}
+
+                            </div>
                         </div>
 
-                        <div className="form-control w-full mb-1">
+                        <div className='form-control w-full mb-1 mx-auto'>
                             <label className="label">
-                                <span className="label-text">Choose Account Type</span>
+                                <span className="label-text font-semibold">Upload Photo</span>
                             </label>
+                            <input type="file" {...register("photo", { required: "Photo is Required" })}
+                                placeholder="Upload Product Photo" className="input  w-full pt-2" />
 
-                            <select
-                                type="text"
-                                {...register("accountType", { required: "Account Type is Required" })}
-                                name='accountType' className="select select-bordered w-full">
-                                <option value='Buyer'>Buyer</option>
-                                <option value='Seller'>Seller</option>
-                            </select>
-
-                            {errors.accountType && <p className='text-red-600'>{errors.accountType?.message}</p>}
-
+                            {errors.photo && <p className='text-red-600'>{errors.photo?.message}</p>}
                         </div>
 
 
@@ -227,7 +288,7 @@ const Signup = () => {
                     <div className="divider">OR</div>
 
                     <div>
-                        <button onClick={handleSignInByGoogle}  className='btn btn-outline btn-dark uppercase w-full'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
+                        <button onClick={handleSignInByGoogle} className='btn btn-outline btn-dark uppercase w-full'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
                     </div>
 
                 </div>

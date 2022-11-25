@@ -112,15 +112,15 @@ const AddProducts = () => {
             
             <div className=''>
                 <h1 className='text-3xl text-center mt-2'>Add Product</h1>
-                <div className='mt-4 flex justify-start items-center lg:mx-0 md:mx-0 sm:mx-2 mx-2'>
-                    <div className='w-[700px] p-2 sm:p-2 md:p-6 lg:p-6 border-2 rounded-md mx-auto'>
+                <div className='mt-4 flex justify-start items-center lg:mx-0 md:mx-0 sm:mx-2 mx-2 '>
+                    <div className='w-[700px] p-2 sm:p-2 md:p-6 lg:p-6 border-2  mx-auto bg-gray-800 rounded-xl'>
 
                         <form onSubmit={handleSubmit(handleAddProduct)}>
 
                             <div className='flex justify-between gap-3'>
                                 <div className="form-control w-full mb-2">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Product Name</span>
+                                        <span className="label-text font-semibold text-white">Product Name</span>
                                     </label>
 
                                     <input name="productName" type="text" {...register("productName", { required: "Product Name  Required" })}
@@ -133,7 +133,7 @@ const AddProducts = () => {
 
                                 <div className="form-control w-full mb-2">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Original Price</span>
+                                        <span className="label-text font-semibold text-white">Original Price</span>
                                     </label>
 
                                     <input name="originalPrice" type="text" {...register("originalPrice", { required: "Price Required" })}
@@ -145,7 +145,7 @@ const AddProducts = () => {
 
                                 <div className="form-control w-full mb-2">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Resale Price</span>
+                                        <span className="label-text font-semibold text-white">Resale Price</span>
                                     </label>
 
                                     <input name="resalePrice" type="text" {...register("resalePrice", { required: "Resale Price Required" })}
@@ -162,7 +162,7 @@ const AddProducts = () => {
 
                                 <div className="form-control w-full mb-3">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Location</span>
+                                        <span className="label-text font-semibold text-white">Location</span>
                                     </label>
 
                                     <select
@@ -187,7 +187,7 @@ const AddProducts = () => {
 
                                 <div className="form-control w-full mb-3">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Brand</span>
+                                        <span className="label-text font-semibold text-white">Brand</span>
                                     </label>
 
                                     <select
@@ -205,7 +205,7 @@ const AddProducts = () => {
 
                                 <div className="form-control w-full mb-3">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Condition</span>
+                                        <span className="label-text font-semibold text-white">Condition</span>
                                     </label>
 
                                     <select
@@ -229,7 +229,7 @@ const AddProducts = () => {
 
                                 <div className="form-control w-full mb-2">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Years Of Using</span>
+                                        <span className="label-text font-semibold text-white">Years Of Using</span>
                                     </label>
 
                                     <input name="usingYear" type="text" {...register("usingYear", { required: "Using Year Required" })}
@@ -241,7 +241,7 @@ const AddProducts = () => {
 
                                 <div className="form-control w-full mb-2">
                                     <label className="label">
-                                        <span className="label-text font-semibold">Mobile</span>
+                                        <span className="label-text font-semibold text-white">Mobile</span>
                                     </label>
 
                                     <input name="mobileNumber" type="text" {...register("mobileNumber", { required: "Mobile Number Required" })}
@@ -261,7 +261,7 @@ const AddProducts = () => {
 
                             <div className="form-control w-full mb-4">
                                 <label className="label">
-                                    <span className="label-text font-semibold ml-4">Upload Photo</span>
+                                    <span className="label-text font-semibold ml-4 text-white">Upload Photo</span>
                                 </label>
 
                                 <input type="file" {...register("photo", { required: "Photo is Required" })}
@@ -279,8 +279,10 @@ const AddProducts = () => {
                             <div className='mx-auto text-center'>
                                 <input type="submit"
                                     value='Add Product'
-                                    className='btn bg-blue-800 w-1/2  text-white uppercase py-3 rounded-md border-0' />
+                                    className=' bg-blue-700  hover:bg-blue-700 w-1/2  text-white uppercase py-3 rounded-md border-0 mt-1' 
+                                />
                             </div>
+
 
                         </form>
 
