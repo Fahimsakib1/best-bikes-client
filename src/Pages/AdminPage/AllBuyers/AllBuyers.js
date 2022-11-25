@@ -1,12 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { FaRegUserCircle } from 'react-icons/fa';
+import DeleteBuyerModal from './DeleteBuyerModal';
 
 
 
 const AllBuyers = () => {
+
+    const [buyerInfo, setBuyerInfo] = useState(null);
 
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ['buyers'],
@@ -21,6 +24,34 @@ const AllBuyers = () => {
 
     if (isLoading) {
         return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-blue-600 mx-auto mt-64"></div>
+    }
+
+    const closeModal = () => {
+        setBuyerInfo(null)
+    }
+
+    const handleDeleteBuyer = (id, buyerName) => {
+        fetch(`http://localhost:5000/buyers/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount > 0){
+                refetch();
+                Swal.fire(
+                    'Done!',
+                    `Buyer ${buyerName} Deleted Successfully`,
+                    'success'
+                )
+            }
+            else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops... Something Went Wrong',
+                    text: `Can not Delete Buyer ${buyerName}`
+                })
+            }
+        })
     }
 
 
@@ -71,7 +102,7 @@ const AllBuyers = () => {
                                                         </div>
                                                     </div>
                                             }
-                                            
+
                                         </div>
                                     </td>
 
@@ -88,8 +119,13 @@ const AllBuyers = () => {
                                             className="btn dark:bg-gray-900 hover:bg-white bg-white border-0 ">
                                             <FaTrashAlt className=' text-2xl text-red-600  hover:text-red-700'></FaTrashAlt>
                                         </label> */}
-                                        
-                                        <FaTrashAlt className=' text-2xl text-red-600  hover:text-red-700'></FaTrashAlt>
+
+                                        <label
+                                            onClick={() => setBuyerInfo(buyer)}
+                                            htmlFor="delete-buyer-modal"
+                                        >
+                                            <FaTrashAlt className=' text-2xl text-red-600  hover:text-red-700'></FaTrashAlt>
+                                        </label>
                                     </td>
 
                                 </tr>)
@@ -102,6 +138,17 @@ const AllBuyers = () => {
                 </table>
 
             </div>
+
+            {
+                buyerInfo &&
+                <DeleteBuyerModal 
+                closeModal={ closeModal}
+                handleDeleteBuyer = {handleDeleteBuyer}
+                buyerInfo = {buyerInfo}
+                >
+
+                </DeleteBuyerModal>
+            }
 
         </div>
     );

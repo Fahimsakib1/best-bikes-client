@@ -9,7 +9,6 @@ const DeleteProductModal = ({ deleteProduct, closeModal, handleDeleteProduct }) 
 
     return (
         <div>
-
             <input type="checkbox" id="confirmation-modal" className="modal-toggle" />
             <div className="modal">
                 <div className="modal-box relative">

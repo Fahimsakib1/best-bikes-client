@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
+import DeleteSellerModal from './DeleteSellerModal';
 
 
 
 
 
 const AllSellers = () => {
-    
-    
+
+    const [deleteSeller, setDeleteSeller] = useState(null);
+
+
     const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
@@ -26,10 +29,43 @@ const AllSellers = () => {
         return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-blue-600 mx-auto mt-64"></div>
     }
 
-    
-    
-    
-    
+
+
+    const handleDeleteSeller = (id, sellerName) => {
+        console.log(id, sellerName);
+
+        fetch(`http://localhost:5000/sellers/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.deletedCount > 0){
+                refetch();
+                Swal.fire(
+                    'Done!',
+                    `Seller ${sellerName} Deleted Successfully`,
+                    'success'
+                )
+            }
+            else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops... Something Went Wrong',
+                    text: `Can not Delete Seller ${sellerName}`
+                })
+            }
+        })
+        
+    }
+
+    const closeModal = () => {
+        setDeleteSeller(null);
+    }
+
+
+
+
+
     return (
         <div>
             <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-blue-900 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-0'> Total Sellers {sellers?.length}</h1>
@@ -91,7 +127,12 @@ const AllSellers = () => {
                                         <FaTrashAlt className=' text-2xl text-red-600  hover:text-red-700'></FaTrashAlt>
                                     </label> */}
                                         <button className='bg-blue-600 btn btn-sm hover:bg-blue-600 border-0'>Verify</button>
-                                        <FaTrashAlt className=' text-2xl text-red-600  hover:text-red-700'></FaTrashAlt>
+                                        <label
+                                        onClick={() => setDeleteSeller(seller) }
+                                        htmlFor="delete-seller-modal"
+                                        >
+                                            <FaTrashAlt className=' text-2xl text-red-600  hover:text-red-700'></FaTrashAlt>
+                                        </label>
                                     </td>
 
                                 </tr>)
@@ -104,6 +145,17 @@ const AllSellers = () => {
                 </table>
 
             </div>
+
+            {
+                deleteSeller && 
+                <DeleteSellerModal 
+                deleteSeller = {deleteSeller} 
+                closeModal = {closeModal}
+                handleDeleteSeller = {handleDeleteSeller}
+                >
+
+                </DeleteSellerModal>
+            }
 
         </div>
     );
