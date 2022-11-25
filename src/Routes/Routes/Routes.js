@@ -83,7 +83,7 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/allBuyers',
                 element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
-            }
+            }, 
 
         ]
     },

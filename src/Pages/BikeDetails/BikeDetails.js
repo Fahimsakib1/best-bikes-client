@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import ProductBookingModal from '../BookingModal/ProductBookingModal';
 import BikeDetailsCard from './BikeDetailsCard';
 
 const BikeDetails = () => {
 
     const bikeDetails = useLoaderData();
+
+    const [bikeInfoDetails, setBikeInfoDetails] = useState(null);
 
     return (
         <div>
@@ -17,11 +20,20 @@ const BikeDetails = () => {
                 </div>
             </div>
 
-            <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-10 my-12 mx-auto'>
+            <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10 my-12 mx-auto'>
                 {
-                    bikeDetails?.map(details => <BikeDetailsCard key={details._id} details = {details}></BikeDetailsCard>)
+                    bikeDetails?.map(details => <BikeDetailsCard key={details._id} details = {details} setBikeInfoDetails = {setBikeInfoDetails}
+                    ></BikeDetailsCard>)
                 }
             </div>
+
+            {
+                bikeInfoDetails && <ProductBookingModal bikeInfoDetails = {bikeInfoDetails}
+                setBikeInfoDetails = {setBikeInfoDetails}
+                ></ProductBookingModal>
+            }
+            
+
         </div>
     );
 };

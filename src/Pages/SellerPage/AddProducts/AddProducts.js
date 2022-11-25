@@ -175,6 +175,8 @@ const AddProducts = () => {
                                         <option value='Chittagong'>Chittagong</option>
                                         <option value='Rajshahi'>Rajshahi</option>
                                         <option value='Sylhet'>Sylhet</option>
+                                        <option value='Khulna'>Khulna</option>
+                                        <option value='DInajpur'>Dinajpur</option>
 
 
                                     </select>
