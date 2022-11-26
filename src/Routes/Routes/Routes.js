@@ -8,6 +8,7 @@ import BikeDetails from "../../Pages/BikeDetails/BikeDetails";
 import Blogs from "../../Pages/Blogs/Blogs";
 import BuyerOrders from "../../Pages/BuyerPage/BuyerOrders/BuyerOrders";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
+import DashboardHomePage from "../../Pages/DashboardHomePage/DashboardHomePage";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
 import AddProducts from "../../Pages/SellerPage/AddProducts/AddProducts";
@@ -19,6 +20,8 @@ import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 
+
+
 const routes = createBrowserRouter([
     {
         path: '/',
@@ -26,7 +29,7 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <Home></Home> 
             },
 
             {
@@ -51,6 +54,7 @@ const routes = createBrowserRouter([
             }
         ]
     },
+    
 
     {
         path: '/dashboard',
@@ -58,7 +62,7 @@ const routes = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <MyOrders></MyOrders>
+                element: <DashboardHomePage></DashboardHomePage>
             },
 
             {

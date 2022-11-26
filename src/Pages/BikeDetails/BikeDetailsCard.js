@@ -17,9 +17,13 @@ import { useQuery } from '@tanstack/react-query';
 const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
 
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
 
     const { category_name, img, product_name, location, original_price, resale_price, years_of_use, posted_date, milage, condition, seller_name, category_id, email, mobile, _id } = details
+
+    if(loading){
+        return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-orange-600 mx-auto mt-64"></div>
+    }
 
 
 
@@ -90,19 +94,6 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
 
 
-    // const { data: sellers = [], isLoading } = useQuery({
-    //     queryKey: ['sellers'],
-    //     queryFn: () => fetch('http://localhost:5000/sellers')
-    //         .then(res => res.json())
-    // })
-
-
-    // if (isLoading) {
-    //     return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-blue-600 mx-auto mt-64"></div>
-    // }
-
-
-
     return (
         <div className='lg:mx-0 md:mx-2 sm:mx-2 mx-2'>
             <div className="flex mx-auto flex-col max-w-lg p-6 space-y-6 overflow-hidden shadow-xl bg-gray-900 text-gray-100 rounded-xl">
@@ -125,7 +116,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                                 :
                                 <p className='text-lg'>Seller <span className='text-blue-600'>{seller_name}</span></p>
                         }
-                    </div>
+                    </div> 
                 </div>
 
                 <div className=''>

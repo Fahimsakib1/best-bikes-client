@@ -10,6 +10,8 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import DeleteProductModal from './DeleteProductModal';
 import Swal from 'sweetalert2';
+import {SiVerizon} from 'react-icons/si';
+import toast from 'react-hot-toast';
 
 
 
@@ -23,6 +25,7 @@ const MyProducts = () => {
         setDeleteProduct(null);
     }
 
+
     const { data: myProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {
@@ -30,8 +33,8 @@ const MyProducts = () => {
             const data = await res.json();
             return data;
         }
-
     })
+
 
     if (isLoading) {
         return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-blue-700 mx-auto mt-64"></div>
@@ -40,33 +43,64 @@ const MyProducts = () => {
 
     const handleDeleteProduct = (id, name) => {
         //console.log('ID: ', id, 'Name:', name)
-        
+
         fetch(`http://localhost:5000/products/${id}`, {
             method: 'DELETE'
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.deletedCount > 0){
-                refetch();
-                Swal.fire(
-                    'Done!',
-                    `Product ${name} Deleted Successfully`,
-                    'success'
-                )
-            }
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.deletedCount > 0) {
+                    refetch();
+                    Swal.fire(
+                        'Done!',
+                        `Product ${name} Deleted Successfully`,
+                        'success'
+                    )
+                }
 
-            else{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Can not Delete Product'
-                })
-            }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Can not Delete Product'
+                    })
+                }
+            })
+    }
+
+
+    const handleAdvertiseProduct = (id, name) => {
+        console.log(id);
+
+        fetch(`http://localhost:5000/products/${id}`, {
+            method: 'PUT'
         })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    // Swal.fire(
+                    //     'Done!',
+                    //     `Advertise of ${myProducts.product_name} Done`,
+                    //     'success'
+                    // )
+                    toast.success(`Advertise of Bike ${name} Done`)
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops... Something Went Wrong',
+                        text: 'Can not proceed advertising'
+                    })
+                }
+            })
+
     }
 
     
+
 
     return (
         <div>
@@ -122,9 +156,14 @@ const MyProducts = () => {
 
                                             </div>
 
-                                            <button type="button" title="Advertise Product" className="btn btn-xs border-0 bg-green-700 text-white">
-                                                Advertise
-                                            </button>
+                                            {
+                                                product.advertiseStatus !== 'Advertised' ?
+                                                    <button onClick={() => handleAdvertiseProduct(product._id, product.product_name)} type="button" title="Advertise Product" className="btn btn-xs border-0 bg-blue-800 hover:bg-blue-800 text-white">
+                                                    Advertise
+                                                    </button>
+                                                :
+                                                <button className ="btn btn-xs border-0 bg-green-800 hover:bg-green-800 text-white"><SiVerizon className = 'mr-1'></SiVerizon> Advertised</button>
+                                            }
                                         </div>
 
 
@@ -150,7 +189,7 @@ const MyProducts = () => {
                 <DeleteProductModal
                     deleteProduct={deleteProduct}
                     handleDeleteProduct={handleDeleteProduct}
-                    closeModal = {closeModal}
+                    closeModal={closeModal}
                 >
                 </DeleteProductModal>
             }

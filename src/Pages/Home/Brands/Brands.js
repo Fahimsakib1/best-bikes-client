@@ -17,11 +17,11 @@ const Brands = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                     className="container grid grid-cols-2 gap-4 p-4 mx-auto md:grid-cols-4 ">
-                    <img src={pic4} alt="" className="w-full h-full col-span-2 row-span-2 rounded-md shadow-sm min-h-96 md:col-start-3 md:row-start-1 bg-gray-500 aspect-square" />
-                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square" src={pic2} />
-                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square" src={pic3} />
-                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square" src={pic1} />
-                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square" src={pic5} />
+                    <img src={pic4} alt="" className="w-full h-full col-span-2 row-span-2 rounded-md shadow-sm min-h-96 md:col-start-3 md:row-start-1 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" />
+                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" src={pic2} />
+                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" src={pic3} />
+                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" src={pic1} />
+                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" src={pic5} />
 
                 </motion.div>
             </section>

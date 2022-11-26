@@ -14,11 +14,9 @@ const AuthProvider = ({ children }) => {
 
     const providerGoogle = new GoogleAuthProvider();
 
-
-
     const createUser = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password); 
     }
 
     const userLogin = (email, password) => {
@@ -33,7 +31,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUser = (userInfo) => {
-        setLoading(true);
+        
         return updateProfile(auth.currentUser, userInfo)
     }
 
@@ -45,7 +43,6 @@ const AuthProvider = ({ children }) => {
     const resetPassword = (email) => {
         setLoading(true);
         return sendPasswordResetEmail(auth, email);
-
     }
 
     

@@ -1,8 +1,9 @@
 import React from 'react';
+import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
 import BrandCategories from '../BrandCategories/BrandCategories';
 import Brands from '../Brands/Brands';
 import Offerings from '../Offerings/Offerings';
-import Slider from '../Slider/Slider';
+import Slider from '../Slider/Slider'; 
 
 const Home = () => {
     return (
@@ -11,7 +12,8 @@ const Home = () => {
             <Offerings></Offerings>
             <BrandCategories></BrandCategories>
             <Brands></Brands>
-        </div>
+            <AdvertisedItems></AdvertisedItems>
+        </div> 
     );
 };
 

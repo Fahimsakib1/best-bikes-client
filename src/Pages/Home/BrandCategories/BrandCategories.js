@@ -20,6 +20,10 @@ const BrandCategories = () => {
         }
     })
 
+    if(isLoading){
+        return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-blue-600 mx-auto mt-64"></div>
+    }
+
 
     return (
         <div className='mt-24 mb-8'>
@@ -56,7 +60,7 @@ const BrandCategories = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
 
                 <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-12 '>
                     {

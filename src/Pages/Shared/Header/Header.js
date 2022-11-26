@@ -75,7 +75,7 @@ const Header = () => {
                 </>
         }
 
-    </React.Fragment>
+    </React.Fragment> 
 
 
 
@@ -92,7 +92,7 @@ const Header = () => {
                         <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 ">
                             {menuItems}
                         </ul>
-                    </div>
+                    </div> 
 
                     <div className="avatar">
                         <div className="w-12 mt-6 ml-4">

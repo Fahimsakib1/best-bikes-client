@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 
 
 
+
+
 const BikeDetails = () => {
 
     const bikeDetails = useLoaderData();

@@ -1,13 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
-// import './MyOrders.css'
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import './DashboardHomePage.css'
 
-
-
-
-const MyOrders = () => {
-    
+const DashboardHomePage = () => {
     
     const { user} = useContext(AuthContext);
 
@@ -20,12 +16,10 @@ const MyOrders = () => {
         
         }
     })
-
-
+    
     
     return (
         <div className=''>
-            {/* <h1 className='text-3xl text-center'>Dash Board</h1> */}
             <div className="hero min-h-screen main-div">
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content ">
@@ -41,4 +35,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default DashboardHomePage;

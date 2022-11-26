@@ -10,7 +10,6 @@ const MyProductsCard = ({ product, handleDeleteProduct }) => {
     const { _id, category_name, img, product_name, location, original_price, resale_price, years_of_use, posted_date, milage, condition, seller_name, category_id } = product
 
 
-    // On the "My Products" page, display sales status (available or sold), price, and any other relevant information you want to show. A seller will be able to delete any of his/her product. Please note there will be a special button for each unsold/available product where the seller can hit the button to advertise.
 
 
     return (
@@ -43,8 +42,7 @@ const MyProductsCard = ({ product, handleDeleteProduct }) => {
                             <FaTrashAlt className='text-2xl text-red-600' title='Delete Product'></FaTrashAlt>
                         </div>
 
-                        {/* Bottom Right Button */}
-                        <button type="button" title="Advertise Product" className="btn btn-xs border-0 bg-green-700 text-white">
+                        <button type="button" title="Advertise Product" className="btn btn-xs border-0 bg-green-600 text-white hover:bg-green-700">
                             Advertise
                         </button>
                     </div>

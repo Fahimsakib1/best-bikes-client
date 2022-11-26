@@ -65,7 +65,9 @@ const AllSellers = () => {
         setDeleteSeller(null);
     }
 
-   
+
+
+
     const handleVerifySeller = (email) => {
         
         //console.log(email)

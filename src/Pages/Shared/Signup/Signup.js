@@ -154,8 +154,8 @@ const Signup = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    toast.success('User Added to Database');
-                    navigate('/login');
+                    //toast.success('User Added to Database');
+                    navigate('/');
                 }
                 else {
 
@@ -271,13 +271,6 @@ const Signup = () => {
                         <input type="submit"
                             value='Sign up'
                             className='btn btn-primary w-full text-white uppercase py-3 rounded-md mt-4' />
-
-
-                        {/* <button type='submit' className='btn btn-primary w-full text-white uppercase py-3 rounded-md'>
-
-                            {loading ? <SmallSpinner></SmallSpinner> : 'Sign up'}
-
-                        </button> */}
 
                     </form>
 

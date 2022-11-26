@@ -23,4 +23,4 @@ const SellerRoute = ({children}) => {
 
 };
 
-export default SellerRoute;
+export default SellerRoute; 
