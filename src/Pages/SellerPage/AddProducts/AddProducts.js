@@ -21,6 +21,10 @@ const AddProducts = () => {
 
 
 
+    
+
+
+
     const handleAddProduct = (data) => {
         //console.log(data);
         const image = data.photo[0];

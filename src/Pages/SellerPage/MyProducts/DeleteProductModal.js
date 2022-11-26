@@ -13,8 +13,8 @@ const DeleteProductModal = ({ deleteProduct, closeModal, handleDeleteProduct }) 
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="confirmation-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="text-lg font-bold mt-4"> Want to Delete {product_name} From List ?</h3>
-                    <p className=" text-red-700 mb-4 text-center">*** Once ypu delete a product it can not be retrieve *** </p>
+                    <h3 className="text-lg font-bold mt-4 text-center"> Want to Delete {product_name} From List ?</h3>
+                    <p className=" text-red-700 mb-4 text-center">*** Once you delete a product it can not be retrieved *** </p>
                     <div className='flex justify-between'>
                         <button onClick={closeModal} className='btn  bg-blue-700 text-white btn-sm border-0'> Cancel</button>
                         <label

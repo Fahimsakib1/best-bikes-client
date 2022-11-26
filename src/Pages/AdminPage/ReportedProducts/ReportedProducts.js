@@ -96,7 +96,7 @@ const ReportedProducts = () => {
                     </div>
             }
 
-        </div>
+        </div> 
     );
 };
 

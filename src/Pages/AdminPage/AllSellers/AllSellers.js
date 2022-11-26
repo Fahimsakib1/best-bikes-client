@@ -4,6 +4,9 @@ import Swal from 'sweetalert2';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
 import DeleteSellerModal from './DeleteSellerModal';
+import { Link } from 'react-router-dom';
+import {MdOutlineVerifiedUser} from 'react-icons/md';
+import toast from 'react-hot-toast';
 
 
 
@@ -37,30 +40,56 @@ const AllSellers = () => {
         fetch(`http://localhost:5000/sellers/${id}`, {
             method: 'DELETE'
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.deletedCount > 0){
-                refetch();
-                Swal.fire(
-                    'Done!',
-                    `Seller ${sellerName} Deleted Successfully`,
-                    'success'
-                )
-            }
-            else{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops... Something Went Wrong',
-                    text: `Can not Delete Seller ${sellerName}`
-                })
-            }
-        })
-        
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    Swal.fire(
+                        'Done!',
+                        `Seller ${sellerName} Deleted Successfully`,
+                        'success'
+                    )
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops... Something Went Wrong',
+                        text: `Can not Delete Seller ${sellerName}`
+                    })
+                }
+            })
+
     }
 
     const closeModal = () => {
         setDeleteSeller(null);
     }
+
+   
+    const handleVerifySeller = (email) => {
+        
+        //console.log(email)
+        
+        fetch(`http://localhost:5000/sellers?email=${email}`, {
+            method: 'PUT'
+        })
+        .then(res => res.json())
+        .then(data => {
+            
+            if(data.modifiedCount > 0) {
+                toast.success('Seller Verified By Admin');
+                refetch();
+            }
+            else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops... Something Went Wrong',
+                    text: 'Try Again'
+                })
+            }
+        })
+    }
+
 
 
 
@@ -95,18 +124,26 @@ const AllSellers = () => {
                                     <td className=''>
                                         <div className="flex items-center space-x-3">
                                             {
-                                                seller.photo
+                                                seller.photo 
                                                     ?
                                                     <div className="avatar mx-auto">
                                                         <div className="w-12 rounded-full">
                                                             <img className='text-center' src={seller.photo} alt="BuyerImage" />
                                                         </div>
+                                                        {
+                                                            seller.status === 'Verified' &&
+                                                            <MdOutlineVerifiedUser className='mr-1 text-xl -mt-1 text-green-600 font-bold'></MdOutlineVerifiedUser>
+                                                        }
                                                     </div>
                                                     :
                                                     <div className="avatar mx-auto">
                                                         <div className="w-12 ">
                                                             <FaRegUserCircle className='text-5xl text-center'></FaRegUserCircle>
                                                         </div>
+                                                        {
+                                                            seller.status === 'Verified' &&
+                                                            <MdOutlineVerifiedUser className='mr-1 text-xl -mt-1 text-green-600 font-bold'></MdOutlineVerifiedUser>
+                                                        }
                                                     </div>
                                             }
 
@@ -120,16 +157,17 @@ const AllSellers = () => {
                                     <td className=''>{seller.email}</td>
 
                                     <td className='flex justify-evenly items-center gap-x-4'>
-                                        {/* <label
-                                        onClick={() => setDeletingDoctor(doctor)}
-                                        htmlFor="confirmation-modal"
-                                        className="btn dark:bg-gray-900 hover:bg-white bg-white border-0 ">
-                                        <FaTrashAlt className=' text-2xl text-red-600  hover:text-red-700'></FaTrashAlt>
-                                    </label> */}
-                                        <button className='bg-blue-600 btn btn-sm hover:bg-blue-600 border-0'>Verify</button>
+                                        
+                                        {
+                                            seller?.status !== 'Verified' ?
+                                                <button onClick={() => handleVerifySeller(seller.email)} className='bg-blue-600 btn btn-sm hover:bg-blue-600 border-0'>Verify</button>
+                                                :
+                                                <button className='btn btn-xs bg-green-600 border-0'> <MdOutlineVerifiedUser className='mr-1 text-lg'></MdOutlineVerifiedUser> Verified</button>
+                                        }
+
                                         <label
-                                        onClick={() => setDeleteSeller(seller) }
-                                        htmlFor="delete-seller-modal"
+                                            onClick={() => setDeleteSeller(seller)}
+                                            htmlFor="delete-seller-modal"
                                         >
                                             <FaTrashAlt className=' text-2xl text-red-600  hover:text-red-700'></FaTrashAlt>
                                         </label>
@@ -147,11 +185,11 @@ const AllSellers = () => {
             </div>
 
             {
-                deleteSeller && 
-                <DeleteSellerModal 
-                deleteSeller = {deleteSeller} 
-                closeModal = {closeModal}
-                handleDeleteSeller = {handleDeleteSeller}
+                deleteSeller &&
+                <DeleteSellerModal
+                    deleteSeller={deleteSeller}
+                    closeModal={closeModal}
+                    handleDeleteSeller={handleDeleteSeller}
                 >
 
                 </DeleteSellerModal>

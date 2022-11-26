@@ -7,6 +7,8 @@ import suzukiLogo from '../../images/Brand-Logo/suzuki1.webp';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import { FaRegUserCircle } from 'react-icons/fa';
+import { GoVerified } from 'react-icons/go';
+import { useQuery } from '@tanstack/react-query';
 
 
 
@@ -14,12 +16,12 @@ import { FaRegUserCircle } from 'react-icons/fa';
 
 const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
-    
-    const {user} = useContext(AuthContext);
-    
+
+    const { user } = useContext(AuthContext);
+
     const { category_name, img, product_name, location, original_price, resale_price, years_of_use, posted_date, milage, condition, seller_name, category_id, email, mobile, _id } = details
 
-    // Each card will have a    the seller's name;
+
 
     //get the time of report
     const date = new Date();
@@ -35,28 +37,29 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
 
     const handleReportToAdmin = () => {
+        
         console.log("Product Name", product_name, seller_name, location)
 
         const reportedProductInfo = {
             productDataBaseId: _id,
-            productName : product_name,
+            productName: product_name,
             brandName: category_name,
             productImage: img,
             location: location,
             sellingPrice: resale_price,
-            years_use:years_of_use,
+            years_use: years_of_use,
             product_posted_date: posted_date,
             report_posted_date: reportDate,
             sellerName: seller_name,
-            sellerEmail:email,
-            sellerMobileNumber:mobile,
+            sellerEmail: email,
+            sellerMobileNumber: mobile,
             category_id: category_id,
-            productCondition:condition,
+            productCondition: condition,
             reporterName: user?.displayName || 'Unregistered User',
             reporterImage: user?.photoURL || 'No Image Added',
-            reporterEmail:user?.email,
-            reporterRole:user?.role || 'No Role Found'
-        } 
+            reporterEmail: user?.email,
+            reporterRole: user?.role || 'No Role Found'
+        }
 
         fetch('http://localhost:5000/reportedProducts', {
             method: 'POST',
@@ -65,26 +68,38 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
             },
             body: JSON.stringify(reportedProductInfo)
         })
-        .then(res => res.json())
-        .then(result => {
-            if(result.acknowledged){
-                Swal.fire(
-                    'Good',
-                    `${user?.displayName} Your Report For ${product_name} has been added.`,
-                    'success'
-                )
-            }
-            else{
-                Swal.fire({
-                    icon: 'error',
-                    title: `${result.message}`,
-                    text: 'Report Not Added. Try Again Properly'
-                })
-            }
-        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.acknowledged) {
+                    Swal.fire(
+                        'Good',
+                        `${user?.displayName} Your Report For ${product_name} has been added.`,
+                        'success'
+                    )
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: `${result.message}`,
+                        text: 'Report Not Added. Try Again Properly'
+                    })
+                }
+            })
 
     }
 
+
+
+    const { data: sellers = [], isLoading } = useQuery({
+        queryKey: ['sellers'],
+        queryFn: () => fetch('http://localhost:5000/sellers')
+            .then(res => res.json())
+    })
+
+
+    if (isLoading) {
+        return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-blue-600 mx-auto mt-64"></div>
+    }
 
 
 
@@ -99,7 +114,17 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                     </div>
 
                     <div className='my-auto text-center  lg:my-auto md:my-4 sm:my-2'>
-                        <p className='text-lg'>Seller <span className='text-blue-600'>{seller_name}</span></p>
+                        {
+                            details.status === 'Verified'
+                                ?
+
+                                <div className='flex justify-between items-center gap-x-2'>
+                                    <p className='text-lg'>Seller <span className='text-blue-600'>{seller_name}</span></p>
+                                    <GoVerified className='text-green-600 text-2xl'></GoVerified>
+                                </div>
+                                :
+                                <p className='text-lg'>Seller <span className='text-blue-600'>{seller_name}</span></p>
+                        }
                     </div>
                 </div>
 
@@ -115,6 +140,13 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                     </div>
                 </div>
 
+
+
+
+
+
+
+
                 <div className="flex flex-wrap justify-between items-center pb-4">
                     <div className="space-x-2">
                         <h2 className='text-lg '>Resale Price: <span className='text-green-600'>{resale_price}  Taka</span></h2>
@@ -126,8 +158,6 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                 </div>
 
                 <div className='mx-auto'>
-                    {/* <button className='bg-blue-800 px-12 py-2 rounded-md btn'>Book Now</button> */}
-
                     {/* Modal Button */}
                     <label
                         onClick={() => setBikeInfoDetails(details)}
