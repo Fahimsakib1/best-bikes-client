@@ -1,0 +1,31 @@
+.main-div{
+    position : absolute;
+    left: 0;
+    top: 10;
+    width: 100%;
+    height: 95vh;
+    animation: animate 10s ease-in-out infinite;
+    background-size: cover;
+}
+
+
+
+
+@keyframes animate {
+    0%{
+        background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('../../../images/Bikes/Resized/1.png');
+    }
+    25%{
+        background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('../../../images/Bikes/Resized/2.png');
+    }
+    50%{
+        background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('../../../images/Bikes/Resized/3.png');
+    }
+    75%{
+        background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('../../../images/Bikes/Resized/4.png');
+    }
+    100%{
+        background-image: linear-gradient(rgba(0,0,0,0.0), rgba(0,0,0,0.0)), url('../../../images/Bikes/Resized/1.png');
+    }
+    
+}

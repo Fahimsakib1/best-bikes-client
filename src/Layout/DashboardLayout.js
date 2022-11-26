@@ -38,9 +38,9 @@ const DashboardLayout = () => {
                         {
                             isSeller &&
                             <>
-                                <Link to='/dashboard/addProducts'><button className='btn btn-md btn-ghost  border-0 text-lg text-green-700  font-semibold'><BsPlusCircle className='text-2xl mr-2'></BsPlusCircle>Add A Product</button></Link>
+                                <Link to='/dashboard/addProducts'><button className='bg-blue-800 hover:bg-blue-800 btn btn-md  border-0 text-lg text-white  font-semibold  mt-2'><BsPlusCircle className='text-2xl mr-2'></BsPlusCircle>Add A Product</button></Link>
 
-                                <Link to='/dashboard/myProducts'><button className='btn btn-md btn-ghost border-0 text-lg text-green-700 font-semibold'><FaShoppingBag className='text-2xl mr-2'></FaShoppingBag>My Products</button></Link>
+                                <Link to='/dashboard/myProducts'><button className='bg-blue-800 hover:bg-blue-800 btn btn-md border-0 text-lg text-white font-semibold mt-4 '><FaShoppingBag className='text-2xl mr-2'></FaShoppingBag>My Products</button></Link>
 
                             </>
                         }
@@ -48,7 +48,7 @@ const DashboardLayout = () => {
                         {
                             isBuyer &&
                             <>
-                                <Link to='/dashboard/myOrders'><button className='btn btn-md btn-ghost  border-0 text-lg text-blue-700 font-semibold'><FaShoppingBag className='text-2xl mr-2'></FaShoppingBag>My Orders</button></Link>
+                                <Link to='/dashboard/myOrders'><button className='bg-blue-800 hover:bg-blue-800  btn btn-md  border-0 text-lg text-white font-semibold mt-4'><FaShoppingBag className='text-2xl mr-2'></FaShoppingBag>My Orders</button></Link>
                             </>
                         },
 
@@ -56,11 +56,11 @@ const DashboardLayout = () => {
                         {
                             isAdmin &&
                             <>
-                                <Link to='/dashboard/allSellers'><button className='btn btn-md btn-ghost  border-0 text-lg text-purple-700 font-semibold mb-1'> <BsPeopleFill className='text-2xl mr-2'></BsPeopleFill> All Sellers</button></Link>
+                                <Link to='/dashboard/allSellers'><button className='bg-blue-700 hover:bg-blue-800 btn btn-md  border-0 text-lg text-white font-semibold'> <BsPeopleFill className='text-2xl mr-2'></BsPeopleFill> All Sellers</button></Link>
 
-                                <Link to='/dashboard/allBuyers'><button className='btn btn-md btn-ghost  border-0 text-lg text-purple-700 font-semibold '><BsPeopleFill className='text-2xl mr-2'></BsPeopleFill> All Buyers</button></Link>
+                                <Link to='/dashboard/allBuyers'><button className='bg-blue-700 hover:bg-blue-800 btn btn-md   border-0 text-lg text-white font-semibold mt-4'><BsPeopleFill className='text-2xl mr-2'></BsPeopleFill> All Buyers</button></Link>
 
-                                <Link to='/dashboard/reportedItems'><button className='btn btn-md btn-ghost  border-0 text-lg text-red-700 font-semibold '><MdReport className='text-2xl mr-2'></MdReport> Reported Items</button></Link>
+                                <Link to='/dashboard/reportedItems'><button className='hover:bg-red-600 hover:text-white btn btn-sm bg-red-600 border-0 text-lg text-white mt-4 font-semibold '><MdReport className='text-2xl mr-2'></MdReport> Reported Items</button></Link>
                             </>
                         }
 

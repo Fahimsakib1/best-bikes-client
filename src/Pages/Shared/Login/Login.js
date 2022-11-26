@@ -81,7 +81,7 @@ const Login = () => {
             </motion.div>
 
             <div className='mt-8 flex justify-center items-center '>
-                <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4 sm:mx-auto lg:w-full md:w-full md:mx-auto '>
+                <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4  lg:w-full md:w-full  md:mx-2 lg:mx-0 sm:mx-2 mx-2'>
                     <h2 className='text-2xl text-center font-bold uppercase'>Login</h2>
 
                     <form onSubmit={handleSubmit(handleLogin)}>
