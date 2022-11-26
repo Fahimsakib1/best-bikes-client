@@ -90,16 +90,16 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
 
 
-    const { data: sellers = [], isLoading } = useQuery({
-        queryKey: ['sellers'],
-        queryFn: () => fetch('http://localhost:5000/sellers')
-            .then(res => res.json())
-    })
+    // const { data: sellers = [], isLoading } = useQuery({
+    //     queryKey: ['sellers'],
+    //     queryFn: () => fetch('http://localhost:5000/sellers')
+    //         .then(res => res.json())
+    // })
 
 
-    if (isLoading) {
-        return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-blue-600 mx-auto mt-64"></div>
-    }
+    // if (isLoading) {
+    //     return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-blue-600 mx-auto mt-64"></div>
+    // }
 
 
 
@@ -119,8 +119,8 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                                 ?
 
                                 <div className='flex justify-between items-center gap-x-2'>
-                                    <p className='text-lg'>Seller <span className='text-blue-600'>{seller_name}</span></p>
-                                    <GoVerified className='text-green-600 text-2xl'></GoVerified>
+                                    <p className='text-lg'>Seller <span className='text-green-600'>{seller_name}</span></p>
+                                    <GoVerified className='text-blue-600 text-2xl'></GoVerified>
                                 </div>
                                 :
                                 <p className='text-lg'>Seller <span className='text-blue-600'>{seller_name}</span></p>
