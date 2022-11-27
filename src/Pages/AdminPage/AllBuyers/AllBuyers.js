@@ -14,7 +14,11 @@ const AllBuyers = () => {
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/buyers');
+            const res = await fetch('http://localhost:5000/buyers', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('bestBikeToken')}`
+                }
+            });
             const data = await res.json();
             return data;
 
@@ -30,32 +34,38 @@ const AllBuyers = () => {
         setBuyerInfo(null)
     }
 
+
+
     const handleDeleteBuyer = (id, buyerName) => {
         fetch(`http://localhost:5000/buyers/${id}`, {
-            method: 'DELETE'
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.deletedCount > 0){
-                refetch();
-                Swal.fire(
-                    'Done!',
-                    `Buyer ${buyerName} Deleted Successfully`,
-                    'success'
-                )
-            }
-            else{
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops... Something Went Wrong',
-                    text: `Can not Delete Buyer ${buyerName}`
-                })
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('bestBikeToken')}`
             }
         })
+
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    refetch();
+                    Swal.fire(
+                        'Done!',
+                        `Buyer ${buyerName} Deleted Successfully`,
+                        'success'
+                    )
+                }
+                else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops... Something Went Wrong',
+                        text: `Can not Delete Buyer ${buyerName}`
+                    })
+                }
+            })
     }
 
 
-    // The all-sellers route will have a name, email address, delete button, and verify button. Admin will be able to verify a seller. When clicked on the verify button, the seller's status will change from unverified to verified(show a blue tick when the seller is verified), and this status will be shown on the products added by a verified seller.
+    
 
 
 
@@ -120,6 +130,7 @@ const AllBuyers = () => {
                                             <FaTrashAlt className=' text-2xl text-red-600  hover:text-red-700'></FaTrashAlt>
                                         </label> */}
 
+
                                         <label
                                             onClick={() => setBuyerInfo(buyer)}
                                             htmlFor="delete-buyer-modal"
@@ -141,12 +152,11 @@ const AllBuyers = () => {
 
             {
                 buyerInfo &&
-                <DeleteBuyerModal 
-                closeModal={ closeModal}
-                handleDeleteBuyer = {handleDeleteBuyer}
-                buyerInfo = {buyerInfo}
+                <DeleteBuyerModal
+                    closeModal={closeModal}
+                    handleDeleteBuyer={handleDeleteBuyer}
+                    buyerInfo={buyerInfo}
                 >
-
                 </DeleteBuyerModal>
             }
 

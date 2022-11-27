@@ -19,4 +19,4 @@ const useAdmin = (email) => {
     return [isAdmin, isAdminLoading]
 }
 
-export default useAdmin
+export default useAdmin 

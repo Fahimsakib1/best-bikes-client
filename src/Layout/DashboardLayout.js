@@ -16,6 +16,7 @@ import {MdReport} from 'react-icons/md';
 const DashboardLayout = () => {
 
     const { user } = useContext(AuthContext);
+    
     const [isSeller] = useSeller(user?.email);
     const [isBuyer] = useBuyer(user?.email);
     const [isAdmin] = useAdmin(user?.email);
@@ -66,7 +67,7 @@ const DashboardLayout = () => {
                     </ul>
 
                 </div>
-            </div>
+            </div> 
         </div>
     );
 };

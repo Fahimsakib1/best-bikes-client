@@ -20,7 +20,11 @@ const AllSellers = () => {
     const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/sellers');
+            const res = await fetch('http://localhost:5000/sellers', {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('bestBikeToken')}`
+                }
+            });
             const data = await res.json();
             return data;
 
@@ -38,7 +42,10 @@ const AllSellers = () => {
         console.log(id, sellerName);
 
         fetch(`http://localhost:5000/sellers/${id}`, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('bestBikeToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
