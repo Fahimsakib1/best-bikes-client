@@ -11,6 +11,7 @@ import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import DashboardHomePage from "../../Pages/DashboardHomePage/DashboardHomePage";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
+import Payment from "../../Pages/Payment/Payment";
 import AddProducts from "../../Pages/SellerPage/AddProducts/AddProducts";
 import MyProducts from "../../Pages/SellerPage/MyProducts/MyProducts";
 import Login from "../../Pages/Shared/Login/Login";
@@ -19,6 +20,9 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
+
+
+
 
 
 
@@ -94,6 +98,12 @@ const routes = createBrowserRouter([
                 path: '/dashboard/reportedItems',
                 element: <AdminRoute><ReportedProducts></ReportedProducts></AdminRoute>
             }, 
+
+            {
+                path: '/dashboard/payment/:id',
+                element: <BuyerRoute><Payment></Payment></BuyerRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/orders/${params.id}`)
+            }
 
         ]
     },

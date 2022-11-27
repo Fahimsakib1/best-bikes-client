@@ -10,7 +10,7 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import DeleteProductModal from './DeleteProductModal';
 import Swal from 'sweetalert2';
-import {SiVerizon} from 'react-icons/si';
+import { SiVerizon } from 'react-icons/si';
 import toast from 'react-hot-toast';
 
 
@@ -114,11 +114,6 @@ const MyProducts = () => {
 
             <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-gray-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-0'>{user?.displayName} You Have Added {myProducts?.length} Products </h1>
 
-            {/* <div className='grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-x-12 mt-4'>
-                {
-                    myProducts.map(product => <MyProductsCard key={product._id} product={product} handleDeleteProduct = {handleDeleteProduct}></MyProductsCard>)
-                }
-            </div> */}
 
             {
                 myProducts.length > 0
@@ -131,12 +126,19 @@ const MyProducts = () => {
                                 <div key={product._id} className="rounded-md shadow-md sm:w-96 lg:w-80 md:w-80 bg-gray-900 text-gray-100 mb-10 sm:mb-10 md:mb-10 lg:mb-10 lg:mx-0 md:mx-4 sm:mx-4 mx-4 ">
 
                                     <div className="flex items-center justify-between p-3">
-                                        <div className="flex items-center space-x-2">
+                                        <div className="flex items-center space-x-3">
                                             <img src={product.category_id === '1' ? yamahaLogo : product.category_id === '2' ? bajajLogo : suzukiLogo} alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm bg-gray-500 border-gray-700" />
                                             <div className="-space-y-1">
                                                 <h2 className="text-sm font-semibold leading-none">Model: {product.product_name}</h2>
                                                 <span className="inline-block text-xs leading-none text-gray-400">Posted: {product.posted_date}</span>
                                             </div>
+                                            {
+                                                product?.availableStatus === 'Available' &&
+
+                                                <div className=' bg-green-800 px-4 rounded-lg ml-8'>
+                                                    <p className='text-white text-sm'>{product.availableStatus}</p>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
 
@@ -166,10 +168,10 @@ const MyProducts = () => {
                                             {
                                                 product.advertiseStatus !== 'Advertised' ?
                                                     <button onClick={() => handleAdvertiseProduct(product._id, product.product_name)} type="button" title="Advertise Product" className="btn btn-xs border-0 bg-blue-800 hover:bg-blue-800 text-white">
-                                                    Advertise
+                                                        Advertise
                                                     </button>
-                                                :
-                                                <button className ="btn btn-xs border-0 bg-green-800 hover:bg-green-800 text-white"><SiVerizon className = 'mr-1'></SiVerizon> Advertised</button>
+                                                    :
+                                                    <button className="btn btn-xs border-0 bg-green-800 hover:bg-green-800 text-white"><SiVerizon className='mr-1'></SiVerizon> Advertised</button>
                                             }
                                         </div>
 

@@ -69,7 +69,8 @@ const AddProducts = () => {
                         email: user?.email || 'Unregistered User',
                         posted_date: reviewDate,
                         img: imageData.data.url,
-                        category_name: data.brand === '1' ? 'Yamaha' : data.brand === '2' ? 'Bajaj' : 'Suzuki'
+                        category_name: data.brand === '1' ? 'Yamaha' : data.brand === '2' ? 'Bajaj' : 'Suzuki',
+                        availableStatus : 'Available'
                     }
 
                     fetch('http://localhost:5000/products', {

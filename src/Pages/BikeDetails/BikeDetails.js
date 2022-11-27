@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import ProductBookingModal from '../BookingModal/ProductBookingModal';
 import BikeDetailsCard from './BikeDetailsCard';
 import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
 
 
 
@@ -15,6 +16,9 @@ const BikeDetails = () => {
 
     const [bikeInfoDetails, setBikeInfoDetails] = useState(null);
 
+
+
+
     return (
         <div>
             <div className='flex justify-center items-center gap-x-4  mx-2 sm:mx-2 md:mx-4 lg:mx-0 mt-10 bg-indigo-900 text-white rounded-xl'>
@@ -23,17 +27,17 @@ const BikeDetails = () => {
 
             <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10 my-12 mx-auto'>
                 {
-                    bikeDetails?.map(details => <BikeDetailsCard key={details._id} details = {details} setBikeInfoDetails = {setBikeInfoDetails}
+                    bikeDetails?.map(details => <BikeDetailsCard key={details._id} details={details} setBikeInfoDetails={setBikeInfoDetails}
                     ></BikeDetailsCard>)
                 }
             </div>
 
             {
-                bikeInfoDetails && <ProductBookingModal bikeInfoDetails = {bikeInfoDetails}
-                setBikeInfoDetails = {setBikeInfoDetails}
+                bikeInfoDetails && <ProductBookingModal bikeInfoDetails={bikeInfoDetails}
+                    setBikeInfoDetails={setBikeInfoDetails}
                 ></ProductBookingModal>
             }
-            
+
 
         </div>
     );

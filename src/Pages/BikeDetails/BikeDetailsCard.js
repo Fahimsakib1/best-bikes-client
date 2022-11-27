@@ -13,15 +13,14 @@ import { useQuery } from '@tanstack/react-query';
 
 
 
-
 const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
 
     const { user, loading } = useContext(AuthContext);
 
-    const { category_name, img, product_name, location, original_price, resale_price, years_of_use, posted_date, milage, condition, seller_name, category_id, email, mobile, _id, description } = details
+    const { category_name, img, product_name, location, original_price, resale_price, years_of_use, posted_date, milage, condition, seller_name, category_id, email, mobile, _id, description, bookingStatus } = details
 
-    if(loading){
+    if (loading) {
         return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-orange-600 mx-auto mt-64"></div>
     }
 
@@ -41,7 +40,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
 
     const handleReportToAdmin = () => {
-        
+
         console.log("Product Name", product_name, seller_name, location)
 
         const reportedProductInfo = {
@@ -94,6 +93,17 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
 
 
+
+    const alreadyBookedProduct = () => {
+        Swal.fire({
+            icon: 'error',
+            title: 'You have already booked this Bike',
+            text: 'Visit Categories To get More bikes'
+        })
+    }
+
+
+
     return (
         <div className='lg:mx-0 md:mx-2 sm:mx-2 mx-2'>
             <div className="flex mx-auto flex-col max-w-lg p-6 space-y-6 overflow-hidden shadow-xl bg-gray-900 text-gray-100 rounded-xl">
@@ -116,7 +126,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                                 :
                                 <p className='text-lg'>Seller <span className='text-blue-600'>{seller_name}</span></p>
                         }
-                    </div> 
+                    </div>
                 </div>
 
                 <div className=''>
@@ -135,12 +145,6 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                 </div>
 
 
-
-
-
-
-
-
                 <div className="flex flex-wrap justify-between items-center pb-4">
                     <div className="space-x-2">
                         <h2 className='text-lg '>Resale Price: <span className='text-green-600'>{resale_price}  Taka</span></h2>
@@ -153,10 +157,15 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
                 <div className='mx-auto'>
                     {/* Modal Button */}
-                    <label
-                        onClick={() => setBikeInfoDetails(details)}
-                        htmlFor="product-booking" className="bg-blue-800 px-12 py-1 rounded-md btn hover:bg-blue-700 border-0 btn-md">Book Now
-                    </label>
+                    {
+                        bookingStatus !== 'Booked' ?
+                            <label
+                                onClick={() => setBikeInfoDetails(details)}
+                                htmlFor="product-booking" className="bg-blue-800 px-12 py-1 rounded-md btn hover:bg-blue-700 border-0 btn-md">Book Now
+                            </label>
+                            :
+                            <button onClick={alreadyBookedProduct}  className='btn bg-gray-600 hover:bg-gray-600 px-12  rounded-md text-white border-0'>Booked</button>
+                    }
                 </div>
 
                 <div className='flex justify-end items-center gap-x-4'>
@@ -167,7 +176,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
         </div>
 
-    );
+    ); 
 };
 
 export default BikeDetailsCard;

@@ -66,7 +66,7 @@ const BrandCategories = () => {
                     {
                         categories.map(category => <BrandCategoriesCard key ={category._id} category = {category}></BrandCategoriesCard>)
                     }
-                </div>
+                </div> 
 
             </div>
         </div>
