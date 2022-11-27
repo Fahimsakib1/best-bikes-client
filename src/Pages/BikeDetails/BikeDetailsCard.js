@@ -157,15 +157,21 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
                 <div className='mx-auto'>
                     {/* Modal Button */}
-                    {
+                    
+                    <label
+                        onClick={() => setBikeInfoDetails(details)}
+                        htmlFor="product-booking" className="bg-blue-800 px-12 py-1 rounded-md btn hover:bg-blue-700 border-0 btn-md">Book Now
+                    </label>
+
+                    {/* {
                         bookingStatus !== 'Booked' ?
                             <label
                                 onClick={() => setBikeInfoDetails(details)}
                                 htmlFor="product-booking" className="bg-blue-800 px-12 py-1 rounded-md btn hover:bg-blue-700 border-0 btn-md">Book Now
                             </label>
                             :
-                            <button onClick={alreadyBookedProduct}  className='btn bg-gray-600 hover:bg-gray-600 px-12  rounded-md text-white border-0'>Booked</button>
-                    }
+                            <button onClick={alreadyBookedProduct} className='btn bg-gray-600 hover:bg-gray-600 px-12  rounded-md text-white border-0'>Booked</button>
+                    } */}
                 </div>
 
                 <div className='flex justify-end items-center gap-x-4'>
@@ -176,7 +182,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
         </div>
 
-    ); 
+    );
 };
 
 export default BikeDetailsCard;

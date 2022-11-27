@@ -40,6 +40,7 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
 
     
     const handleProductBooking = (event) => {
+        
         event.preventDefault()
         const name = user?.displayName;
         const email = user?.email;
@@ -63,6 +64,7 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
             productCategoryID: category_id,
             bookingDate: bookingDate,
             productImage: bikeInfoDetails.img,
+            productID:_id,
         }
 
         fetch('http://localhost:5000/bookings', {

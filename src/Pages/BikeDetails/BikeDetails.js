@@ -39,7 +39,7 @@ const BikeDetails = () => {
             }
 
 
-        </div>
+        </div> 
     );
 };
 

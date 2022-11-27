@@ -187,7 +187,7 @@ const MyProducts = () => {
 
                     <div className=''>
                         <p className='text-5xl text-center mt-40 mb-2 text-gray-500 font-semibold'> No Product Available</p>
-                        <p className='text-2xl text-center'>Want To Add Product? <Link to='/dashboard/addProducts' className='text-blue-600'>Click Here</Link></p>
+                        <p className='text-2xl text-center'>Want To Add Product? <Link to='/dashboard/addProducts' className='text-blue-600 font-semibold'>Click Here</Link></p>
                     </div>
             }
 

@@ -32,82 +32,95 @@ const BuyerOrders = () => {
 
     return (
         <div>
-            <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-blue-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-0'>{user?.displayName} You have {orders?.length} Orders Pending</h1>
-            <div className='mt-10'>
-                <div className="overflow-x-auto w-full">
-                    <table className="table w-full">
+            {
+                orders.length > 0 ?
 
-                        <thead>
-                            <tr className='text-center'>
-                                <th>No</th>
-                                <th>Picture</th>
-                                <th>Bike Model</th>
-                                <th>Price</th>
-                                <th>Seller</th>
-                                <th>Payment</th>
+                    <div>
+                        <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-blue-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-0'>{user?.displayName} You have {orders?.length} Orders Pending</h1>
+                        <div className='mt-10'>
+                            <div className="overflow-x-auto w-full">
+                                <table className="table w-full">
 
-                            </tr>
-                        </thead>
+                                    <thead>
+                                        <tr className='text-center'>
+                                            <th>No</th>
+                                            <th>Picture</th>
+                                            <th>Bike Model</th>
+                                            <th>Price</th>
+                                            <th>Seller</th>
+                                            <th>Payment</th>
 
-                        <tbody>
+                                        </tr>
+                                    </thead>
 
-                            {
-                                orders?.map((order, index) =>
+                                    <tbody>
 
-                                    <tr key={order._id} className='text-center'>
+                                        {
+                                            orders?.map((order, index) =>
 
-                                        <td className='font-bold '>
-                                            {index + 1}
-                                        </td>
+                                                <tr key={order._id} className='text-center'>
 
-                                        <td className=''>
-                                            <div className="flex items-center space-x-3">
-                                                <div className="avatar mx-auto">
-                                                    <div className="mask mask-squircle w-16 h-16 text-center">
-                                                        <img className='' src={order.productImage} alt="ProductImage" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </td>
+                                                    <td className='font-bold '>
+                                                        {index + 1}
+                                                    </td>
 
-                                        <td className='font-bold text-md'>
-                                            {order.companyName} {order.productName}
-                                        </td>
+                                                    <td className=''>
+                                                        <div className="flex items-center space-x-3">
+                                                            <div className="avatar mx-auto">
+                                                                <div className="mask mask-squircle w-16 h-16 text-center">
+                                                                    <img className='' src={order.productImage} alt="ProductImage" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
 
-                                        <td className='text-blue-600 font-semibold'>
-                                            {order.price} Taka
-                                        </td>
+                                                    <td className='font-bold text-md'>
+                                                        {order.companyName} {order.productName}
+                                                    </td>
 
-                                        <td>
-                                            {order.sellerName}
-                                        </td>
+                                                    <td className='text-blue-600 font-semibold'>
+                                                        {order.price} Taka
+                                                    </td>
 
-                                        <th>
-                                            {/* <button title='Click to Pay' className=" bg-blue-600 hover:bg-blue-700 px-8 btn  border-0 btn-sm">Pay</button> */}
-                                            
-                                            {
-                                                order.price && !order.paid &&
-                                                <Link to={`/dashboard/payment/${order._id}`}>
-                                                    <button title='Click to Pay' className=' bg-blue-600 hover:bg-blue-700 px-8 btn  border-0 btn-sm'>Pay</button>
-                                                </Link>
-                                            }
+                                                    <td>
+                                                        {order.sellerName}
+                                                    </td>
 
-                                            {
-                                                order.price && order.paid && <span className='font-bold bg-green-700 rounded-md px-6 py-1 text-white'>Paid</span>
-                                            }
+                                                    <th>
+                                                        {/* <button title='Click to Pay' className=" bg-blue-600 hover:bg-blue-700 px-8 btn  border-0 btn-sm">Pay</button> */}
 
-                                        </th>
+                                                        {
+                                                            order.price && !order.paid &&
+                                                            <Link to={`/dashboard/payment/${order._id}`}>
+                                                                <button title='Click to Pay' className=' bg-blue-600 hover:bg-blue-700 px-8 btn  border-0 btn-sm'>Pay</button>
+                                                            </Link>
+                                                        }
 
-                                    </tr>
+                                                        {
+                                                            order.price && order.paid && <span className='font-bold bg-green-700 rounded-md px-6 py-1 text-white'>Paid</span>
+                                                        }
 
-                                )
-                            }
+                                                    </th>
 
-                        </tbody>
+                                                </tr>
 
-                    </table>
-                </div>
-            </div>
+                                            )
+                                        }
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    :
+
+                    <div className=''>
+                        <p className='text-4xl text-center mt-40 mb-2 text-gray-500 font-semibold'> {user?.displayName} You Have Not Booked Any Products Yet..</p>
+                        <p className='text-2xl text-center'>Want To Book Product? <Link to='/' className='text-blue-600 font-semibold'>Click Here</Link></p>
+                    </div>
+            }
         </div>
     );
 };
