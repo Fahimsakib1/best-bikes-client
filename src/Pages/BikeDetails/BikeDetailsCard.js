@@ -19,7 +19,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
     const { user, loading } = useContext(AuthContext);
 
-    const { category_name, img, product_name, location, original_price, resale_price, years_of_use, posted_date, milage, condition, seller_name, category_id, email, mobile, _id } = details
+    const { category_name, img, product_name, location, original_price, resale_price, years_of_use, posted_date, milage, condition, seller_name, category_id, email, mobile, _id, description } = details
 
     if(loading){
         return <div className="h-32 w-32 border-8 border-dashed rounded-full animate-spin border-orange-600 mx-auto mt-64"></div>
@@ -125,6 +125,9 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                         <h2 className="mb-1 text-xl font-semibold">Brand: {category_name}</h2>
                         <h2 className="mb-1 text-xl font-semibold text-blue-700">Model : {product_name}</h2>
                     </div>
+                    <div>
+                        <p className='text-gray-400'>{description}</p>
+                    </div>
                     <div className='flex flex-wrap justify-between mt-2'>
                         <h2 className='text-lg'>Original Price: {original_price} Taka</h2>
                         <h2 className='text-lg'>Used {years_of_use} {years_of_use > 1 ? 'Years' : 'Year'}</h2>
@@ -152,7 +155,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                     {/* Modal Button */}
                     <label
                         onClick={() => setBikeInfoDetails(details)}
-                        htmlFor="product-booking" className="bg-blue-800 px-12 py-2 rounded-md btn hover:bg-blue-700 border-0">Book Now
+                        htmlFor="product-booking" className="bg-blue-800 px-12 py-1 rounded-md btn hover:bg-blue-700 border-0 btn-md">Book Now
                     </label>
                 </div>
 

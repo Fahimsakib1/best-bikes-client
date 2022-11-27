@@ -8,6 +8,7 @@ import image from '../../../images/LoginImage/signup.webp';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import SmallSpinner from '../../../components/Spinners/SmallSpinner';
+import useToken from '../../../Hooks/useToken';
 
 
 
@@ -27,6 +28,18 @@ const Signup = () => {
 
     const imageHostKey = process.env.REACT_APP_imagebb_key
     //console.log("Image BB Key From Sign Up Page", imageHostKey);
+
+
+
+
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
+
+    if (token) {
+        navigate('/')
+    }
+
+
 
 
 
@@ -154,8 +167,8 @@ const Signup = () => {
             .then(data => {
                 console.log(data);
                 if (data.acknowledged) {
-                    //toast.success('User Added to Database');
-                    navigate('/');
+                    setCreatedUserEmail(email)
+                    //getUserToken(email)
                 }
                 else {
 
@@ -168,6 +181,20 @@ const Signup = () => {
                 }
             })
     }
+
+
+
+    //function for set token after successful sign up
+    // const getUserToken = (email) => {
+    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         if(data.accessToken){
+    //             localStorage.setItem('bestBikeToken', data.accessToken)
+    //             navigate('/');
+    //         }
+    //     })
+    // }
 
 
 
