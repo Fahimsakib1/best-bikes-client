@@ -31,11 +31,12 @@ const Login = () => {
     const [token] = useToken(loginUserEmail);
 
     if(token){
-        Swal.fire(
-            'Nice',
-            'User Logged In After verifying the token',
-            'success'
-        )
+        // Swal.fire(
+        //     'Nice',
+        //     'User Logged In After verifying the token',
+        //     'success'
+        // )
+        //toast.success(`Welcome to Best Bikes, ${user?.displayName}`)
         navigate(from, { replace: true });
     }
 

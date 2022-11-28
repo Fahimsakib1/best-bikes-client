@@ -122,11 +122,14 @@ const CheckOutForm = ({order}) => {
                 transactionId: paymentIntent.id,
                 email: buyerEmail,
                 paymentBy: buyerName,
-                bookingId: _id
+                productName: productName,
+                brand:companyName,
+                bookingId: _id,
+                bikeOriginalID: productID,
             }
             
             
-            // //store payment info in database
+            //store payment info in database
             fetch('http://localhost:5000/payments', {
                 method: 'POST',
                 headers: {
@@ -134,6 +137,7 @@ const CheckOutForm = ({order}) => {
                 },
                 body: JSON.stringify(payment)
             })
+            
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -219,7 +223,7 @@ const CheckOutForm = ({order}) => {
 
                         </div>
                     }
-                </>
+                </> 
             </>
         </div> 
     );

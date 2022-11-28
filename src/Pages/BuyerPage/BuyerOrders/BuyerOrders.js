@@ -117,8 +117,8 @@ const BuyerOrders = () => {
                     :
 
                     <div className=''>
-                        <p className='text-4xl text-center mt-40 mb-2 text-gray-500 font-semibold'> {user?.displayName} You Have Not Booked Any Products Yet..</p>
-                        <p className='text-2xl text-center'>Want To Book Product? <Link to='/' className='text-blue-600 font-semibold'>Click Here</Link></p>
+                        <p className='text-4xl text-center mt-40 mb-2 text-gray-500 font-semibold'> {user?.displayName} You Have Not Booked Any Bikes Yet..</p>
+                        <p className='text-2xl text-center'>Want To Book Bike? <Link to='/' className='text-blue-600 font-semibold'>Click Here</Link></p>
                     </div>
             }
         </div>
