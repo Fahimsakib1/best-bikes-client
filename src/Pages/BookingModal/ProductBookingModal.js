@@ -85,7 +85,7 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
                 Swal.fire({
                     icon: 'error',
                     title: `${bookingData.message}`,
-                    text: 'Can not Book Product.. Try Again Properly'
+                    text: 'Already Booked.. Try To Book Other Bike'
                 })
             }
         })

@@ -46,8 +46,8 @@ const Header = () => {
 
     const menuItems = <React.Fragment>
 
-        <li className='text-md font-bold px-2'><Link to='/'>Home</Link></li>
-        <li className='text-md font-bold px-2'><Link to='/blogs'>Blogs</Link></li>
+        <li className='text-md font-bold px-2 hover:text-blue-600'><Link to='/'>Home</Link></li>
+        <li className='text-md font-bold px-2 hover:text-blue-600'><Link to='/blogs'>Blogs</Link></li>
 
         {
             user?.uid ?
@@ -62,7 +62,7 @@ const Header = () => {
                         </div>
                     }
 
-                    <li className='font-bold px-2'><Link to='/dashboard'>Dashboard</Link></li>
+                    <li className='font-bold px-2 hover:text-blue-600'><Link to='/dashboard'>Dashboard</Link></li>
 
                     <li className='text-red-600 font-bold'><button onClick={handleLogOut} className='bg-red-600 text-white rounded-lg'>Sign Out</button></li>
 

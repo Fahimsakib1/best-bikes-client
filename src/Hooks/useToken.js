@@ -1,6 +1,6 @@
 import id from "date-fns/esm/locale/id/index.js";
 import { useEffect, useState } from "react"
-import toast from "react-hot-toast";
+import toast from "react-hot-toast"; 
 
 const useToken = (email) => {
     const [token, setToken] = useState('');
