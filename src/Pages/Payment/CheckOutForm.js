@@ -1,6 +1,10 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import Swal from 'sweetalert2';
+
+
+
 
 const CheckOutForm = ({ order }) => {
 
@@ -146,9 +150,25 @@ const CheckOutForm = ({ order }) => {
                         setCompletePayment(false);
                         setButtonName('Paid');
                         toast.success(`${buyerName} Your Payment is Successful for ${companyName} ${productName}`);
-
                     }
-
+                })
+            
+            //remove the bike from the category after successful payment
+            fetch(`http://localhost:5000/payments/${productID}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success('Product Removed From Category Details')
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops... Something Went Wrong',
+                            text: `Can not Remove Product ${productName}`
+                        })
+                    }
                 })
 
         }
