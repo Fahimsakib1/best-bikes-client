@@ -2,10 +2,10 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-const CheckOutForm = ({order}) => {
-    
-    const {price, sellerName, companyName, productName, buyerEmail, buyerName, sellerEmail, buyerMobile, _id, productID} = order
-    
+const CheckOutForm = ({ order }) => {
+
+    const { price, sellerName, companyName, productName, buyerEmail, buyerName, sellerEmail, buyerMobile, _id, productID } = order
+
     const stripe = useStripe();
     const elements = useElements();
 
@@ -19,8 +19,8 @@ const CheckOutForm = ({order}) => {
 
     const [paymentConfirmError, setPaymentConfirmError] = useState('')
 
-    
-    
+
+
     const [completePayment, setCompletePayment] = useState(true);
     const [buttonName, setButtonName] = useState('Pay');
 
@@ -33,7 +33,7 @@ const CheckOutForm = ({order}) => {
 
 
 
-    
+
     useEffect(() => {
 
         fetch("http://localhost:5000/create-payment-intent", {
@@ -57,7 +57,7 @@ const CheckOutForm = ({order}) => {
 
         setTransactionId('');
 
-    
+
         if (!stripe || !elements) {
             return;
         }
@@ -108,27 +108,27 @@ const CheckOutForm = ({order}) => {
 
         // console.log("Payment Intent", paymentIntent)
 
-        
-        
+
+
         if (paymentIntent.status === "succeeded") {
 
             //setTransactionId(paymentIntent.id)
             //setCompletePayment(false);
             //setButtonName('Paid');
-        
-            
+
+
             const payment = {
                 price: price,
                 transactionId: paymentIntent.id,
                 email: buyerEmail,
                 paymentBy: buyerName,
                 productName: productName,
-                brand:companyName,
+                brand: companyName,
                 bookingId: _id,
                 bikeOriginalID: productID,
             }
-            
-            
+
+
             //store payment info in database
             fetch('http://localhost:5000/payments', {
                 method: 'POST',
@@ -137,38 +137,41 @@ const CheckOutForm = ({order}) => {
                 },
                 body: JSON.stringify(payment)
             })
-            
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if(data.acknowledged){
-                    setTransactionId(paymentIntent.id);
-                    setCompletePayment(false);
-                    setButtonName('Paid');
-                    toast.success(`${buyerName} Your Payment is Successful for ${companyName} ${productName}`);
-                    
-                }
-            
-            })
+
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.acknowledged) {
+                        setTransactionId(paymentIntent.id);
+                        setCompletePayment(false);
+                        setButtonName('Paid');
+                        toast.success(`${buyerName} Your Payment is Successful for ${companyName} ${productName}`);
+
+                    }
+
+                })
 
         }
-        
+
         setProcessing(false);
 
 
     }
 
 
-    
-    
-    
+
+
+
     return (
         <div>
             <>
+                <h1 className='text-center text-2xl text-blue-600 font-semibold'>Pay with Your Card</h1>
                 <form
-                    className='w-[320px] md:w-[550px] sm:w-[340px] my-8 mx-auto border-2 py-6 px-2 rounded-md border-blue-600'
+                    className='w-[320px] md:w-[550px] sm:w-[340px] my-8 mx-auto border-2 py-24 px-2 rounded-md  shadow-lg'
                     onSubmit={handleSubmit}>
+
                     <CardElement
+                        className=' -mt-20 py-4 shadow-lg'
                         options={{
                             style: {
                                 base: {
@@ -186,8 +189,8 @@ const CheckOutForm = ({order}) => {
                     />
 
                     <div className='mx-auto text-center'>
-                        
-                        <button className='btn btn-sm bg-blue-700 border-0 text-white font-bold mt-4 px-10' type="submit" disabled={!stripe || !clientSecret || !completePayment}>
+
+                        <button className='btn btn-sm bg-blue-700 hover:bg-blue-800 border-0 text-white font-bold mt-8 px-10 w-1/2 text-lg' type="submit" disabled={!stripe || !clientSecret || !completePayment}>
                             {buttonName}
                         </button>
 
@@ -210,7 +213,7 @@ const CheckOutForm = ({order}) => {
 
                     }
 
-                
+
                 </form>
 
                 <>
@@ -223,9 +226,9 @@ const CheckOutForm = ({order}) => {
 
                         </div>
                     }
-                </> 
+                </>
             </>
-        </div> 
+        </div>
     );
 };
 
