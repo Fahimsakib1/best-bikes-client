@@ -31,7 +31,7 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
 
     const {data: categories = [], refetch} = useQuery({
         queryKey: ['category', category_id],
-        queryFn: () => fetch(`http://localhost:5000/category/${category_id}`)
+        queryFn: () => fetch(`https://best-bikes-server.vercel.app/category/${category_id}`)
         .then(res => res.json())
     })
 
@@ -67,7 +67,7 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
             productID:_id,
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://best-bikes-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type':'application/json',
@@ -91,7 +91,7 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
         })
 
 
-        fetch(`http://localhost:5000/bookedProducts/${_id}`, {
+        fetch(`https://best-bikes-server.vercel.app/bookedProducts/${_id}`, {
             method: 'PUT',
         })
         .then(res => res.json())

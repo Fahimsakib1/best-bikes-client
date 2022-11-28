@@ -38,7 +38,7 @@ const routes = createBrowserRouter([
 
             {
                 path: '/category/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`),
+                loader: ({params}) => fetch(`https://best-bikes-server.vercel.app/category/${params.id}`),
                 element: <PrivateRoute><BikeDetails></BikeDetails></PrivateRoute>
             },
 
@@ -102,7 +102,7 @@ const routes = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <BuyerRoute><Payment></Payment></BuyerRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/orders/${params.id}`)
+                loader: ({params}) => fetch(`https://best-bikes-server.vercel.app/orders/${params.id}`)
             }
 
         ]

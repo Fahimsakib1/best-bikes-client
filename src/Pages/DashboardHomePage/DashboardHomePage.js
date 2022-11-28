@@ -10,12 +10,13 @@ const DashboardHomePage = () => {
     const {data: users ={} } = useQuery({
         queryKey: ['users', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users?email=${user?.email}`);
+            const res = await fetch(`https://best-bikes-server.vercel.app/users?email=${user?.email}`);
             const data = await res.json();
             return data;
         
         }
     })
+    
     
     
     return (
@@ -24,10 +25,10 @@ const DashboardHomePage = () => {
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content ">
                     <div className="max-w-md">
-                        <h1 className="mb-5 text-7xl font-bold">
-                            Hello {users?.role ? users.role : ''}
+                        <h1 className="mb-5 text-5xl font-bold">
+                            Hello {users?.role ? users.role : ''},  {user?.displayName ? user?.displayName : ''}
                         </h1>
-                        <p className='text-white text-center text-3xl sm:text-3xl md:text-4xl'>Welcome to <span className=' text-orange-600 text-3xl sm:text-3xl md:text-5xl'>BEST BIKES</span></p>
+                        <p className='text-white text-center text-3xl sm:text-3xl md:text-4xl'>Welcome to <span className=' text-orange-500 text-3xl sm:text-3xl md:text-5xl'>BEST BIKES</span></p>
                     </div>
                 </div>
             </div>

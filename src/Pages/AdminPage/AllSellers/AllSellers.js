@@ -20,7 +20,7 @@ const AllSellers = () => {
     const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ['sellers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/sellers', {
+            const res = await fetch('https://best-bikes-server.vercel.app/sellers', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('bestBikeToken')}`
                 }
@@ -41,7 +41,7 @@ const AllSellers = () => {
     const handleDeleteSeller = (id, sellerName) => {
         console.log(id, sellerName);
 
-        fetch(`http://localhost:5000/sellers/${id}`, {
+        fetch(`https://best-bikes-server.vercel.app/sellers/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('bestBikeToken')}`
@@ -79,7 +79,7 @@ const AllSellers = () => {
         
         //console.log(email)
         
-        fetch(`http://localhost:5000/sellers?email=${email}`, {
+        fetch(`https://best-bikes-server.vercel.app/sellers?email=${email}`, {
             method: 'PUT'
         })
         .then(res => res.json())

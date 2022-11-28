@@ -11,14 +11,14 @@ const ReportedProducts = () => {
 
     const { data: reportedProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['reportedProducts'],
-        queryFn: () => fetch('http://localhost:5000/reportedProducts')
+        queryFn: () => fetch('https://best-bikes-server.vercel.app/reportedProducts')
             .then(res => res.json())
     })
 
     
 
     const handleDeleteReport = (id) => {
-        fetch(`http://localhost:5000/reportedProducts/${id}`, {
+        fetch(`https://best-bikes-server.vercel.app/reportedProducts/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())

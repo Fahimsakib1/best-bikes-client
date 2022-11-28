@@ -15,7 +15,7 @@ const BuyerOrders = () => {
 
     const { data: orders = [], refetch, isLoading } = useQuery({
         queryKey: ['orders', user?.email],
-        queryFn: () => fetch(`http://localhost:5000/orders?email=${user?.email}`)
+        queryFn: () => fetch(`https://best-bikes-server.vercel.app/orders?email=${user?.email}`)
             .then(res => res.json())
     })
 

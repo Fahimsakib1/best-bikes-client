@@ -64,7 +64,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
             reporterRole: user?.role || 'No Role Found'
         }
 
-        fetch('http://localhost:5000/reportedProducts', {
+        fetch('https://best-bikes-server.vercel.app/reportedProducts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

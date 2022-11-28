@@ -156,7 +156,7 @@ const Signup = () => {
     const addUserToDataBase = (name, email, role, photo) => {
         const user = { name: name, email: email, role: role, photo: photo };
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://best-bikes-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -186,7 +186,7 @@ const Signup = () => {
 
     //function for set token after successful sign up
     // const getUserToken = (email) => {
-    //     fetch(`http://localhost:5000/jwt?email=${email}`)
+    //     fetch(`https://best-bikes-server.vercel.app/jwt?email=${email}`)
     //     .then(res => res.json())
     //     .then(data => {
     //         if(data.accessToken){

@@ -73,7 +73,7 @@ const AddProducts = () => {
                         availableStatus : 'Available'
                     }
 
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://best-bikes-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

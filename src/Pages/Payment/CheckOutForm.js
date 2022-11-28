@@ -40,7 +40,7 @@ const CheckOutForm = ({ order }) => {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://best-bikes-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -134,7 +134,7 @@ const CheckOutForm = ({ order }) => {
 
 
             //store payment info in database
-            fetch('http://localhost:5000/payments', {
+            fetch('https://best-bikes-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -154,7 +154,7 @@ const CheckOutForm = ({ order }) => {
                 })
             
             //remove the bike from the category after successful payment
-            fetch(`http://localhost:5000/payments/${productID}`, {
+            fetch(`https://best-bikes-server.vercel.app/payments/${productID}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
