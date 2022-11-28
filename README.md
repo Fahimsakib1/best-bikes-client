@@ -72,3 +72,7 @@ Github Link Server Side:  https://github.com/programming-hero-web-course-4/b612-
 
 ### Firebase Live Site Link:
 Live Site Link: https://best-bikes-client.web.app
+
+### Admin Email and Password details
+adminEmail: fahim@gmail.com
+adminPassword: 12345678
