@@ -2,7 +2,7 @@ import React from 'react';
 
 const DeleteSellerModal = ({handleDeleteSeller, closeModal, deleteSeller}) => {
     
-    const {name, email, _id} = deleteSeller
+    const {name, email, _id} = deleteSeller 
     
     return (
         <div>

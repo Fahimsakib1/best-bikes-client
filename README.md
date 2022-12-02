@@ -53,7 +53,7 @@ This is project is basically divided in two parts.
 - Tailwind CSS was used in the website and some of the component libraries of Tailwind was used such as: daisyUI, MambaUI, AntDesign, Kitwind etc. 
 
 ### React FontAwesome  And React Icons: 
-- React Font Awesome is used to show the icons in the project
+- React Font Awesome is used to show the icons in the project 
 
 ### React Hot Toast  And Sweet Alert: 
 Toast or Hot Toast notifications are pop-up messages that display some information to the user. This information could be a success message, warning, error, and so on.
@@ -72,7 +72,3 @@ Github Link Server Side:  https://github.com/programming-hero-web-course-4/b612-
 
 ### Firebase Live Site Link:
 Live Site Link: https://best-bikes-client.web.app
-
-### Admin Email and Password details
-- adminEmail: fahim@gmail.com
-- adminPassword: 12345678
