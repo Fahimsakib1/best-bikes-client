@@ -1,7 +1,7 @@
 import React from 'react';
 import price  from '../../../images/Offerings/price.png';
 import quality from '../../../images/Offerings/quality.jpeg';
-import brand from '../../../images/Offerings/brands1.jpg'
+import brand from '../../../images/Offerings/brands1.jpg'; 
 
 const Offerings = () => {
     return (

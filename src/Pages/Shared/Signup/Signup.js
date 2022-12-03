@@ -283,7 +283,7 @@ const Signup = () => {
                                 <span className="label-text font-semibold dark:text-white">Upload Photo</span>
                             </label>
                             <input type="file" {...register("photo", { required: "Photo is Required" })}
-                                placeholder="Upload Product Photo" className="input  w-full pt-2" />
+                                placeholder="Upload Product Photo" className="input  w-full pt-2 text-black" />
 
                             {errors.photo && <p className='text-red-600'>{errors.photo?.message}</p>}
                         </div>
