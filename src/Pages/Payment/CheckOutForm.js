@@ -187,7 +187,7 @@ const CheckOutForm = ({ order }) => {
             <>
                 <h1 className='text-center text-2xl text-blue-600 font-semibold'>Pay with Your Card</h1>
                 <form
-                    className='w-[320px] md:w-[550px] sm:w-[340px] my-8 mx-auto border-2 py-24 px-2 rounded-md  shadow-lg'
+                    className='w-[345px] md:w-[550px] sm:w-[345px] my-8 mx-auto border-2 py-24 px-2 rounded-md  shadow-lg dark:bg-gray-900 dark:border-green-600'
                     onSubmit={handleSubmit}>
 
                     <CardElement

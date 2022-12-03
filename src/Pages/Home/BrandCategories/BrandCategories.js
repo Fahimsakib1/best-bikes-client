@@ -29,7 +29,7 @@ const BrandCategories = () => {
         <div className='mt-24 mb-8 dark:mx-4 dark:sm:mx-4 dark:md:mx-4 dark:lg:mx-10'>
             <div>
                 
-                <div className='flex justify-center items-center gap-x-4 bg-gray-800 text-base-100 rounded-md md:mx-2 lg:mx-2 sm:mx-4 mx-4 '>
+                <div className='flex justify-center items-center gap-x-4 bg-gray-800 text-base-100 rounded-md md:mx-2 lg:mx-2 sm:mx-2 mx-2 '>
 
                     <div className='flex justify-center items-center gap-x-4 '>
                         <div className="avatar  hidden md:block">

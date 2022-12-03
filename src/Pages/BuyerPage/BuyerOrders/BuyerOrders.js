@@ -44,18 +44,18 @@ const BuyerOrders = () => {
                                         </tr>
                                     </thead>
 
-                                    <tbody className='dark:text-black border-2 border-gray-300'>
+                                    <tbody className='dark:text-black dark:border-2 border-gray-300'>
 
                                         {
                                             orders?.map((order, index) =>
 
-                                                <tr key={order._id} className='dark:bg-gray-700 border-1 border-gray-300 text-center'>
+                                                <tr key={order._id} className='dark:bg-gray-800 border-1 border-gray-300 text-center'>
 
-                                                    <td className='font-bold dark:bg-gray-700 border-1 border-gray-300 dark:text-white '>
+                                                    <td className='font-bold dark:bg-gray-800 border-1 border-gray-300 dark:text-white '>
                                                         {index + 1}
                                                     </td>
 
-                                                    <td className='dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
+                                                    <td className='dark:bg-gray-800 border-1 border-gray-300 dark:text-white'>
                                                         <div className="flex items-center space-x-3">
                                                             <div className="avatar mx-auto">
                                                                 <div className="mask mask-squircle w-16 h-16 text-center">
@@ -65,25 +65,25 @@ const BuyerOrders = () => {
                                                         </div>
                                                     </td>
 
-                                                    <td className='font-bold text-md dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
+                                                    <td className='font-bold text-md dark:bg-gray-800 border-1 border-gray-300 dark:text-white'>
                                                         {order.companyName} {order.productName}
                                                     </td>
 
-                                                    <td className='text-blue-600 font-semibold dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
+                                                    <td className='text-blue-600 font-semibold dark:bg-gray-800 border-1 border-gray-300 dark:text-white'>
                                                         {order.price} Taka
                                                     </td>
 
-                                                    <td className='dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
+                                                    <td className='dark:bg-gray-800 border-1 border-gray-300 dark:text-white'>
                                                         {order.sellerName}
                                                     </td>
 
-                                                    <th className='dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
+                                                    <th className='dark:bg-gray-800 border-1 border-gray-300 dark:text-white'>
                                                         {/* <button title='Click to Pay' className=" bg-blue-600 hover:bg-blue-700 px-8 btn  border-0 btn-sm">Pay</button> */}
 
                                                         {
                                                             order.price && !order.paid &&
                                                             <Link to={`/dashboard/payment/${order._id}`}>
-                                                                <button title='Click to Pay' className=' bg-blue-600 hover:bg-blue-700 px-8 btn  border-0 btn-sm'>Pay</button>
+                                                                <button title='Click to Pay' className=' bg-blue-800 hover:bg-blue-800 px-8 btn  border-0 btn-sm'>Pay</button>
                                                             </Link>
                                                         }
 
