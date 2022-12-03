@@ -45,7 +45,6 @@ const Header = () => {
 
     const handleThemeSwitch = () => {
         ThemeChange();
-        //setTheme(null)
     }
 
 
@@ -53,21 +52,65 @@ const Header = () => {
 
     const menuItems = <React.Fragment>
 
+        {
+            user?.uid &&
+            <>
+                <div className='flex mt-4'>
+                    <p className='text-md text-green-600 block lg:hidden ml-6'>Hello, {user.displayName ? user.displayName : user.email}
+                    </p>
+                    <MdOutlineWavingHand className='text-2xl text-green-600 ml-2 lg:hidden'></MdOutlineWavingHand>
+                    {users.role && <div className="badge badge-primary -mt-2 lg:hidden">{users.role}</div>}
+                </div>
+
+                <div className=' block lg:hidden'>
+                    {
+                        user?.photoURL &&
+                        <div className="avatar ml-6 mt-1 ">
+                            <div className="w-12 rounded-full">
+                                <div className=''>
+                                    <img className='text-center' src={user?.photoURL} alt="UserImage" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </>
+
+
+        }
+
         <li className='text-md font-bold px-2 hover:text-blue-600  dark:text-white dark:hover:text-orange-500'><Link to='/'>Home</Link></li>
         <li className='text-md font-bold px-2 hover:text-blue-600  dark:text-white dark:hover:text-orange-500'><Link to='/blogs'>Blogs</Link></li>
 
         {
             user?.uid ?
                 <>
-                    {
+                    {/* {
                         user?.uid &&
-                        <div className='flex mt-1'>
-                            <p className='text-md text-green-600 block lg:hidden'>Hello, {user.displayName ? user.displayName : user.email}
-                            </p>
-                            <MdOutlineWavingHand className='text-2xl text-green-600 ml-2 lg:hidden'></MdOutlineWavingHand>
-                            {users.role && <div className="badge badge-primary -mt-2 lg:hidden">{users.role}</div>}
-                        </div>
-                    }
+                        <>
+                            <div className='flex mt-1'>
+                                <p className='text-md text-green-600 block lg:hidden ml-6'>Hello, {user.displayName ? user.displayName : user.email}
+                                </p>
+                                <MdOutlineWavingHand className='text-2xl text-green-600 ml-2 lg:hidden'></MdOutlineWavingHand>
+                                {users.role && <div className="badge badge-primary -mt-2 lg:hidden">{users.role}</div>}
+                            </div>
+
+                            <div className=' block lg:hidden'>
+                                {
+                                    user?.photoURL &&
+                                    <div className="avatar ml-6 mt-1 ">
+                                        <div className="w-12 rounded-full">
+                                            <div className=''>
+                                                <img className='text-center' src={user?.photoURL} alt="UserImage" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </>
+
+
+                    } */}
 
                     <li className='font-bold px-2 hover:text-blue-600'><Link to='/dashboard'>Dashboard</Link></li>
 
@@ -121,10 +164,24 @@ const Header = () => {
 
                 <div className='hidden lg:block mt-4'>
                     {
-                        user?.uid && <div className='flex'>
+                        user?.uid &&
+                        <div className='flex  justify-center'>
                             <p className='text-3xl text-green-600 font-semibold dark:text-blue-700'>Hello, {user.displayName ? user.displayName : user.email} </p>
+
                             <MdOutlineWavingHand className='text-3xl text-green-600 mt-1 ml-2 dark:text-blue-700'></MdOutlineWavingHand>
-                            {users.role && <div className="badge badge-primary  -mt-2">{users.role}</div>}
+                            {users.role && <div className="badge badge-primary  -mt-2 dark:bg-green-700 border-0">{users.role}</div>}
+
+                            {
+                                user?.photoURL &&
+                                <div className="avatar ml-2">
+                                    <div className="w-12 rounded-full">
+                                        <div className=''>
+                                            <img className='text-center' src={user?.photoURL} alt="UserImage" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
                         </div>
 
                     }
@@ -137,7 +194,7 @@ const Header = () => {
                     </ul>
                 </div>
 
-
+                
                 <label htmlFor="new-dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden dark:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>

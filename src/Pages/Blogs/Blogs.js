@@ -1,5 +1,5 @@
 import React from 'react';
-import pic1 from '../../images/FAQ/1.png'; 
+import pic1 from '../../images/FAQ/1.png';  
 
 const Blogs = () => {
     return (
@@ -10,7 +10,7 @@ const Blogs = () => {
 
                     <div className="space-y-4">
                         <details className="w-full border rounded-lg">
-                            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 text-blue-600 text-lg">Question 1: What are the different ways to manage a state in a React application?</summary>
+                            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 text-lg dark:text-blue-600">Question 1: What are the different ways to manage a state in a React application?</summary>
                             <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400"><span className='text-orange-500'>Answer: </span> The state is an object that holds information about a certain component. Plain JavaScript functions don't have the ability to store information. The code within them executes and "disappears" once the execution is finished. But  using state, React functional components can store information even after execution. There are four main types of state you need to properly manage in your React apps: <br></br>
                                 1. Local State <br></br>
                                 2. Global State <br></br>
@@ -39,7 +39,7 @@ const Blogs = () => {
                         </details>
 
                         <details className="w-full border rounded-lg">
-                            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 text-blue-600 text-lg">Question 2: How does prototypical inheritance work?</summary>
+                            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 dark:text-blue-600 text-lg">Question 2: How does prototypical inheritance work?</summary>
                             <p className="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400"> <span className='text-orange-500'>Answer: </span> The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the Prototype of an object, we use Object.getPrototypeOf and Object </p>
                             <div className='my-4'>
                                 <img className='mx-auto' src={pic1} alt="" />
@@ -51,7 +51,7 @@ const Blogs = () => {
                         </details>
 
                         <details className="w-full border rounded-lg">
-                            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 text-blue-600 text-lg">Question 3: What is a unit test? Why should we write unit tests?</summary>
+                            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 dark:text-blue-600 text-lg">Question 3: What is a unit test? Why should we write unit tests?</summary>
                             <p className='500 px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400 '>
                                 <span className='text-orange-500'>Answer: </span>
                                 Unit testing is a software development process in which the smallest testable parts of an application, called units, are individually and independently scrutinized for proper operation. This testing methodology is done during the development process by the software developers and sometimes QA staff.  The main objective of unit testing is to isolate written code to test and determine if it works as intended. <br /> <br />
@@ -75,7 +75,7 @@ const Blogs = () => {
 
 
                         <details className="w-full border rounded-lg">
-                            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 text-blue-600 text-lg">Question 4: React vs Angular vs Vue ?</summary>
+                            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400 dark:text-blue-600 text-lg">Question 4: React vs Angular vs Vue ?</summary>
                             <p className='500 px-4 py-6 pt-0 ml-4 -mt-4 text-gray-400 '>
                                 <span className='text-orange-500'>Answer: </span> <br />
                                 <span className='text-orange-500'>React </span> Facebook released React.js in March 2013 as a JavaScript library. Because React just provides one view, it is not appropriate for building an MVC architecture: you must solve the model and controller yourself. Besides this, there are only advantages and lots of advantages. One of the biggest of them is that React.js uses a virtual DOM that only compares the previous HTML code differences and only loads the different parts. This significantly impacts the loading times. <br />

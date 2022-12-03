@@ -29,7 +29,7 @@ const BrandCategories = () => {
         <div className='mt-24 mb-8 dark:mx-4 dark:sm:mx-4 dark:md:mx-4 dark:lg:mx-10'>
             <div>
                 
-                <div className='flex justify-center items-center gap-x-4 bg-gray-800 text-base-100 rounded-md '>
+                <div className='flex justify-center items-center gap-x-4 bg-gray-800 text-base-100 rounded-md md:mx-2 lg:mx-2 sm:mx-4 mx-4 '>
 
                     <div className='flex justify-center items-center gap-x-4 '>
                         <div className="avatar  hidden md:block">
@@ -44,7 +44,7 @@ const BrandCategories = () => {
                         </div>
                     </div> 
 
-                    <div className='mx-4 '>
+                    <div className='mx-4'>
                         <h2 className='md:text-3xl lg:text-4xl font-semibold  sm:text-3xl text-2xl text-center py-4 '>Available Bike Brands</h2>
                     </div>
 
