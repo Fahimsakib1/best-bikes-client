@@ -57,10 +57,42 @@ const AuthProvider = ({ children }) => {
 
 
 
+    //Theme Toggle Code Starts
+    const [theme, setTheme] = useState("Light");
+
+    useEffect( () => {
+        if(theme === "dark"){
+            document.documentElement.classList.add("dark")
+        }
+        else{
+            document.documentElement.classList.remove("dark")
+        }
+
+        //get the theme value from Local Storage
+        const storedTheme = localStorage.getItem('BestBikeDefaultTheme');
+        setTheme(storedTheme);
+
+    }, [theme])
+
+    const ThemeChange = () => {
+        setTheme(theme === "dark" ? "Light" : "dark");
+
+        //set the theme value to Local Storage
+        localStorage.setItem('BestBikeDefaultTheme', theme === "dark" ? "Light" : "dark" )
+        
+    }
+
+    const handleThemeSwitch = () => {
+        ThemeChange()
+    }
+    // Theme Toggle Code Ends
 
 
 
-    const AuthInfo = { user, loading, setLoading, createUser, userLogin, signOutUser, updateUser, googleSignIn, resetPassword}
+
+
+
+    const AuthInfo = { user, loading, setLoading, createUser, userLogin, signOutUser, updateUser, googleSignIn, resetPassword, theme, ThemeChange, handleThemeSwitch}
 
 
 

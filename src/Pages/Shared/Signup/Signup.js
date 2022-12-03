@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
-import image from '../../../images/LoginImage/signup.webp';
+import image from '../../../images/LoginImage/signup-nobg.png';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import SmallSpinner from '../../../components/Spinners/SmallSpinner';
@@ -212,19 +212,19 @@ const Signup = () => {
                 <img className='w-full mt-4' src={image} alt="" />
             </motion.div>
 
-            <div className='mt-4 flex justify-center items-center '>
-                <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4  lg:w-full md:w-full  mx-2 sm:mx-2 md:mx-2 lg:mx-0'>
+            <div className='mt-4 flex justify-center items-center  '>
+                <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4  lg:w-full md:w-full  mx-2 sm:mx-2 md:mx-2 lg:mx-0 dark:border-green-700 dark:bg-gray-900'>
                     <h2 className='text-2xl text-center font-bold uppercase'>Sign up</h2>
 
                     <form onSubmit={handleSubmit(handleSignup)}>
 
                         <div className="form-control w-full mb-1">
                             <label className="label">
-                                <span className="label-text font-semibold">Name</span>
+                                <span className="label-text font-semibold dark:text-white">Name</span>
                             </label>
 
                             <input type="text" {...register("name", { required: "Name is Required" })}
-                                placeholder="Enter Name" className="input input-bordered w-full " />
+                                placeholder="Enter Name" className="input input-bordered w-full dark:text-black" />
 
                             {errors.name && <p className='text-red-600'>{errors.name?.message}</p>}
 
@@ -233,11 +233,11 @@ const Signup = () => {
 
                         <div className="form-control w-full mb-1">
                             <label className="label">
-                                <span className="label-text font-semibold">Email</span>
+                                <span className="label-text font-semibold dark:text-white">Email</span>
                             </label>
 
                             <input type="email" {...register("email", { required: "Email is Required" })}
-                                placeholder="Enter Email" className="input input-bordered w-full" />
+                                placeholder="Enter Email" className="input input-bordered w-full dark:text-black" />
 
                             {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
 
@@ -247,14 +247,14 @@ const Signup = () => {
                         <div className='flex justify-between items-center gap-x-6'>
                             <div className="form-control w-full mb-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Password</span>
+                                    <span className="label-text font-semibold dark:text-white">Password</span>
                                 </label>
 
                                 <input type="password" {...register("password", {
                                     required: "Password is Required",
                                     minLength: { value: 8, message: 'Password must be 8 characters or longer' },
                                     // pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: "Password Should Contain at least 1 A-Z, 0-9 and [!@#$&*] character " }
-                                })} placeholder="Enter Password" className="input input-bordered w-full " />
+                                })} placeholder="Enter Password" className="input input-bordered w-full dark:text-black" />
 
                                 {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
 
@@ -262,13 +262,13 @@ const Signup = () => {
 
                             <div className="form-control w-full mb-1">
                                 <label className="label">
-                                    <span className="label-text font-semibold">Choose Account Type</span>
+                                    <span className="label-text font-semibold dark:text-white">Choose Account Type</span>
                                 </label>
 
                                 <select
                                     type="text"
                                     {...register("accountType", { required: "Account Type is Required" })}
-                                    name='accountType' className="select select-bordered w-full">
+                                    name='accountType' className="select select-bordered w-full dark:text-black">
                                     <option value='Buyer'>Buyer</option>
                                     <option value='Seller'>Seller</option>
                                 </select>
@@ -280,7 +280,7 @@ const Signup = () => {
 
                         <div className='form-control w-full mb-1 mx-auto'>
                             <label className="label">
-                                <span className="label-text font-semibold">Upload Photo</span>
+                                <span className="label-text font-semibold dark:text-white">Upload Photo</span>
                             </label>
                             <input type="file" {...register("photo", { required: "Photo is Required" })}
                                 placeholder="Upload Product Photo" className="input  w-full pt-2" />
@@ -308,7 +308,7 @@ const Signup = () => {
                     <div className="divider">OR</div>
 
                     <div>
-                        <button onClick={handleSignInByGoogle} className='btn btn-outline btn-dark uppercase w-full'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
+                        <button onClick={handleSignInByGoogle} className='btn btn-outline btn-dark uppercase w-full dark:bg-black dark:text-white dark:border-green-600'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
                     </div>
 
                 </div>

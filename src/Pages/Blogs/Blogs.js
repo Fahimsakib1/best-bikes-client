@@ -1,10 +1,10 @@
 import React from 'react';
-import pic1 from '../../images/FAQ/1.png';
+import pic1 from '../../images/FAQ/1.png'; 
 
 const Blogs = () => {
     return (
-        <div className=' mx-2 sm:mx-2 md:mx:4 lg:mx-0'>
-            <section className="bg-gray-800 text-gray-100 mt-20 rounded-lg">
+        <div className=' mx-2 sm:mx-2 md:mx:4 lg:mx-0 dark:sm:mx-4 dark:md:mx-4 dark:lg:mx-10'>
+            <section className="bg-gray-800 text-gray-100 mt-20 rounded-lg dark:bg-gray-800">
                 <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
                     <h2 className="text-4xl font-semibold sm:text-4xl text-center mb-8">Frequently Asked Questions</h2>
 

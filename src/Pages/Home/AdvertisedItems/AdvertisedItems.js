@@ -77,7 +77,7 @@ const AdvertisedItems = () => {
                             {
                                 advertisedProducts.map(singleProduct => <div key={singleProduct._id} className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
                                     <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
-                                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-900">
+                                        <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-800 bg-gray-800">
                                             <p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-100">
 
                                                 <img src={singleProduct.img} alt="" className="w-56 h-56 mb-2 -mt-20 bg-center bg-cover rounded-md " />
@@ -87,7 +87,7 @@ const AdvertisedItems = () => {
 
                                             </p>
                                         </div>
-                                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-500 dark:text-gray-900">
+                                        <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-600 dark:text-gray-900 bg-violet-500">
                                             <img src={singleProduct.img} alt="" className="w-20 h-20 mb-2 -mt-16 bg-center bg-cover rounded-full " />
                                             <div className='flex justify-center items-center'>
                                                 <p className="text-xl font-semibold leading-tight">Seller:  {singleProduct.seller_name}</p>

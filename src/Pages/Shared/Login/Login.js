@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import image from '../../../images/LoginImage/signup.webp';
+import image2 from '../../../images/LoginImage/signup-nobg.png';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc'
@@ -96,22 +97,22 @@ const Login = () => {
                 transition={{ duration: 0.5 }}
 
                 className="text-center lg:text-left">
-                <img className='w-full mt-12' src={image} alt="" />
+                <img className='w-full mt-12' src={image2} alt="" />
             </motion.div>
 
-            <div className='mt-8 flex justify-center items-center '>
-                <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4  lg:w-full md:w-full  md:mx-2 lg:mx-0 sm:mx-2 mx-2'>
+            <div className='mt-8 flex justify-center items-center'>
+                <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4  lg:w-full md:w-full  md:mx-2 lg:mx-0 sm:mx-2 mx-2 dark:bg-gray-900 dark;border-2 dark:border-green-700'>
                     <h2 className='text-2xl text-center font-bold uppercase'>Login</h2>
 
                     <form onSubmit={handleSubmit(handleLogin)}>
 
-                        <div className="form-control w-full mb-2">
-                            <label className="label">
-                                <span className="label-text">Email</span>
+                        <div className="form-control w-full mb-2 ">
+                            <label className="label ">
+                                <span className="label-text dark:text-white">Email</span>
                             </label>
 
                             <input name="email" type="email" {...register("email", { required: "Email is Required" })}
-                                placeholder="Enter Email" className="input input-bordered w-full" />
+                                placeholder="Enter Email" className="input input-bordered w-full dark:text-black" />
 
                             {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
 
@@ -120,15 +121,15 @@ const Login = () => {
 
                         <div className="form-control w-full">
                             <label className="label">
-                                <span className="label-text ">Password</span>
+                                <span className="label-text dark:text-white">Password</span>
                             </label>
 
-                            <input type="password" {...register("password", { required: "Password is Required", minLength: { value: 8, message: 'Password must be 8 characters or longer' } })} placeholder="Enter Password" className="input input-bordered w-full " />
+                            <input type="password" {...register("password", { required: "Password is Required", minLength: { value: 8, message: 'Password must be 8 characters or longer' } })} placeholder="Enter Password" className="input input-bordered w-full dark:text-black " />
 
                             {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
 
                             <label className="label mb-6">
-                                <span  className="label-text hover:text-blue-600 font-semibold ">Forget Password?</span>
+                                <span  className="label-text hover:text-blue-600 font-semibold dark:text-white dark:hover:text-blue-700">Forget Password?</span>
                             </label>
 
 
@@ -150,7 +151,7 @@ const Login = () => {
                     <div className="divider">OR</div>
 
                     <div>
-                        <button onClick={handleSignInByGoogle}  className='btn btn-outline btn-primary uppercase w-full'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
+                        <button onClick={handleSignInByGoogle}  className='btn btn-outline  uppercase w-full dark:bg-black dark:text-white dark:border-green-600'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
                     </div>
 
 

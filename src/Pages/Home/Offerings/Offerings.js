@@ -9,7 +9,7 @@ const Offerings = () => {
             
             <h2 className='md:text-5xl lg:text-5xl font-semibold text-blue-600 sm:text-4xl text-3xl text-center mt-24 mb-8'>Our Commitments</h2>
 
-            <section className="p-4 lg:p-8 bg-gray-200 text-gray-100 rounded-lg">
+            <section className="p-4 lg:p-8 bg-gray-200 text-gray-100 rounded-lg dark:w-[1400px] dark:mx-auto dark:bg-gray-700">
                 <div className="container mx-auto space-y-8">
                     
                     <div className="flex flex-col overflow-hidden rounded-md shadow-sm lg:flex-row">
@@ -39,7 +39,7 @@ const Offerings = () => {
                 </div>
             </section>
         </div>
-    );
+    ); 
 };
 
 export default Offerings;

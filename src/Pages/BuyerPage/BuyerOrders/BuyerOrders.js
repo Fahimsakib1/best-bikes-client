@@ -20,15 +20,6 @@ const BuyerOrders = () => {
     })
 
 
-    // The My Orders route will have a table/cards. Each card/ table row will be an order having an image, title, price, and a pay button. On clicking the pay button, to take the user the payment page with fields for card details will pop up, or the user will be taken to a route where there will be a form for filling up card details. Save the payment information in the database and inform the user via a modal/toast. Don't forget to update the button text to "paid" after payment. Please note, payment will be done by Stripe. 
-
-
-
-
-
-
-
-
 
     return (
         <div>
@@ -36,35 +27,35 @@ const BuyerOrders = () => {
                 orders.length > 0 ?
 
                     <div>
-                        <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-blue-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-0'>{user?.displayName} You have {orders?.length} Orders Pending</h1>
+                        <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-blue-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-12'>{user?.displayName} You have {orders?.length} Orders Pending</h1>
                         <div className='mt-10'>
                             <div className="overflow-x-auto w-full">
-                                <table className="table w-full">
+                                <table className="table w-full sm:w-full md:w-full lg:w-[1000px] mx-auto">
 
                                     <thead>
-                                        <tr className='text-center'>
-                                            <th>No</th>
-                                            <th>Picture</th>
-                                            <th>Bike Model</th>
-                                            <th>Price</th>
-                                            <th>Seller</th>
-                                            <th>Payment</th>
+                                        <tr className='text-center dark:text-white'>
+                                            <th className='dark:bg-slate-800 border-2 dark:border-green-600'>No</th>
+                                            <th className='dark:bg-slate-800 border-2 dark:border-green-600'>Picture</th>
+                                            <th className='dark:bg-slate-800 border-2 dark:border-green-600'>Bike Model</th>
+                                            <th className='dark:bg-slate-800 border-2 dark:border-green-600'>Price</th>
+                                            <th className='dark:bg-slate-800 border-2 dark:border-green-600'>Seller</th>
+                                            <th className='dark:bg-slate-800 border-2 dark:border-green-600'>Payment</th>
 
                                         </tr>
                                     </thead>
 
-                                    <tbody>
+                                    <tbody className='dark:text-black border-2 border-gray-300'>
 
                                         {
                                             orders?.map((order, index) =>
 
-                                                <tr key={order._id} className='text-center'>
+                                                <tr key={order._id} className='dark:bg-gray-700 border-1 border-gray-300 text-center'>
 
-                                                    <td className='font-bold '>
+                                                    <td className='font-bold dark:bg-gray-700 border-1 border-gray-300 dark:text-white '>
                                                         {index + 1}
                                                     </td>
 
-                                                    <td className=''>
+                                                    <td className='dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
                                                         <div className="flex items-center space-x-3">
                                                             <div className="avatar mx-auto">
                                                                 <div className="mask mask-squircle w-16 h-16 text-center">
@@ -74,19 +65,19 @@ const BuyerOrders = () => {
                                                         </div>
                                                     </td>
 
-                                                    <td className='font-bold text-md'>
+                                                    <td className='font-bold text-md dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
                                                         {order.companyName} {order.productName}
                                                     </td>
 
-                                                    <td className='text-blue-600 font-semibold'>
+                                                    <td className='text-blue-600 font-semibold dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
                                                         {order.price} Taka
                                                     </td>
 
-                                                    <td>
+                                                    <td className='dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
                                                         {order.sellerName}
                                                     </td>
 
-                                                    <th>
+                                                    <th className='dark:bg-gray-700 border-1 border-gray-300 dark:text-white'>
                                                         {/* <button title='Click to Pay' className=" bg-blue-600 hover:bg-blue-700 px-8 btn  border-0 btn-sm">Pay</button> */}
 
                                                         {

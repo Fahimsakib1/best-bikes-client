@@ -32,12 +32,12 @@ const DashboardLayout = () => {
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="new-dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-64  text-base-content">
+                    <ul className="menu p-4 w-72  text-base-content  dark:text-white">
 
                         {
                             isSeller &&
                             <>
-                                <Link to='/dashboard/addProducts'><button className='bg-blue-800 hover:bg-blue-800 btn btn-md  border-0 text-lg text-white  font-semibold  mt-2'><BsPlusCircle className='text-2xl mr-2'></BsPlusCircle>Add A Product</button></Link>
+                                <Link to='/dashboard/addProducts'><button className='bg-blue-800 hover:bg-blue-800 btn btn-md  border-0 text-lg text-white  font-semibold  mt-2'><BsPlusCircle className='text-2xl mr-2'></BsPlusCircle>Add New Products</button></Link>
 
                                 <Link to='/dashboard/myProducts'><button className='bg-blue-800 hover:bg-blue-800 btn btn-md border-0 text-lg text-white font-semibold mt-4 '><FaShoppingBag className='text-2xl mr-2'></FaShoppingBag>My Products</button></Link>
 
@@ -49,7 +49,7 @@ const DashboardLayout = () => {
                             <>
                                 <Link to='/dashboard/myOrders'><button className='bg-blue-800 hover:bg-blue-800  btn btn-md  border-0 text-lg text-white font-semibold mt-4'><FaShoppingBag className='text-2xl mr-2'></FaShoppingBag>My Orders</button></Link>
                             </>
-                        },
+                        }
 
 
                         {

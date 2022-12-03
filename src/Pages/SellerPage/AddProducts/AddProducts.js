@@ -116,9 +116,9 @@ const AddProducts = () => {
         <div>
             
             <div className=''>
-                <h1 className='text-3xl text-center mt-2'>Add Product</h1>
+                <h1 className='text-3xl text-center mt-8'>Add Product</h1>
                 <div className='mt-4 flex justify-start items-center lg:mx-0 md:mx-0 sm:mx-2 mx-2 '>
-                    <div className='w-[700px] p-2 sm:p-2 md:p-6 lg:p-6 border-2  mx-auto bg-gray-800 rounded-xl'>
+                    <div className='w-[700px] p-2 sm:p-2 md:p-6 lg:p-6 border-2  mx-auto bg-gray-900 dark:bg-gray-900 rounded-xl dark:border-green-600'>
 
                         <form onSubmit={handleSubmit(handleAddProduct)}>
 
@@ -129,7 +129,7 @@ const AddProducts = () => {
                                     </label>
 
                                     <input name="productName" type="text" {...register("productName", { required: "Product Name  Required" })}
-                                        placeholder="Enter Product Name" className="input input-bordered border-black w-full" />
+                                        placeholder="Enter Product Name" className="input input-bordered border-black w-full text-black" />
 
                                     {errors.productName && <p className='text-red-600'>{errors.productName?.message}</p>}
 
@@ -142,7 +142,7 @@ const AddProducts = () => {
                                     </label>
 
                                     <input name="originalPrice" type="text" {...register("originalPrice", { required: "Price Required" })}
-                                        placeholder="Enter Product Price" className="input input-bordered border-black w-full " />
+                                        placeholder="Enter Product Price" className="input input-bordered border-black w-full text-black" />
 
                                     {errors.originalPrice && <p className='text-red-600'>{errors.originalPrice?.message}</p>}
 
@@ -154,7 +154,7 @@ const AddProducts = () => {
                                     </label>
 
                                     <input name="resalePrice" type="text" {...register("resalePrice", { required: "Resale Price Required" })}
-                                        placeholder="Enter Resale Price" className="input input-bordered border-black w-full " />
+                                        placeholder="Enter Resale Price" className="input input-bordered border-black w-full text-black" />
 
                                     {errors.resalePrice && <p className='text-red-600'>{errors.resalePrice?.message}</p>}
 
@@ -174,7 +174,7 @@ const AddProducts = () => {
                                         type="text"
                                         {...register("location", { required: "Location Required" })}
 
-                                        name='location' className="select select-bordered border-black w-full ">
+                                        name='location' className="select select-bordered border-black w-full text-black">
 
                                         <option value='Dhaka'>Dhaka</option>
                                         <option value='Chittagong'>Chittagong</option>
@@ -198,7 +198,7 @@ const AddProducts = () => {
                                     <select
                                         type="text"
                                         {...register("brand", { required: "Brand  Required" })}
-                                        name='brand' className="select select-bordered border-black w-full">
+                                        name='brand' className="select select-bordered border-black w-full text-black">
                                         <option value='1'>Yamaha</option>
                                         <option value='2'>Bajaj</option>
                                         <option value='3'>Suzuki</option>
@@ -216,7 +216,7 @@ const AddProducts = () => {
                                     <select
                                         type="text"
                                         {...register("condition", { required: "Condition  Required" })}
-                                        name='condition' className="select select-bordered border-black w-full">
+                                        name='condition' className="select select-bordered border-black w-full text-black">
                                         <option value='Excellent'>Excellent</option>
                                         <option value='Good'>Good</option>
                                         <option value='Fair'>Fair</option>
@@ -238,7 +238,7 @@ const AddProducts = () => {
                                     </label>
 
                                     <input name="usingYear" type="text" {...register("usingYear", { required: "Using Year Required" })}
-                                        placeholder="Years Of Using" className="input input-bordered border-black w-full " />
+                                        placeholder="Years Of Using" className="input input-bordered border-black w-full text-black" />
 
                                     {errors.usingYear && <p className='text-red-600'>{errors.usingYear?.message}</p>}
 
@@ -250,7 +250,7 @@ const AddProducts = () => {
                                     </label>
 
                                     <input name="mobileNumber" type="text" {...register("mobileNumber", { required: "Mobile Number Required" })}
-                                        placeholder="Mobile Number" className="input input-bordered border-black w-full " />
+                                        placeholder="Mobile Number" className="input input-bordered border-black w-full text-black" />
 
                                     {errors.mobileNumber && <p className='text-red-600'>{errors.mobileNumber?.message}</p>}
 
@@ -284,7 +284,7 @@ const AddProducts = () => {
                             <div className='mx-auto text-center'>
                                 <input type="submit"
                                     value='Add Product'
-                                    className=' bg-blue-700  hover:bg-blue-700 w-1/2  text-white uppercase py-3 rounded-md border-0 mt-1' 
+                                    className=' bg-blue-700  hover:bg-blue-700 w-1/2  text-white uppercase py-3 rounded-md  mt-1 border-0  dark:bg-black dark:border-green-600 dark:border-2' 
                                 />
                             </div>
 

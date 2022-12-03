@@ -106,31 +106,32 @@ const AllSellers = () => {
 
     return (
         <div>
-            <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-violet-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-0'> Total Sellers {sellers?.length}</h1>
+            <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-violet-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-8 dark:mx-6 dark:sm:mx-6 dark:md:mx-16 dark:lg:mx-16'> Total Sellers {sellers?.length}</h1>
 
             <div className="overflow-x-auto">
-                <table className="table w-full mb-12  ">
+                <table className="table w-full mb-12  sm:w-full md:w-full lg:w-[1100px] mx-auto">
 
                     <thead className=''>
-                        <tr className='text-center'>
-                            <th className=' '>No</th>
-                            <th className=' '>Picture</th>
-                            <th className=' '>Seller Name</th>
-                            <th className=' '>Email</th>
-                            <th className=' '>Action</th>
+                        <tr className='text-center dark:text-white'>
+                            <th className=' dark:bg-slate-800 border-2 dark:border-green-600'>No</th>
+                            <th className=' dark:bg-slate-800 border-2 dark:border-green-600'>Picture</th>
+                            <th className=' dark:bg-slate-800 border-2 dark:border-green-600'>Seller Name</th>
+                            <th className=' dark:bg-slate-800 border-2 dark:border-green-600'>Email</th>
+                            <th className=' dark:bg-slate-800 border-2 dark:border-green-600'>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+
+                    <tbody className = 'dark:text-black border-2 border-gray-300'>
 
                         {
                             sellers?.map((seller, index) =>
-                                <tr key={seller._id} className='text-center '>
+                                <tr key={seller._id} className=' dark:bg-gray-800 border-1 border-gray-300 dark:text-white text-center'>
 
-                                    <td className='font-bold '>
+                                    <td className='font-bold dark:bg-gray-800 border-1 border-gray-300 dark:text-white text-center'>
                                         {index + 1}
                                     </td>
 
-                                    <td className=''>
+                                    <td className='dark:bg-gray-800 border-1 border-gray-300 dark:text-white text-center'>
                                         <div className="flex items-center space-x-3">
                                             {
                                                 seller.photo 
@@ -159,22 +160,23 @@ const AllSellers = () => {
                                         </div>
                                     </td>
 
-                                    <td className='font-bold '>
+                                    <td className='font-bold dark:bg-gray-800  border-gray-300 dark:text-white text-center'>
                                         {seller.name}
                                     </td>
 
-                                    <td className=''>{seller.email}</td>
+                                    <td className='dark:bg-gray-800  border-gray-300 dark:text-white text-center'>{seller.email}</td>
 
-                                    <td className='flex justify-evenly items-center gap-x-4'>
+                                    <td className=' dark:bg-gray-800 border-gray-300 flex justify-evenly items-center gap-x-4'>
                                         
                                         {
                                             seller?.status !== 'Verified' ?
-                                                <button onClick={() => handleVerifySeller(seller.email)} className='bg-blue-600 btn btn-sm hover:bg-blue-600 border-0'>Verify</button>
+                                                <button onClick={() => handleVerifySeller(seller.email)} className='bg-blue-600 btn btn-sm hover:bg-blue-600 border-0  mt-[20px] mb-4'>Verify</button>
                                                 :
-                                                <button className='btn btn-xs bg-green-600 border-0'> <MdOutlineVerifiedUser className='mr-1 text-lg'></MdOutlineVerifiedUser> Verified</button>
+                                                <button className='btn btn-xs bg-green-600 hover:bg-green-600 border-0 mt-[30px] mb-4' title='Verified Seller'> <MdOutlineVerifiedUser className='mr-1 text-lg'></MdOutlineVerifiedUser> Verified</button>
                                         }
 
                                         <label
+                                            className='border-1 border-gray-300 dark:text-white text-center '
                                             onClick={() => setDeleteSeller(seller)}
                                             htmlFor="delete-seller-modal"
                                         >
