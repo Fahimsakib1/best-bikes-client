@@ -255,7 +255,7 @@ const Signup = () => {
 
 
                         <div className='flex justify-between items-center gap-x-6'>
-                            <div className="form-control w-full mb-1">
+                            <div className="form-control w-full mb-1 -mt-4">
                                 <label className="label">
                                     <span className="label-text font-semibold dark:text-white">Password</span>
                                 </label>
@@ -299,7 +299,7 @@ const Signup = () => {
                             </div>
                         </div>
 
-                        <div className='form-control w-full mb-1 mx-auto mt-2'>
+                        <div className='form-control w-full mb-1 mx-auto'>
                             <label className="label">
                                 <span className="label-text font-semibold dark:text-white">Upload Photo</span>
                             </label>
@@ -318,7 +318,7 @@ const Signup = () => {
 
                         <input type="submit"
                             value='Sign up'
-                            className='btn btn-primary w-full text-white uppercase py-3 rounded-md mt-4' />
+                            className='btn btn-primary w-full text-white uppercase py-3 rounded-md mt-4 dark:bg-black dark:text-white dark:border-blue-700' />
 
                     </form>
 
@@ -326,9 +326,9 @@ const Signup = () => {
                         <p className='text-sm text-center font-semibold'>Already Have An Account ? <Link to='/login' className='text-blue-600 font-semibold'>Please Login</Link></p>
                     </div>
 
-                    <div className="divider">OR</div>
+                    <div className="divider dark:hidden">OR</div>
 
-                    <div>
+                    <div className='dark:mt-6'>
                         <button onClick={handleSignInByGoogle} className='btn btn-outline btn-dark uppercase w-full dark:bg-black dark:text-white dark:border-green-600'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
                     </div>
 

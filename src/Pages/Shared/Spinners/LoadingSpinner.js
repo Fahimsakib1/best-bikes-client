@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoadingSpinner = () => {
     return (
-        <div className='flex justify-center items-center h-full mt-32'>
+        <div className='flex justify-center items-center h-full mt-20'>
             <p className='font-semibold text-6xl'>L</p>
             <div className="h-10 w-10 border-8 border-dashed rounded-full animate-spin border-green-600 mt-4"></div>
             <p className='font-semibold text-6xl'>ading...</p>
