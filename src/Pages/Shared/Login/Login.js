@@ -26,21 +26,22 @@ const Login = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
 
-    
+
     //for verifying the token
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
 
-    if(token){
-        // Swal.fire(
-        //     'Nice',
-        //     'User Logged In After verifying the token',
-        //     'success'
-        // )
-        //toast.success(`Welcome to Best Bikes, ${user?.displayName}`)
-        console.log("Token From Login Page: ", token)
-        navigate(from, { replace: true });
-    }
+
+    // if(token){
+    //     // Swal.fire(
+    //     //     'Nice',
+    //     //     'User Logged In After verifying the token',
+    //     //     'success'
+    //     // )
+    //     //toast.success(`Welcome to Best Bikes, ${user?.displayName}`)
+    //     console.log("Token From Login Page: ", token)
+    //     navigate(from, { replace: true });
+    // }
 
 
 
@@ -48,24 +49,50 @@ const Login = () => {
         setLoginError('');
         //setUserEmail(data.email)
         console.log("Login Page Email: ", data.email)
-        
+
         userLogin(data.email, data.password)
-        .then(result => {
-            const user = result.user;
-            console.log("User From Login Page", user);
-            setLoginUserEmail(user.email);
-            reset();
-            navigate(from, { replace: true });
-        })
-        .catch(error => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Login Failed',
+            .then(result => {
+                const user = result.user;
+                console.log("User From Login Page", user);
+                //setLoginUserEmail(user.email);
+
+                const currentUser = {
+                    email: user?.email
+                }
+                //get jwt token in client side
+                fetch('https://best-bikes-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+            
+                .then(res => res.json())
+                .then(data => {
+                    console.log("Token received from server side", data.token)
+                    //set the JWT token in local storage
+                    localStorage.setItem('bestBikeToken', data.token);
+                    navigate(from, { replace: true });
+            
+                })
+                
+                reset();
+                //navigate(from, { replace: true });
             })
-            setLoginError(error.message)
-        })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Login Failed',
+                })
+                setLoginError(error.message)
+            })
     }
+
+
+
+
 
 
 
@@ -131,15 +158,15 @@ const Login = () => {
                             {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
 
                             <label className="label mb-6">
-                                <span  className="label-text hover:text-blue-600 font-semibold dark:text-white dark:hover:text-blue-700">Forget Password?</span>
+                                <span className="label-text hover:text-blue-600 font-semibold dark:text-white dark:hover:text-blue-700">Forget Password?</span>
                             </label>
 
 
                         </div>
 
                         <input type="submit"
-                        value='Login'
-                        className='btn btn-primary w-full text-white uppercase py-3 rounded-md' />
+                            value='Login'
+                            className='btn btn-primary w-full text-white uppercase py-3 rounded-md' />
 
                         {
                             loginError && <p className='text-red-600'>{loginError}</p>
@@ -153,7 +180,7 @@ const Login = () => {
                     <div className="divider">OR</div>
 
                     <div>
-                        <button onClick={handleSignInByGoogle}  className='btn btn-outline  uppercase w-full dark:bg-black dark:text-white dark:border-green-600'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
+                        <button onClick={handleSignInByGoogle} className='btn btn-outline  uppercase w-full dark:bg-black dark:text-white dark:border-green-600'> <FcGoogle className='text-2xl mr-2'></FcGoogle> Continue with google</button>
                     </div>
 
 

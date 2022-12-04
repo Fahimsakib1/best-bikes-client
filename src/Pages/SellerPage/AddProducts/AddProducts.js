@@ -118,7 +118,7 @@ const AddProducts = () => {
             <div className=''>
                 <h1 className='text-3xl text-center mt-8'>Add Product</h1>
                 <div className='mt-4 flex justify-start items-center lg:mx-0 md:mx-0 sm:mx-2 mx-2 '>
-                    <div className='w-[700px] p-2 sm:p-2 md:p-6 lg:p-6 border-2  mx-auto bg-gray-900 dark:bg-gray-900 rounded-xl dark:border-green-600'>
+                    <div className='w-[700px] p-2 sm:p-2 md:p-6 lg:p-6 border-2  mx-auto bg-gray-900 dark:bg-gray-900 rounded-xl dark:border-green-600 mb-12'>
 
                         <form onSubmit={handleSubmit(handleAddProduct)}>
 
