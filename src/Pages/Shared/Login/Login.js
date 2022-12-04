@@ -38,6 +38,7 @@ const Login = () => {
         //     'success'
         // )
         //toast.success(`Welcome to Best Bikes, ${user?.displayName}`)
+        console.log("Token From Login Page: ", token)
         navigate(from, { replace: true });
     }
 
@@ -46,14 +47,15 @@ const Login = () => {
     const handleLogin = (data) => {
         setLoginError('');
         //setUserEmail(data.email)
+        console.log("Login Page Email: ", data.email)
         
         userLogin(data.email, data.password)
         .then(result => {
             const user = result.user;
             console.log("User From Login Page", user);
-            setLoginUserEmail(data.email);
+            setLoginUserEmail(user.email);
             reset();
-            //navigate(from, { replace: true });
+            navigate(from, { replace: true });
         })
         .catch(error => {
             Swal.fire({

@@ -59,7 +59,7 @@ const Footer = () => {
 
                     </div>
                 </div>
-            </footer>
+            </footer> 
 
             <div className="text-sm text-center text-gray-400 bg-black pb-4 dark:bg-gray-900">© 2022 Best Bikes. All Rights Reserved By Fahim Faysal
             </div>

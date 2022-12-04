@@ -11,7 +11,7 @@ const Brands = () => {
         <div className='my-24'>
             <h2 className='md:text-5xl lg:text-5xl font-semibold text-blue-600 sm:text-4xl text-3xl text-center'>Gallery</h2>
 
-            <section className="py-6  text-gray-50 dark:sm:mx-4 dark:md:mx-4 dark:lg:mx-10">
+            <section className="py-6  text-gray-50 dark:sm:mx-4 dark:md:mx-4 dark:lg:mx-10 sm:mx-4 md:mx-2 lg:mx-6">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.2 }}
                     animate={{ opacity: 1, scale: 1 }}

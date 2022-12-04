@@ -26,7 +26,7 @@ const BrandCategories = () => {
 
 
     return (
-        <div className='mt-24 mb-8 dark:mx-4 dark:sm:mx-4 dark:md:mx-4 dark:lg:mx-10'>
+        <div className='mt-24 mb-8 dark:mx-4 dark:sm:mx-4 dark:md:mx-4 dark:lg:mx-10 mx-4 sm:mx-4 md:mx-4 lg:mx-8'>
             <div>
                 
                 <div className='flex justify-center items-center gap-x-4 bg-gray-800 text-base-100 rounded-md md:mx-2 lg:mx-2 sm:mx-2 mx-2 '>
@@ -60,7 +60,7 @@ const BrandCategories = () => {
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>  
 
                 <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-12 '>
                     {

@@ -36,6 +36,12 @@ const routes = createBrowserRouter([
                 element: <Home></Home> 
             },
 
+            // {
+            //     path: '/category/:id',
+            //     loader: ({params}) => fetch(`https://best-bikes-server.vercel.app/category/${params.id}`),
+            //     element: <PrivateRoute><BikeDetails></BikeDetails></PrivateRoute>
+            // },
+
             {
                 path: '/category/:id',
                 loader: ({params}) => fetch(`https://best-bikes-server.vercel.app/category/${params.id}`),
@@ -116,4 +122,4 @@ const routes = createBrowserRouter([
 
 ])
 
-export default routes;
+export default routes; 

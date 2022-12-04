@@ -79,8 +79,8 @@ const Header = () => {
 
         }
 
-        <li className='text-md font-bold px-2 hover:text-blue-600  dark:text-white dark:hover:text-orange-500'><Link to='/'>Home</Link></li>
-        <li className='text-md font-bold px-2 hover:text-blue-600  dark:text-white dark:hover:text-orange-500'><Link to='/blogs'>Blogs</Link></li>
+        <li className='text-md font-bold px-1 hover:text-blue-600  dark:text-white dark:hover:text-orange-500'><Link to='/'>Home</Link></li>
+        <li className='text-md font-bold px-1 hover:text-blue-600  dark:text-white dark:hover:text-orange-500'><Link to='/blogs'>Blogs</Link></li>
 
         {
             user?.uid ?
@@ -112,15 +112,15 @@ const Header = () => {
 
                     } */}
 
-                    <li className='font-bold px-2 hover:text-blue-600'><Link to='/dashboard'>Dashboard</Link></li>
+                    <li className='font-bold px-1 hover:text-blue-600'><Link to='/dashboard'>Dashboard</Link></li>
 
                     <li className='text-red-600 font-bold'><button onClick={handleLogOut} className='bg-red-600 text-white rounded-lg'>Sign Out</button></li>
 
                 </>
                 :
                 <>
-                    <li className='font-bold'><Link to='/login' className='bg-green-600 text-white rounded-lg lg:mr-2'>Login</Link></li>
-                    <li className='font-bold'><Link to='/signup' className='bg-blue-700 text-white rounded-lg sm:mt-2 md:mt-2 lg:mt-0 mt-2'>Sign Up</Link></li>
+                    <li className='font-bold'><Link to='/login' className='bg-green-600 text-white rounded-lg lg:mr-3 '>Login</Link></li>
+                    <li className='font-bold'><Link to='/signup' className='bg-blue-700 text-white rounded-lg sm:mt-2 md:mt-2 lg:mt-0 mt-2 lg:mr-3'>Sign Up</Link></li>
 
                 </>
 
@@ -129,9 +129,9 @@ const Header = () => {
 
         {
             theme === 'dark' ?
-                <BsMoon onClick={handleThemeSwitch} className=" my-auto ml-8 mr-8 sm:mt-3 md:mt-3 lg:mt-2 mt-2 text-3xl mb-4 sm:mb-4 md:mb-4 lg:mb-0" title='Click For Light Mode' ></BsMoon>
+                <BsMoon onClick={handleThemeSwitch} className=" my-auto ml-8 mr-12 sm:mt-3 md:mt-3 lg:mt-2 mt-2 text-3xl mb-4 sm:mb-4 md:mb-4 lg:mb-0 " title='Click For Light Mode' ></BsMoon>
                 :
-                <BsSun onClick={handleThemeSwitch} className=" my-auto ml-4 sm:mt-3 md:mt-3 lg:mt-2 mt-2 text-3xl mb-4 sm:mb-4 md:mb-4 lg:mb-0" title='Click For Dark Mode'></BsSun>
+                <BsSun onClick={handleThemeSwitch} className=" my-auto ml-3 sm:mt-3 md:mt-3 lg:mt-2 mt-2 text-3xl mb-4 sm:mb-4 md:mb-4 lg:mb-0 mr-8" title='Click For Dark Mode'></BsSun>
         }
 
     </React.Fragment>

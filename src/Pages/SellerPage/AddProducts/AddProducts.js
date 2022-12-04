@@ -281,7 +281,7 @@ const AddProducts = () => {
                                 error && <p className='text-red-600'>{error}</p>
                             }
 
-                            <div className='mx-auto text-center'>
+                            <div className='mx-auto text-center dark:mb-4'>
                                 <input type="submit"
                                     value='Add Product'
                                     className=' bg-blue-700  hover:bg-blue-700 w-1/2  text-white uppercase py-3 rounded-md  mt-1 border-0  dark:bg-black dark:border-green-600 dark:border-2' 

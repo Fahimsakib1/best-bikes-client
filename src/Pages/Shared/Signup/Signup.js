@@ -36,7 +36,8 @@ const Signup = () => {
     const [token] = useToken(createdUserEmail);
 
     if (token) {
-        navigate('/')
+        navigate('/');
+        console.log("token from sign up page: ", token)
     }
 
 
