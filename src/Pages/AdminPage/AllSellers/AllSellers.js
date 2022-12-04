@@ -173,7 +173,7 @@ const AllSellers = () => {
                                         
                                         {
                                             seller?.status !== 'Verified' ?
-                                                <button onClick={() => handleVerifySeller(seller.email)} className='bg-blue-600 btn btn-sm hover:bg-blue-600 border-0  mt-[20px] mb-4'>Verify</button>
+                                                <button onClick={() => handleVerifySeller(seller.email)} className='bg-blue-800 btn btn-sm hover:bg-blue-800 border-0  mt-[20px] mb-4 px-4'>Verify</button>
                                                 :
                                                 <button className='btn btn-xs bg-green-600 hover:bg-green-600 border-0 mt-[30px] mb-4' title='Verified Seller'> <MdOutlineVerifiedUser className='mr-1 text-lg'></MdOutlineVerifiedUser> Verified</button>
                                         }

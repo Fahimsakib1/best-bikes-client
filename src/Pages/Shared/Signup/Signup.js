@@ -270,9 +270,9 @@ const Signup = () => {
                                 <div className='flex justify-end -mt-8 mr-3'>
                                     {
                                         !visiblePassword ?
-                                            <BsEyeSlash onClick={() => setVisiblePassword(!visiblePassword)} className=''></BsEyeSlash>
+                                            <BsEyeSlash onClick={() => setVisiblePassword(!visiblePassword)} className='text-black'></BsEyeSlash>
                                             :
-                                            <BsEye onClick={() => setVisiblePassword(!visiblePassword)} className=''></BsEye>
+                                            <BsEye onClick={() => setVisiblePassword(!visiblePassword)} className='text-black'></BsEye>
                                     }
                                 </div>
 

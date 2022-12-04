@@ -50,6 +50,7 @@ const ReportedProducts = () => {
     return (
         <div>
             <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-red-700 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-8 dark:mx-4 dark:sm:mx-4 dark:md:mx-8 dark:lg:mx-14'> {reportedProducts?.length} Reports Found</h1>
+            
             {
                 reportedProducts.length > 0
                     ?

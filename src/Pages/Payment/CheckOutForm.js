@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 const CheckOutForm = ({ order }) => {
 
-    const { price, sellerName, companyName, productName, buyerEmail, buyerName, sellerEmail, buyerMobile, _id, productID } = order
+    const { price, sellerName, companyName, productName, buyerEmail, buyerName, sellerEmail, buyerMobile, _id, productID, productImage } = order
 
     const stripe = useStripe();
     const elements = useElements();
@@ -129,6 +129,10 @@ const CheckOutForm = ({ order }) => {
                 productName: productName,
                 brand: companyName,
                 bookingId: _id,
+                photo: productImage,
+                sellerName:sellerName,
+                sellerEmail: sellerEmail,
+                buyerMobile: buyerMobile,
                 bikeOriginalID: productID,
             }
 

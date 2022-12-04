@@ -55,7 +55,7 @@ const Header = () => {
         {
             user?.uid &&
             <>
-                <div className='flex mt-4'>
+                <div className='flex'>
                     <p className='text-md text-green-600 block lg:hidden ml-6'>Hi, {user.displayName ? user.displayName : user.email}
                     </p>
                     <MdOutlineWavingHand className='text-2xl text-green-600 ml-2 lg:hidden'></MdOutlineWavingHand>
@@ -167,11 +167,11 @@ const Header = () => {
                 <div className='hidden lg:block mt-4'>
                     {
                         user?.uid &&
-                        <div className='flex  justify-center'>
+                        <div className='flex  justify-center items-center'>
                             <p className='text-3xl text-green-600 font-semibold dark:text-blue-700'>Hi, {user.displayName ? user.displayName : user.email} </p>
 
                             <MdOutlineWavingHand className='text-3xl text-green-600 mt-1 ml-2 dark:text-blue-700'></MdOutlineWavingHand>
-                            {users.role && <div className="badge badge-primary  -mt-2 dark:bg-green-700 border-0">{users.role}</div>}
+                            {users.role && <div className="badge badge-primary  -mt-2 dark:bg-green-700 border-0 ml-2">{users.role}</div>}
 
                             {
                                 user?.photoURL &&

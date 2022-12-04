@@ -81,8 +81,7 @@ const BuyerOrders = () => {
                                                     </td>
 
                                                     <th className='dark:bg-gray-800 border-1 border-gray-300 dark:text-white'>
-                                                        {/* <button title='Click to Pay' className=" bg-blue-600 hover:bg-blue-700 px-8 btn  border-0 btn-sm">Pay</button> */}
-
+                                                    
                                                         {
                                                             order.price && !order.paid &&
                                                             <Link to={`/dashboard/payment/${order._id}`}>

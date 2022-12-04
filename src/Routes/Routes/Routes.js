@@ -2,11 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import AllBuyers from "../../Pages/AdminPage/AllBuyers/AllBuyers";
+import AllRegisteredUsers from "../../Pages/AdminPage/AllRegisteredUsers/AllRegisteredUsers";
 import AllSellers from "../../Pages/AdminPage/AllSellers/AllSellers";
 import ReportedProducts from "../../Pages/AdminPage/ReportedProducts/ReportedProducts";
 import BikeDetails from "../../Pages/BikeDetails/BikeDetails";
 import Blogs from "../../Pages/Blogs/Blogs";
 import BuyerOrders from "../../Pages/BuyerPage/BuyerOrders/BuyerOrders";
+import BuyerPaymentHistory from "../../Pages/BuyerPage/BuyerPaymentHistory/BuyerPaymentHistory";
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import DashboardHomePage from "../../Pages/DashboardHomePage/DashboardHomePage";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
@@ -119,18 +121,32 @@ const routes = createBrowserRouter([
 
             {
                 path: '/dashboard/updateProfile',
-                element: <BuyerRoute><UpdateProfile></UpdateProfile></BuyerRoute>
+                // element: <BuyerRoute><UpdateProfile></UpdateProfile></BuyerRoute>
+                element: <UpdateProfile></UpdateProfile>
             },
 
             {
                 path: '/dashboard/updateProfile',
-                element: <SellerRoute><UpdateProfile></UpdateProfile></SellerRoute>
+                //element: <SellerRoute><UpdateProfile></UpdateProfile></SellerRoute>
+                element: <UpdateProfile></UpdateProfile>
             },
 
             {
                 path: '/dashboard/updateProfile',
-                element: <AdminRoute><UpdateProfile></UpdateProfile></AdminRoute>
+                //element: <AdminRoute><UpdateProfile></UpdateProfile></AdminRoute>
+                element: <UpdateProfile></UpdateProfile>
+            },
+
+            {
+                path: '/dashboard/paymentHistory',
+                element: <BuyerRoute><BuyerPaymentHistory></BuyerPaymentHistory></BuyerRoute>
+            },
+
+            {
+                path: '/dashboard/allUsers',
+                element: <AdminRoute><AllRegisteredUsers></AllRegisteredUsers></AdminRoute>
             }
+
 
         ]
     },

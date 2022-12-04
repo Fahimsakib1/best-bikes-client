@@ -10,6 +10,8 @@ import {FaShoppingBag} from 'react-icons/fa';
 import {BsPlusCircle} from 'react-icons/bs';
 import {MdReport} from 'react-icons/md';
 import {ImProfile} from 'react-icons/im';
+import {FaHistory} from 'react-icons/fa';
+import {HiUserGroup} from 'react-icons/hi';
 
 
 
@@ -52,7 +54,10 @@ const DashboardLayout = () => {
                             <>
                                 <Link to='/dashboard/myOrders'><button className='bg-blue-800 hover:bg-blue-800  btn btn-md  border-0 text-lg text-white font-semibold mt-4'><FaShoppingBag className='text-2xl mr-2'></FaShoppingBag>My Orders</button></Link>
 
+                                <Link to='/dashboard/paymentHistory'><button className='bg-blue-800 hover:bg-blue-800 btn btn-md border-0 text-lg text-white font-semibold mt-4 '><FaHistory className='text-2xl mr-2'></FaHistory>Payment History</button></Link>
+
                                 <Link to='/dashboard/updateProfile'><button className='bg-blue-800 hover:bg-blue-800 btn btn-md border-0 text-lg text-white font-semibold mt-4 '><ImProfile className='text-2xl mr-2'></ImProfile>Update Profile</button></Link>
+
                             </>
                         }
 
@@ -64,7 +69,9 @@ const DashboardLayout = () => {
 
                                 <Link to='/dashboard/allBuyers'><button className='bg-blue-700 hover:bg-blue-800 btn btn-md   border-0 text-lg text-white font-semibold mt-4'><BsPeopleFill className='text-2xl mr-2'></BsPeopleFill> All Buyers</button></Link>
 
-                                <Link to='/dashboard/updateProfile'><button className='bg-blue-800 hover:bg-blue-800 btn btn-md border-0 text-lg text-white font-semibold mt-4 '><ImProfile className='text-2xl mr-2'></ImProfile>Update Profile</button></Link>
+                                <Link to='/dashboard/updateProfile'><button className='bg-blue-700 hover:bg-blue-800 btn btn-md border-0 text-lg text-white font-semibold mt-4 '><ImProfile className='text-2xl mr-2'></ImProfile>Update Profile</button></Link>
+
+                                <Link to='/dashboard/allUsers'><button className='bg-blue-700 hover:bg-blue-800 btn btn-md border-0 text-lg text-white font-semibold mt-4 '><HiUserGroup className='text-2xl mr-2'></HiUserGroup>Registered Users</button></Link>
 
                                 <Link to='/dashboard/reportedItems'><button className='hover:bg-red-600 hover:text-white btn btn-sm bg-red-600 border-0 text-lg text-white mt-4 font-semibold '><MdReport className='text-2xl mr-2'></MdReport> Reported Items</button></Link>
                             </>
