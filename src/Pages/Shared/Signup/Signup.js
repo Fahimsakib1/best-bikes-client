@@ -10,7 +10,8 @@ import toast from 'react-hot-toast';
 import SmallSpinner from '../../../components/Spinners/SmallSpinner';
 import useToken from '../../../Hooks/useToken';
 import useTitle from '../../../Hooks/useTitle';
-
+import { BsEye } from 'react-icons/bs';
+import { BsEyeSlash } from 'react-icons/bs';
 
 
 
@@ -31,7 +32,11 @@ const Signup = () => {
     //console.log("Image BB Key From Sign Up Page", imageHostKey);
 
 
-    useTitle('Signup')
+    useTitle('Signup');
+
+    //visible the password
+    const [visiblePassword, setVisiblePassword] = useState(false);
+
 
 
 
@@ -72,18 +77,18 @@ const Signup = () => {
                                 photoURL: imageData.data.url
                             }
                             updateUser(userInfo)
-                            .then( () => {
-                                addUserToDataBase(data.name, data.email, data.accountType, imageData.data.url )
-                                toast.success("User Created Successfully")
-                                const user = result.user;
-                                console.log("User from Sign Up Page After Update Name and Photo Upload", user);
-                                reset();
-                                //navigate('/login')
-                            })
-                            .catch(error => {
-                                toast.error("User name Update Failed")
-                                setError(error.message)
-                            })
+                                .then(() => {
+                                    addUserToDataBase(data.name, data.email, data.accountType, imageData.data.url)
+                                    toast.success("User Created Successfully")
+                                    const user = result.user;
+                                    console.log("User from Sign Up Page After Update Name and Photo Upload", user);
+                                    reset();
+                                    //navigate('/login')
+                                })
+                                .catch(error => {
+                                    toast.error("User name Update Failed")
+                                    setError(error.message)
+                                })
 
                         })
 
@@ -255,11 +260,22 @@ const Signup = () => {
                                     <span className="label-text font-semibold dark:text-white">Password</span>
                                 </label>
 
-                                <input type="password" {...register("password", {
+                                <input type={visiblePassword ? 'text' : 'password'} {...register("password", {
                                     required: "Password is Required",
                                     minLength: { value: 8, message: 'Password must be 8 characters or longer' },
                                     // pattern: { value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/, message: "Password Should Contain at least 1 A-Z, 0-9 and [!@#$&*] character " }
                                 })} placeholder="Enter Password" className="input input-bordered w-full dark:text-black" />
+
+                                
+                                <div className='flex justify-end -mt-8 mr-3'>
+                                    {
+                                        !visiblePassword ?
+                                            <BsEyeSlash onClick={() => setVisiblePassword(!visiblePassword)} className=''></BsEyeSlash>
+                                            :
+                                            <BsEye onClick={() => setVisiblePassword(!visiblePassword)} className=''></BsEye>
+                                    }
+                                </div>
+
 
                                 {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
 
@@ -283,7 +299,7 @@ const Signup = () => {
                             </div>
                         </div>
 
-                        <div className='form-control w-full mb-1 mx-auto'>
+                        <div className='form-control w-full mb-1 mx-auto mt-2'>
                             <label className="label">
                                 <span className="label-text font-semibold dark:text-white">Upload Photo</span>
                             </label>

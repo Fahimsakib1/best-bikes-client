@@ -10,9 +10,13 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import useToken from '../../../Hooks/useToken';
 import useTitle from '../../../Hooks/useTitle';
+import { BsEye } from 'react-icons/bs';
+import { BsEyeSlash } from 'react-icons/bs';
+
+
+
 
 const Login = () => {
-
 
     const [loginError, setLoginError] = useState('')
 
@@ -20,7 +24,7 @@ const Login = () => {
 
     const { userLogin, googleSignIn, resetPassword, user, loading, setLoading } = useContext(AuthContext);
 
-    //const [userEmail, setUserEmail] = useState('');
+    const [userEmail, setUserEmail] = useState('');
 
 
     useTitle('Login')
@@ -34,6 +38,10 @@ const Login = () => {
     //for verifying the token
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
+
+    
+    //visible the password
+    const [visiblePassword, setVisiblePassword] = useState(false);
 
 
     // if(token){
@@ -51,7 +59,7 @@ const Login = () => {
 
     const handleLogin = (data) => {
         setLoginError('');
-        //setUserEmail(data.email)
+        setUserEmail(data.email)
         console.log("Login Page Email: ", data.email)
 
         userLogin(data.email, data.password)
@@ -71,16 +79,16 @@ const Login = () => {
                     },
                     body: JSON.stringify(currentUser)
                 })
-            
-                .then(res => res.json())
-                .then(data => {
-                    console.log("Token received from server side", data.token)
-                    //set the JWT token in local storage
-                    localStorage.setItem('bestBikeToken', data.token);
-                    navigate(from, { replace: true });
-            
-                })
-                
+
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log("Token received from server side", data.token)
+                        //set the JWT token in local storage
+                        localStorage.setItem('bestBikeToken', data.token);
+                        navigate(from, { replace: true });
+
+                    })
+
                 reset();
                 //navigate(from, { replace: true });
             })
@@ -115,6 +123,34 @@ const Login = () => {
                 toast.error("Google Sign In Failed")
                 setLoginError(error.message)
             })
+    }
+
+
+    const handleForgotPassword = () => {
+
+        if (!userEmail) {
+            Swal.fire({
+                icon: 'error',
+                title: 'To Reset Password',
+                text: 'You must provide your email',
+            })
+            return;
+        }
+        setLoginError('');
+
+        resetPassword(userEmail)
+            .then(() => {
+                Swal.fire(
+                    'Hello!',
+                    `Password reset link has been sent to your email ${userEmail}. Please check your email`,
+                    'success'
+                )
+            })
+            .catch(error => {
+                toast.error(error.message);
+                console.log(error);
+            })
+
     }
 
 
@@ -157,16 +193,24 @@ const Login = () => {
                                 <span className="label-text dark:text-white">Password</span>
                             </label>
 
-                            <input type="password" {...register("password", { required: "Password is Required", minLength: { value: 8, message: 'Password must be 8 characters or longer' } })} placeholder="Enter Password" className="input input-bordered w-full dark:text-black " />
+                            <input type={visiblePassword ? 'text' : 'password'} {...register("password", { required: "Password is Required", minLength: { value: 8, message: 'Password must be 8 characters or longer' } })} placeholder="Enter Password" className="input input-bordered w-full dark:text-black  " />
+
+                            <div className='flex justify-end -mt-8 mr-3'>
+                                {
+                                    !visiblePassword ?
+                                    <BsEyeSlash onClick= {() => setVisiblePassword(!visiblePassword)} className=''></BsEyeSlash>
+                                    :
+                                    <BsEye onClick= {() => setVisiblePassword(!visiblePassword)} className=''></BsEye>
+                                }
+                            </div>
 
                             {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
 
-                            <label className="label mb-6">
-                                <span className="label-text hover:text-blue-600 font-semibold dark:text-white dark:hover:text-blue-700">Forget Password?</span>
-                            </label>
-
-
                         </div>
+
+                        <label onClick={handleForgotPassword} className="label mb-6 mt-4">
+                            <span className="label-text text-blue-600 font-semibold dark:text-white dark:hover:text-blue-700">Forget Password?</span>
+                        </label>
 
                         <input type="submit"
                             value='Login'

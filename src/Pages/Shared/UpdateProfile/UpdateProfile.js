@@ -6,6 +6,7 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../Spinners/LoadingSpinner';
 
 
 
@@ -29,9 +30,19 @@ const UpdateProfile = () => {
 
 
 
+    const [loading, setLoading] = useState(false);
+
+    if(loading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
+
+
+
+
     const handleUpdateUserProfile = (data) => {
         console.log(data.name, data.email, data.photo);
         setError('');
+        setLoading(true);
 
         const image = data.photo[0];
         const formData = new FormData();
@@ -45,13 +56,14 @@ const UpdateProfile = () => {
             .then(res => res.json())
             .then(imageData => {
                 if (imageData.success) {
+                    
                     const userInfo = {
                         displayName: data.name,
-                        photoURL: imageData.data.url
+                        photoURL: imageData.data.url 
                     }
                     updateUser(userInfo)
                         .then(() => {
-                            updateProfileInfoToDataBase(data.name, imageData.data.url)
+                            updateProfileInfoToDataBase(data.name, imageData.data.url )
                             //toast.success("Information Updated Successfully")
                             reset();
                         })
@@ -75,7 +87,7 @@ const UpdateProfile = () => {
         const email = user.email;
         console.log("Email ..... ", email);
 
-        fetch(`http://localhost:5000/users?email=${user?.email}`, {
+        fetch(`https://best-bikes-server.vercel.app/users?email=${user?.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -88,6 +100,7 @@ const UpdateProfile = () => {
                 if (data.acknowledged) {
                     toast.success("Information Updated and sent to Database Successfully");
                     navigate('/login');
+                    setLoading(false);
                 }
 
                 else {
@@ -97,6 +110,7 @@ const UpdateProfile = () => {
                         title: `${data.message}`,
                         text: 'Try Again'
                     })
+                    setLoading(false);
 
                 }
             })
@@ -143,7 +157,7 @@ const UpdateProfile = () => {
                             <label className="label">
                                 <span className="label-text font-semibold dark:text-white">Upload Photo</span>
                             </label>
-                            <input type="file" {...register("photo", { required: "Photo is Required" })}
+                            <input type="file" {...register("photo")}
                                 placeholder="Upload Product Photo" className="input  w-full pt-2 text-black" />
 
                             {errors.photo && <p className='text-red-600'>{errors.photo?.message}</p>}

@@ -63,7 +63,7 @@ const BikeDetails = () => {
 
                 {/* Sort the Bikes by Ascending or descending order with input select box*/}
                 <div className='flex justify-center items-center lg:flex-row md:flex-row sm:flex-col flex-col'>
-                    <div className="mr-3 bg-purple-800 py-3 rounded-md  text-white hidden lg:block dark:bg-black dark:border-green-600 dark:border-2 dark:text-white">
+                    <div className="mr-3 bg-blue-800 hover:bg-blue-800 py-3 rounded-md  text-white hidden lg:block dark:bg-black dark:border-green-600 dark:border-2 dark:text-white">
                         <label className="mr-3  py-3 rounded-md px-3 text-white">
                             <span className='text-md'>Filter By Price</span>
                         </label>

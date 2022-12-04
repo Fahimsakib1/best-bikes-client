@@ -49,7 +49,7 @@ const BrandCategories = () => {
                     </div> 
 
                     <div className='mx-4'>
-                        <h2 className='md:text-3xl lg:text-4xl font-semibold  sm:text-3xl text-2xl text-center py-4 '>Available Bike Brands</h2>
+                        <h2 className='md:text-3xl lg:text-4xl font-semibold  sm:text-3xl text-2xl text-center py-4 '>Bike Brands</h2>
                     </div>
 
                     <div className='flex justify-center items-center gap-x-4'>
