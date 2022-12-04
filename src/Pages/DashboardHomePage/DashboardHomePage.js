@@ -1,10 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import './DashboardHomePage.css'
 
 const DashboardHomePage = () => {
     
+
+    useTitle('Dashboard'); 
+
     const { user} = useContext(AuthContext);
 
     const {data: users ={} } = useQuery({

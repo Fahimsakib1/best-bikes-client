@@ -175,7 +175,6 @@ const CheckOutForm = ({ order }) => {
 
         setProcessing(false);
 
-
     }
 
 
@@ -198,7 +197,7 @@ const CheckOutForm = ({ order }) => {
                                     fontSize: '16px',
                                     color: 'blue',
                                     '::placeholder': {
-                                        color: '#aab7c4',
+                                        color: 'black',
                                     },
                                 },
                                 invalid: {

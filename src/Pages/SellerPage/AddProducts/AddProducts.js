@@ -3,12 +3,15 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2'
 import { useNavigate } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 
 
 
 
 const AddProducts = () => {
 
+    useTitle('Add Products (Seller)');
+    
     const { user } = useContext(AuthContext);
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import SmallSpinner from '../../../components/Spinners/SmallSpinner';
 import useToken from '../../../Hooks/useToken';
+import useTitle from '../../../Hooks/useTitle';
 
 
 
@@ -28,6 +29,9 @@ const Signup = () => {
 
     const imageHostKey = process.env.REACT_APP_imagebb_key
     //console.log("Image BB Key From Sign Up Page", imageHostKey);
+
+
+    useTitle('Signup')
 
 
 

@@ -7,6 +7,7 @@ import DeleteSellerModal from './DeleteSellerModal';
 import { Link } from 'react-router-dom';
 import {MdOutlineVerifiedUser} from 'react-icons/md';
 import toast from 'react-hot-toast';
+import useTitle from '../../../Hooks/useTitle';
 
 
 
@@ -14,6 +15,8 @@ import toast from 'react-hot-toast';
 
 const AllSellers = () => {
 
+    useTitle('All Sellers'); 
+    
     const [deleteSeller, setDeleteSeller] = useState(null);
 
 

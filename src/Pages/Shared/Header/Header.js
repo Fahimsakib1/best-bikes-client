@@ -65,13 +65,15 @@ const Header = () => {
                 <div className=' block lg:hidden'>
                     {
                         user?.photoURL &&
-                        <div className="avatar ml-6 mt-1 ">
-                            <div className="w-12 rounded-full">
-                                <div className=''>
-                                    <img className='text-center' src={user?.photoURL} alt="UserImage" />
+                        <Link to='/updateProfile'>
+                            <div className="avatar ml-6 mt-1" title ="Click To Update Profile">
+                                <div className="w-12 rounded-full">
+                                    <div className=''>
+                                        <img className='text-center' src={user?.photoURL} alt="UserImage" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     }
                 </div>
             </>
@@ -173,13 +175,15 @@ const Header = () => {
 
                             {
                                 user?.photoURL &&
-                                <div className="avatar ml-2">
-                                    <div className="w-12 rounded-full">
-                                        <div className=''>
-                                            <img className='text-center' src={user?.photoURL} alt="UserImage" />
+                                <Link to='/updateProfile'>
+                                    <div className="avatar ml-6 mt-1"  title ="Click To Update Profile">
+                                        <div className="w-12 rounded-full">
+                                            <div className=''>
+                                                <img className='text-center' src={user?.photoURL} alt="UserImage" />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             }
 
                         </div>
@@ -194,7 +198,7 @@ const Header = () => {
                     </ul>
                 </div>
 
-                
+
                 <label htmlFor="new-dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden dark:text-white">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </label>

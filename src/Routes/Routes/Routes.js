@@ -16,6 +16,7 @@ import AddProducts from "../../Pages/SellerPage/AddProducts/AddProducts";
 import MyProducts from "../../Pages/SellerPage/MyProducts/MyProducts";
 import Login from "../../Pages/Shared/Login/Login";
 import Signup from "../../Pages/Shared/Signup/Signup";
+import UpdateProfile from "../../Pages/Shared/UpdateProfile/UpdateProfile";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -61,6 +62,11 @@ const routes = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>
+            },
+
+            {
+                path: '/updateProfile',
+                element: <UpdateProfile></UpdateProfile>
             }
         ]
     },
@@ -109,6 +115,21 @@ const routes = createBrowserRouter([
                 path: '/dashboard/payment/:id',
                 element: <BuyerRoute><Payment></Payment></BuyerRoute>,
                 loader: ({params}) => fetch(`https://best-bikes-server.vercel.app/orders/${params.id}`)
+            },
+
+            {
+                path: '/dashboard/updateProfile',
+                element: <BuyerRoute><UpdateProfile></UpdateProfile></BuyerRoute>
+            },
+
+            {
+                path: '/dashboard/updateProfile',
+                element: <SellerRoute><UpdateProfile></UpdateProfile></SellerRoute>
+            },
+
+            {
+                path: '/dashboard/updateProfile',
+                element: <AdminRoute><UpdateProfile></UpdateProfile></AdminRoute>
             }
 
         ]

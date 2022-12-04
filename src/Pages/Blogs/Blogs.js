@@ -1,7 +1,11 @@
 import React from 'react';
+import useTitle from '../../Hooks/useTitle';
 import pic1 from '../../images/FAQ/1.png';  
 
 const Blogs = () => {
+    
+    useTitle('Blogs'); 
+    
     return (
         <div className=' mx-2 sm:mx-2 md:mx:4 lg:mx-0 dark:sm:mx-4 dark:md:mx-4 dark:lg:mx-10'>
             <section className="bg-gray-800 text-gray-100 mt-20 rounded-lg dark:bg-gray-800">

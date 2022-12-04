@@ -4,11 +4,14 @@ import { FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { FaRegUserCircle } from 'react-icons/fa';
 import DeleteBuyerModal from './DeleteBuyerModal';
+import useTitle from '../../../Hooks/useTitle';
 
 
 
 const AllBuyers = () => {
 
+    useTitle('All Buyers'); 
+    
     const [buyerInfo, setBuyerInfo] = useState(null);
 
     const { data: buyers = [], refetch, isLoading } = useQuery({

@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../Hooks/useTitle';
 
 
 
@@ -10,6 +11,8 @@ import { Link } from 'react-router-dom';
 
 const BuyerOrders = () => {
 
+    useTitle('Buyer Orders');
+    
     const { user } = useContext(AuthContext);
     console.log("User on Buyer Orders Page", user);
 

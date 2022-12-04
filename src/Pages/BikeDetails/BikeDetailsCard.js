@@ -185,7 +185,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
 
         <div>
-            <div className='lg:mx-0 md:mx-2 sm:mx-2 mx-2'>
+            <div className='lg:mx-0 md:mx-2 sm:mx-0 mx-0'>
                 <div className="flex mx-auto flex-col max-w-lg p-6 space-y-6 overflow-hidden shadow-xl bg-gray-900 text-gray-100 rounded-xl dark:bg-gray-800">
                     <div className="flex space-x-4 justify-between flex-col sm:flex-col md:flex-row my-auto">
                         <img alt="" src={category_id === '1' ? yamahaLogo : category_id === '2' ? bajajLogo : suzukiLogo} className="object-cover w-12 h-12 rounded-full shadow bg-gray-500 text-center" />
@@ -240,7 +240,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
                         <label
                             onClick={() => setBikeInfoDetails(details)}
-                            htmlFor="product-booking" className="bg-blue-800 px-12 py-1 rounded-md btn hover:bg-blue-700 border-0 btn-md">Book Now
+                            htmlFor="product-booking" className="bg-blue-800 px-12 py-1 rounded-md btn hover:bg-blue-700 border-0 btn-md dark:bg-black dark:border-green-600 dark:border-2 dark:text-white">Book Now
                         </label>
 
                     </div>

@@ -3,12 +3,16 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { BsEmojiSmile } from 'react-icons/bs';
 import Swal from 'sweetalert2';
+import useTitle from '../../../Hooks/useTitle';
 
 
 
 
 const ReportedProducts = () => {
 
+    useTitle('Reported Items'); 
+    
+    
     const { data: reportedProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['reportedProducts'],
         queryFn: () => fetch('https://best-bikes-server.vercel.app/reportedProducts')

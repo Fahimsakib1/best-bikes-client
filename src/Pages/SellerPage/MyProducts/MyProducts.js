@@ -12,12 +12,15 @@ import DeleteProductModal from './DeleteProductModal';
 import Swal from 'sweetalert2';
 import { SiVerizon } from 'react-icons/si';
 import toast from 'react-hot-toast';
+import useTitle from '../../../Hooks/useTitle';
 
 
 
 
 const MyProducts = () => {
 
+    useTitle('Seller Products');
+    
     const { user } = useContext(AuthContext);
     const [deleteProduct, setDeleteProduct] = useState(null);
 

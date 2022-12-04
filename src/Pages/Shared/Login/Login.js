@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 import useToken from '../../../Hooks/useToken';
+import useTitle from '../../../Hooks/useTitle';
 
 const Login = () => {
 
@@ -20,6 +21,9 @@ const Login = () => {
     const { userLogin, googleSignIn, resetPassword, user, loading, setLoading } = useContext(AuthContext);
 
     //const [userEmail, setUserEmail] = useState('');
+
+
+    useTitle('Login')
 
 
     const location = useLocation();
