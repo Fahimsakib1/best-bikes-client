@@ -28,14 +28,14 @@ const DashboardLayout = () => {
         
         <div>
             <Header></Header>
-            <div className="drawer drawer-mobile">
+            <div className="drawer drawer-mobile ">
                 <input id="new-dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">
                     <Outlet></Outlet>
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="new-dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-72  text-base-content  dark:text-white">
+                    <ul className="menu p-4 w-72  text-base-content  dark:text-white mt-6">
 
                         {
                             isSeller &&

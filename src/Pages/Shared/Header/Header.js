@@ -142,8 +142,8 @@ const Header = () => {
 
     return (
 
-        <div>
-            <div className="navbar  flex justify-between  pb-6 bg-base-100 dark:bg-gray-900 shadow-xl fixed top-0 z-10">
+        <div className='top-0 sticky z-50'>
+            <div className="navbar  flex justify-between  pb-6 bg-base-100 dark:bg-gray-900 shadow-xl sticky top-0">
 
                 <div className="navbar-start w-[400px]">
                     <div className="dropdown">
