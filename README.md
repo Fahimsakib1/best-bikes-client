@@ -63,12 +63,7 @@ Toast or Hot Toast notifications are pop-up messages that display some informati
 - Sweet Alert is also used to show alert for the successful login and registration. for the error alerts is has been used also.
 
 
-### GitHub Link (Client Side) of This Project: 
-Github Link Client Side:  https://github.com/programming-hero-web-course-4/b612-used-products-resale-clients-side-Fahimsakib1
-
-
 ### GitHub Link (Server Side) of This Project:
-Github Link Server Side:  https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-Fahimsakib1
-
+Github Link Server Side:  https://github.com/Fahimsakib1/best-bikes-server
 ### Firebase Live Site Link:
 Live Site Link: https://best-bikes-client.web.app

@@ -27,7 +27,7 @@ const BuyerPaymentHistory = () => {
 
     return (
         <div>
-            <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-green-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-8 dark:mx-6 dark:sm:mx-6 dark:md:mx-16 dark:lg:mx-16'> Complete Payments  {payments?.length}</h1>
+            <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-green-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-8 dark:mx-6 dark:sm:mx-6 dark:md:mx-16 dark:lg:mx-16'> Complete Payments  {payments?.length}</h1> 
 
             {
                 payments.length > 0

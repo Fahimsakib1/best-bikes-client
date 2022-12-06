@@ -47,14 +47,18 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
         const productName = product_name;
         const mobile = event.target.phone.value;
         const location = event.target.location.value;
+        const currency = event.target.currency.value;
+        const postCode = event.target.postCode.value;
 
-        console.log(name, email, productName, mobile, location);
+        console.log(name, email, productName, mobile, location, currency, postCode);
         event.target.reset();
 
         const bookingInfo = {
             productName: product_name,
             companyName: category_name,
             price: resale_price,
+            //currency:currency,
+            //postCode:postCode,
             sellerName: seller_name,
             sellerEmail: bikeInfoDetails.email,
             buyerName: user?.displayName,
@@ -125,7 +129,7 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
                     <label onClick={closeModal} htmlFor="product-booking" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <div className='flex justify-center items-center gap-x-4'>
                         <h3 className="text-lg font-bold text-blue-800 ">Booking For: {product_name}</h3>
-                        <div className="avatar">
+                        <div className="avatar mb-3">
                             <div className="w-16 rounded-md">
                                 <img src={img} alt='' />
                             </div>
@@ -135,27 +139,43 @@ const ProductBookingModal = ({ bikeInfoDetails, setBikeInfoDetails }) => {
 
                     <form onSubmit={handleProductBooking}>
 
-                        <input defaultValue={user?.displayName}
+                        <input defaultValue={`Name: ${user?.displayName}`}
                             disabled
-                            type="text" name='userName' placeholder="User Name" className="input input-bordered w-full my-3 font-semibold dark:text-black" required
+                            type="text" name='userName' placeholder="User Name" className="input input-bordered w-full my-2 font-semibold dark:text-black" required
                         />
 
-                        <input defaultValue={user?.email}
+                        <input defaultValue={`Email: ${user?.email}`}
                             disabled
-                            type="email" name='email' placeholder="Email Address" className="input input-bordered w-full my-3 font-semibold dark:text-black" required
+                            type="email" name='email' placeholder="Email Address" className="input input-bordered w-full my-2 font-semibold dark:text-black" required
                         />
 
-                        <input defaultValue={product_name}
-                            disabled type="text" name='productName' placeholder="Product Name" className="input input-bordered font-semibold w-full my-3 dark:text-black"
-                        />
+                        <div className='flex justify-evenly items-center gap-x-4'>
+                            <input defaultValue={`${category_name} ${product_name}`}
+                                disabled type="text" name='productName' placeholder="Product Name" className="input input-bordered font-semibold w-full my-2 dark:text-black"
+                            />
 
-                        <input defaultValue={resale_price + ' Taka'}
-                            disabled type="text" name='productName' placeholder="Product Name" className="input input-bordered font-semibold w-full my-3 dark:text-black"
-                        />
+                            <input defaultValue={ `Price: ${resale_price} Taka`}
+                                disabled type="text" name='productName' placeholder="Product Name" className="input input-bordered font-semibold w-full my-2 dark:text-black"
+                            />
+                        </div>
 
-                        <input type="text" name='phone' placeholder="Phone Number" className="input input-bordered w-full my-3 dark:text-black" required />
+                        <div className='flex justify-evenly items-center gap-x-4'>
+                            <input type="text" name='phone' placeholder="Mobile" className="input input-bordered w-full my-2 dark:text-black" required />
 
-                        <input type="text" name='location' placeholder="Meeting Location" className="input input-bordered w-full my-3 dark:text-black" required />
+                            <input type="text" name='location' placeholder="Location" className="input input-bordered w-full my-2 dark:text-black" required />
+                        </div> 
+
+                        <div className=' flex justify-evenly items-center gap-x-4'>
+                            <input type="text" name='postCode' placeholder="Post Code" className="input input-bordered w-1/2 my-2 dark:text-black" required />
+
+                            <select defaultValue="BDT" 
+                            name='currency'
+                            className="select select-bordered w-1/2">
+                                <option value="BDT">BDT</option>
+                                <option value="USD">USD</option>
+                            </select>
+
+                        </div>
 
                         <input type="submit" value="Submit" className='w-full bg-green-700 text-white text-xl py-2 rounded-md mt-4 mb-2'
                         />

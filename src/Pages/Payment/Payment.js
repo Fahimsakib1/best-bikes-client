@@ -12,6 +12,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 
 
+
 const Payment = () => {
 
     useTitle('Buyer Orders (Payment)');

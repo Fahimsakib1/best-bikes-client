@@ -206,7 +206,7 @@ const Login = () => {
 
                             {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
 
-                        </div>
+                        </div> 
 
                         <label onClick={handleForgotPassword} className="label mb-6 mt-4">
                             <span className="label-text text-blue-600 font-semibold dark:text-white dark:hover:text-blue-700">Forget Password?</span>

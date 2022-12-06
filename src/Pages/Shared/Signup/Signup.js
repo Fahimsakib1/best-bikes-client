@@ -297,7 +297,7 @@ const Signup = () => {
                                 {errors.accountType && <p className='text-red-600'>{errors.accountType?.message}</p>}
 
                             </div>
-                        </div>
+                        </div> 
 
                         <div className='form-control w-full mb-1 mx-auto'>
                             <label className="label">
