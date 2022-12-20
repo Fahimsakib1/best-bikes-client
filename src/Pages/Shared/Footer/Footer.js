@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div>
+        <div className='print:hidden'>
 
-            <footer className="footer p-8 bg-black text-white mt-64 dark:bg-gray-900">
+            <footer className="footer p-8 bg-black text-white mt-64 dark:bg-gray-900 ">
 
                 <div className='px-16'>
                     <span className="footer-title">Services</span>

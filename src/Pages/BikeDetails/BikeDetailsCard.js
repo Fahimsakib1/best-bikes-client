@@ -6,15 +6,20 @@ import yamahaLogo from '../../images/Brand-Logo/Yamaha.jpg';
 import suzukiLogo from '../../images/Brand-Logo/suzuki1.webp';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
-import { FaRegUserCircle } from 'react-icons/fa';
+import { FaRegUserCircle, FaCartArrowDown } from 'react-icons/fa';
 import { GoVerified } from 'react-icons/go';
 import { useQuery } from '@tanstack/react-query';
+import useTitle from '../../Hooks/useTitle';
+
+
+
 
 
 
 
 const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
+    useTitle('Bike Details');
 
     const { user, loading } = useContext(AuthContext);
 
@@ -104,8 +109,11 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
 
 
+
+
+
     return (
-        
+
         // <div>
         //     {
         //         bookingStatus !== 'Paid' &&
@@ -235,13 +243,25 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
                         </div>
                     </div>
 
-                    <div className='mx-auto'>
+                    <div className='mx-auto flex justify-evenly items-center flex-wrap gap-x-8 sm:gap-y-4 gap-y-6 md:gap-y-6'>
                         {/* Modal Button */}
 
                         <label
                             onClick={() => setBikeInfoDetails(details)}
                             htmlFor="product-booking" className="bg-blue-800 px-12 py-1 rounded-md btn hover:bg-blue-700 border-0 btn-md dark:bg-black dark:border-green-600 dark:border-2 dark:text-white">Book Now
                         </label>
+
+                        <div className=''>
+                            <Link to={`/bikeDetails/${_id}`}>
+                                <button
+                                    className='bg-fuchsia-700 px-16 py-1 rounded-md btn hover:bg-fuchsia-800 border-0 btn-md dark:bg-black dark:border-green-600 dark:border-2 dark:text-white'>
+                                    <div className='flex justify-center items-center gap-x-2'>
+                                        <FaCartArrowDown className='text-lg'></FaCartArrowDown>
+                                        <p className='text-lg'>Buy</p>
+                                    </div>
+                                </button>
+                            </Link>
+                        </div>
 
                     </div>
 

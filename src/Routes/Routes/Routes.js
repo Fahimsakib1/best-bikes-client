@@ -6,6 +6,7 @@ import AllRegisteredUsers from "../../Pages/AdminPage/AllRegisteredUsers/AllRegi
 import AllSellers from "../../Pages/AdminPage/AllSellers/AllSellers";
 import ReportedProducts from "../../Pages/AdminPage/ReportedProducts/ReportedProducts";
 import BikeDetails from "../../Pages/BikeDetails/BikeDetails";
+import BikeDetailsForBuying from "../../Pages/BikeDetailsForBuying/BikeDetailsForBuying";
 import Blogs from "../../Pages/Blogs/Blogs";
 import BuyerOrders from "../../Pages/BuyerPage/BuyerOrders/BuyerOrders";
 import BuyerPaymentHistory from "../../Pages/BuyerPage/BuyerPaymentHistory/BuyerPaymentHistory";
@@ -19,6 +20,8 @@ import MyProducts from "../../Pages/SellerPage/MyProducts/MyProducts";
 import Login from "../../Pages/Shared/Login/Login";
 import Signup from "../../Pages/Shared/Signup/Signup";
 import UpdateProfile from "../../Pages/Shared/UpdateProfile/UpdateProfile";
+import SSLPaymentFailPage from "../../Pages/SSLPaymentFailPage/SSLPaymentFailPage";
+import SSLPaymentSuccessPage from "../../Pages/SSLPaymentSuccessPage/SSLPaymentSuccessPage";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -39,17 +42,28 @@ const routes = createBrowserRouter([
                 element: <Home></Home> 
             },
 
-            // {
-            //     path: '/category/:id',
-            //     loader: ({params}) => fetch(`https://best-bikes-server.vercel.app/category/${params.id}`),
-            //     element: <PrivateRoute><BikeDetails></BikeDetails></PrivateRoute>
-            // },
-
             {
                 path: '/category/:id',
                 loader: ({params}) => fetch(`https://best-bikes-server.vercel.app/category/${params.id}`),
                 element: <PrivateRoute><BikeDetails></BikeDetails></PrivateRoute>
             },
+
+            {
+                path: '/bikeDetails/:id',
+                loader: ({params}) => fetch(`http://localhost:5000/bikeDetails/${params.id}`),
+                element: <PrivateRoute><BikeDetailsForBuying></BikeDetailsForBuying></PrivateRoute>
+            },
+
+            {
+                path: '/payment/success',
+                element: <PrivateRoute><SSLPaymentSuccessPage></SSLPaymentSuccessPage></PrivateRoute>
+            },
+
+            {
+                path: '/payment/fail',
+                element: <PrivateRoute><SSLPaymentFailPage></SSLPaymentFailPage></PrivateRoute>
+            },
+
 
             {
                 path: '/signup',
