@@ -13,6 +13,7 @@ import BuyerPaymentHistory from "../../Pages/BuyerPage/BuyerPaymentHistory/Buyer
 import MyOrders from "../../Pages/Dashboard/MyOrders/MyOrders";
 import DashboardHomePage from "../../Pages/DashboardHomePage/DashboardHomePage";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import ContactUs from "../../Pages/Home/ContactUs/ContactUs";
 import Home from "../../Pages/Home/Home/Home";
 import Payment from "../../Pages/Payment/Payment";
 import AddProducts from "../../Pages/SellerPage/AddProducts/AddProducts";
@@ -57,6 +58,11 @@ const routes = createBrowserRouter([
             {
                 path: '/payment/success',
                 element: <PrivateRoute><SSLPaymentSuccessPage></SSLPaymentSuccessPage></PrivateRoute>
+            },
+
+            {
+                path:'/contactUs',
+                element: <ContactUs></ContactUs>
             },
 
             {

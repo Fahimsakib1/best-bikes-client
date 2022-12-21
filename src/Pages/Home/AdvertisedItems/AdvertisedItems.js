@@ -21,7 +21,7 @@ const AdvertisedItems = () => {
 
 
     return (
-        <div className=''>
+        <div className='mb-28'>
             {/* <div className='mt-10'>
                 {
                     advertisedProducts.length > 0 &&
@@ -80,7 +80,7 @@ const AdvertisedItems = () => {
                                         <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-800 bg-gray-800">
                                             <p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-100">
 
-                                                <img src={singleProduct.img} alt="" className="w-56 h-56 mb-2 -mt-20 bg-center bg-cover rounded-md " />
+                                                <img src={singleProduct.img} alt="" className="w-56 h-56 mb-2 -mt-20 bg-center bg-cover rounded-md glass" />
                                                 <p className="text-sm  text-blue-500">Brand: {singleProduct.category_name}</p>
                                                 <p className="text-sm  text-blue-500">Model: {singleProduct.product_name}</p>
                                                 <p className="text-sm  text-blue-500">Price: {singleProduct.resale_price} Taka</p>

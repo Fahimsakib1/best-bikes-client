@@ -3,6 +3,7 @@ import useTitle from '../../../Hooks/useTitle';
 import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
 import BrandCategories from '../BrandCategories/BrandCategories';
 import Brands from '../Brands/Brands';
+import ContactUs from '../ContactUs/ContactUs';
 import Offerings from '../Offerings/Offerings';
 import Slider from '../Slider/Slider'; 
 
@@ -15,6 +16,7 @@ const Home = () => {
             <BrandCategories></BrandCategories>
             <Brands></Brands>
             <AdvertisedItems></AdvertisedItems>
+            <ContactUs></ContactUs>
         </div> 
     );
 };
