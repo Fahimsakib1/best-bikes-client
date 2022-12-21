@@ -5,7 +5,7 @@ import 'aos/dist/aos.css';
 import { FiPhoneCall } from 'react-icons/fi';
 import { ImLocation2 } from 'react-icons/im';
 import { HiOutlineMail } from 'react-icons/hi';
-import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 
 
@@ -47,6 +47,9 @@ const ContactUs = () => {
                                 <a href='https://www.linkedin.com/in/fahim-sakib-57029518b/' className=' linkedin-icon' title="LinkedIn" target="blank" ><FaLinkedin className='text-3xl hover:text-blue-600'></FaLinkedin></a>
 
                                 <a href='https://github.com/Fahimsakib1' className='github-icon' title="GitHub" target="blank" ><FaGithub className='text-3xl hover:text-black hover:bg-white hover:rounded-full border-0'></FaGithub></a>
+
+                                <a href='https://www.youtube.com/results?search_query=best+bikes' className='github-icon' title="Youtube" target="blank" ><FaYoutube className='text-3xl hover:text-red-600'></FaYoutube></a>
+
                             </div>
 
                         </div>
@@ -60,7 +63,7 @@ const ContactUs = () => {
 
                     <div className="divider lg:divider-horizontal my-8 border-white"></div>
 
-                    <div className='lg:w-1/2 md:w-[620px] sm:w-full w-full lg:mx-auto md:mx-auto  sm:px0 px-0 md:px-6 py-4 rounded-xl mb-16 glass -mt-2'>
+                    <div className='lg:w-1/2 md:w-[620px] sm:w-full w-full lg:mx-auto md:mx-auto  sm:px0 px-0 md:px-6 py-4 rounded-xl mb-16  -mt-2'>
 
                         <form
                             action='https://formspree.io/f/xzbwnkow'
@@ -101,6 +104,7 @@ const ContactUs = () => {
                                         <span>Send Message</span>
                                     </div>
                                 </button>
+
                             </div>
 
                         </form>
