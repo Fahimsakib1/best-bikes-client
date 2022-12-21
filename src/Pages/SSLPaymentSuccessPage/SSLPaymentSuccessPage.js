@@ -15,7 +15,6 @@ const SSLPaymentSuccessPage = () => {
     const transactionID = query.get("transactionID")
     console.log(transactionID);
 
-
     // Fetch the bike details after payment by transactionID
     const { data: payment = [] } = useQuery({
         queryKey: ['bikePayment', transactionID],
@@ -26,12 +25,14 @@ const SSLPaymentSuccessPage = () => {
     const { currency, postCode, buyerName, buyerEmail, sellingPrice, PaidDate, paymentGateway, bikeImage, bikeModel, bikeCompany, buyerLocation } = payment;
 
 
-    const date = PaidDate;
-    const splitDate1 = date.split('T')[0];
-    const splitDate2 = date.split('T')[1].split('.')[0];
-    const paymentDate = splitDate1 + '   ' + splitDate2
-    console.log(splitDate1)
-    console.log(splitDate2)
+    // const date = PaidDate;
+    // const splitDate1 = date.split('T')[0];
+    // const splitDate2 = date.split('T')[1].split('.')[0];
+    // const paymentDate = splitDate1 + '   ' + splitDate2
+    // console.log(splitDate1)
+    // console.log(splitDate2)
+
+   
 
     
 
@@ -79,7 +80,7 @@ const SSLPaymentSuccessPage = () => {
 
                     <div className='flex justify-between items-center my-2 lg:w-[280px] md:w-3/4 sm:w-3/4 w-3/4 mx-auto'>
                         <h1 className='text-md'> Date </h1>
-                        <h1 className='text-md'> {paymentDate}</h1>
+                        <h1 className='text-md'> {PaidDate}</h1>
                     </div>
 
                     <h1 className='text-2xl text-center font-bold mb-1 font-mono'>THANK YOU</h1>

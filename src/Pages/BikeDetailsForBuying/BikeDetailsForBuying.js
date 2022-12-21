@@ -11,6 +11,10 @@ const BikeDetailsForBuying = () => {
 
     const { user } = useContext(AuthContext);
 
+
+
+
+
     const handleConfirmPayment = (event) => {
         event.preventDefault();
 
