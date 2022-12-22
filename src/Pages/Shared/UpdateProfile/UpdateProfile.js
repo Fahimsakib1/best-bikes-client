@@ -1,19 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
 import Swal from 'sweetalert2'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../Spinners/LoadingSpinner';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 
 
 const UpdateProfile = () => {
 
+    useEffect(() => {
+        AOS.init({
+            duration: 2000
+        })
+    }, [])
+
+    
+    
     useTitle('Profile Update');
 
     const { user, updateUser } = useContext(AuthContext);
@@ -27,6 +36,8 @@ const UpdateProfile = () => {
     console.log("Image BB Key From Update Profile Page", imageHostKey);
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
 
 
@@ -35,6 +46,9 @@ const UpdateProfile = () => {
     if(loading){
         return <LoadingSpinner></LoadingSpinner>
     }
+
+
+
 
 
 
@@ -99,7 +113,8 @@ const UpdateProfile = () => {
                 console.log(data);
                 if (data.acknowledged) {
                     toast.success("Information Updated and sent to Database Successfully");
-                    navigate('/login');
+                    navigate('/dashboard');
+                    // navigate(from, { replace: true });
                     setLoading(false);
                 }
 
@@ -122,10 +137,10 @@ const UpdateProfile = () => {
     return (
         <div>
             <div className='mt-4 flex justify-center items-center  '>
-                <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4  lg:w-full md:w-full  mx-2 sm:mx-2 md:mx-2 lg:mx-0 dark:border-green-700 dark:bg-gray-900 mt-20'>
+                <div className='p-6 border-2 rounded-xl  w-full max-w-md shadow-2xl  sm:w-3/4  lg:w-full md:w-full  mx-2 sm:mx-2 md:mx-2 lg:mx-0 dark:border-green-700 dark:bg-gray-900 mt-20 animation' data-aos='fade-up'>
                     <h2 className='text-2xl text-center font-bold uppercase'>Update Profile</h2>
 
-                    <form onSubmit={handleSubmit(handleUpdateUserProfile)}>
+                    <form onSubmit={handleSubmit(handleUpdateUserProfile)} className='' >
 
                         <div className="form-control w-full mb-1">
                             <label className="label">
@@ -158,7 +173,7 @@ const UpdateProfile = () => {
                                 <span className="label-text font-semibold dark:text-white">Upload Photo</span>
                             </label>
                             <input type="file" {...register("photo")}
-                                placeholder="Upload Product Photo" className="input  w-full pt-2 text-black" />
+                                placeholder="Upload Product Photo" className="input  w-full pt-2 text-black" required/>
 
                             {errors.photo && <p className='text-red-600'>{errors.photo?.message}</p>}
                         </div>

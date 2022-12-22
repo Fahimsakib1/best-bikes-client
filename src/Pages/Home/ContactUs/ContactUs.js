@@ -13,7 +13,7 @@ const ContactUs = () => {
     return (
         <div className='bg-gray-900 mt-16'>
             <div className="px-2 sm:px-2 md:px-4 lg:px-8  py-4">
-                <h1 id='contact' className='uppercase mt-6  text-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-mono mb-20 text-white'>Contact <span className='text-rose-600 text-6xl'>US</span> <hr className='mx-auto mt-2 ' width="200px" /></h1>
+                <h1 id='contact' className='uppercase mt-6  text-center text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-mono mb-20 text-white'>Contact <span className='text-rose-600 text-6xl'>Me</span> <hr className='mx-auto mt-2 ' width="200px" /></h1>
 
                 <div className='flex justify-evenly gap-x-6 lg:flex-row md:flex-col sm:flex-col flex-col '>
 

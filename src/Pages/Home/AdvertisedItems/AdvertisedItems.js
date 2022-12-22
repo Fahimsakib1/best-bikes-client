@@ -1,9 +1,23 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GoVerified } from 'react-icons/go';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+
+
 
 const AdvertisedItems = () => {
 
+    
+    useEffect(() => {
+        AOS.init({
+            duration: 2000
+        })
+    }, [])
+    
+    
     const { data: advertisedProducts = [], isLoading } = useQuery({
         queryKey: ['advertisedProducts'],
         queryFn: async () => {
@@ -73,7 +87,7 @@ const AdvertisedItems = () => {
 
                     <div>
                         <h1 className='text-5xl text-center mb-10 text-blue-600'> Advertised Products</h1>
-                        <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4'>
+                        <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 animation' data-aos='fade-up'>
                             {
                                 advertisedProducts.map(singleProduct => <div key={singleProduct._id} className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
                                     <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">

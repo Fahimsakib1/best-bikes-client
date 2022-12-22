@@ -4,7 +4,14 @@ import pic2 from '../../../images/Brand-Bikes/ktm.jpg';
 import pic3 from '../../../images/Brand-Bikes/suzuki.jpg';
 import pic4 from '../../../images/Brand-Bikes/yamaha2.jpg';
 import pic5 from '../../../images/Brand-Bikes/yamaha.jpeg';
-import { motion } from 'framer-motion'; 
+import { motion } from 'framer-motion';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+
+
+
+
+
 
 const Brands = () => {
     return (
@@ -17,14 +24,46 @@ const Brands = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                     className="container grid grid-cols-2 gap-4 p-4 mx-auto md:grid-cols-4 ">
-                    <img src={pic4} alt="" className="w-full h-full col-span-2 row-span-2 rounded-md shadow-sm min-h-96 md:col-start-3 md:row-start-1 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" />
+
+
+                    {/* <img src={pic4} alt="" className="w-full h-full col-span-2 row-span-2 rounded-md shadow-sm min-h-96 md:col-start-3 md:row-start-1 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" />
                     <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" src={pic2} />
                     <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" src={pic3} />
                     <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" src={pic1} />
-                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" src={pic5} />
+                    <img alt="" className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 hover:rounded-xl" src={pic5} /> */}
+
+                    <PhotoProvider>
+                        <PhotoView src={pic4}>
+                            <img className="w-full h-full col-span-2 row-span-2 rounded-md shadow-sm min-h-96 md:col-start-3 md:row-start-1 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-103 duration-300 hover:rounded-xl" src={pic4} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
+
+                    <PhotoProvider>
+                        <PhotoView src={pic2}>
+                            <img className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-103 duration-300 hover:rounded-xl" src={pic2} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
+
+                    <PhotoProvider>
+                        <PhotoView src={pic3}>
+                            <img className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-103 duration-300 hover:rounded-xl" src={pic3} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
+
+                    <PhotoProvider>
+                        <PhotoView src={pic1}>
+                            <img className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-103 duration-300 hover:rounded-xl" src={pic1} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
+
+                    <PhotoProvider>
+                        <PhotoView src={pic5}>
+                            <img className="w-full h-full rounded-md shadow-sm min-h-48 bg-gray-500 aspect-square transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-103 duration-300 hover:rounded-xl" src={pic5} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
 
                 </motion.div>
-            </section> 
+            </section>
         </div>
     );
 };

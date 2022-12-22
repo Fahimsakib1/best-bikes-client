@@ -43,9 +43,9 @@ const BikeDetailsForBuying = () => {
             bikeImage: img,
         }
 
-        console.log(orders);
+        console.log(orders); 
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://best-bikes-server.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -92,7 +92,7 @@ const BikeDetailsForBuying = () => {
                 </div>
 
 
-                <div className='lg:px-0 md:px-6 sm:px-6 px-6 lg:w-1/2 md:w-full sm:w-full w-full'>
+                <div className='lg:px-0 md:px-6 sm:px-6 px-6 lg:w-1/2 md:w-full sm:w-full w-full '>
 
                     <form 
                     onSubmit={handleConfirmPayment}

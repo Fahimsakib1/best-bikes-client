@@ -5,7 +5,8 @@ import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import useTitle from '../../../Hooks/useTitle';
 import { BsEmojiSmile } from 'react-icons/bs';
 import { BiSad } from 'react-icons/bi';
-
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 
 
@@ -24,10 +25,12 @@ const BuyerPaymentHistory = () => {
         }
     })
 
+    
+
 
     return (
         <div>
-            <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-green-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-8 dark:mx-6 dark:sm:mx-6 dark:md:mx-16 dark:lg:mx-16'> Complete Payments  {payments?.length}</h1> 
+            <h1 className='text-center text-md sm:text-lg md:text-2xl my-6 bg-green-800 text-white py-1 rounded-md mx-2 sm:mx-2 md:mx-4 lg:mx-8 dark:mx-6 dark:sm:mx-6 dark:md:mx-16 dark:lg:mx-16'> Complete Payments  {payments?.length}</h1>
 
             {
                 payments.length > 0
@@ -39,7 +42,15 @@ const BuyerPaymentHistory = () => {
                                     payments.map(payment =>
                                         <li key={payment._id} className="flex flex-col py-3 sm:flex-row sm:justify-between ">
                                             <div className="flex w-full space-x-2 sm:space-x-4">
-                                                <img className="flex-shrink-0 object-cover w-24 h-24 mt-3 border-transparent rounded outline-none sm:w-32 sm:h-32 bg-gray-500" src={payment.photo} alt="Purchased Product" />
+
+                                                {/* <img className="flex-shrink-0 object-cover w-24 h-24 mt-3 border-transparent rounded outline-none sm:w-32 sm:h-32 bg-gray-500" src={payment.photo} alt="Purchased Product" /> */}
+
+                                                <PhotoProvider>
+                                                    <PhotoView src={payment.photo}>
+                                                        <img className='flex-shrink-0 object-cover w-24 h-24 mt-3 border-transparent rounded outline-none sm:w-32 sm:h-32 bg-gray-500' src={payment.photo} alt="" />
+                                                    </PhotoView>
+                                                </PhotoProvider>
+
                                                 <div className="flex flex-col justify-between w-full pb-4">
                                                     <div className="flex justify-between w-full pb-2 space-x-2">
                                                         <div className="space-y-1">

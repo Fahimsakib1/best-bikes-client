@@ -3,7 +3,8 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
 import useTitle from '../../../Hooks/useTitle';
-
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 
 
@@ -12,7 +13,7 @@ import useTitle from '../../../Hooks/useTitle';
 const BuyerOrders = () => {
 
     useTitle('Buyer Orders');
-    
+
     const { user } = useContext(AuthContext);
     console.log("User on Buyer Orders Page", user);
 
@@ -62,7 +63,12 @@ const BuyerOrders = () => {
                                                         <div className="flex items-center space-x-3">
                                                             <div className="avatar mx-auto">
                                                                 <div className="mask mask-squircle w-16 h-16 text-center">
-                                                                    <img className='' src={order.productImage} alt="ProductImage" />
+                                                                    {/* <img className='' src={order.productImage} alt="ProductImage" /> */}
+                                                                    <PhotoProvider>
+                                                                        <PhotoView src={order.productImage}>
+                                                                            <img className='' src={order.productImage} alt="ProductImage" />
+                                                                        </PhotoView>
+                                                                    </PhotoProvider>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -81,7 +87,7 @@ const BuyerOrders = () => {
                                                     </td>
 
                                                     <th className='dark:bg-gray-800 border-1 border-gray-300 dark:text-white'>
-                                                    
+
                                                         {
                                                             order.price && !order.paid &&
                                                             <Link to={`/dashboard/payment/${order._id}`}>

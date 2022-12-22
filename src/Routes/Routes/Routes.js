@@ -51,7 +51,8 @@ const routes = createBrowserRouter([
 
             {
                 path: '/bikeDetails/:id',
-                loader: ({params}) => fetch(`http://localhost:5000/bikeDetails/${params.id}`),
+                // loader: ({params}) => fetch(`http://localhost:5000/bikeDetails/${params.id}`),
+                loader: ({params}) => fetch(`https://best-bikes-server.vercel.app/bikeDetails/${params.id}`),
                 element: <PrivateRoute><BikeDetailsForBuying></BikeDetailsForBuying></PrivateRoute>
             },
 
