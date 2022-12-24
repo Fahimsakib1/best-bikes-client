@@ -18,7 +18,7 @@ import img6 from '../../../images/Bikes/Resized2/6.png';
 
 const Slider = () => {
     return (
-        <div className='mt-8'>
+        <div className='mt-0'>
             <div className="carousel  w-full">
                 
                 <div id="slide1" className="carousel-item relative w-full  ">

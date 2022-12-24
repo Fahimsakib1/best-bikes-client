@@ -53,6 +53,7 @@ const Header = () => {
     const menuItems = <React.Fragment>
 
         {
+            // Small Devices
             user?.uid &&
             <>
                 <div className='flex'>
@@ -116,7 +117,7 @@ const Header = () => {
 
                     <li className='font-bold px-1 hover:text-blue-600'><Link to='/dashboard'>Dashboard</Link></li>
 
-                    <li className='text-red-600 font-bold'><button onClick={handleLogOut} className='bg-red-600 text-white rounded-lg'>Sign Out</button></li>
+                    <li className='text-red-600 font-bold'><button onClick={handleLogOut} className='bg-red-600 text-white rounded-lg mb-1'>Sign Out</button></li>
 
                 </>
                 :
@@ -143,35 +144,35 @@ const Header = () => {
     return (
 
         <div className='top-0 sticky z-50'>
-            <div className="navbar  flex justify-between  pb-6 bg-base-100 dark:bg-gray-900 shadow-xl sticky top-0 print:hidden">
+            <div className="navbar  flex justify-between  pb-2 bg-base-100 dark:bg-gray-900 shadow-xl sticky top-0 print:hidden ">
 
                 <div className="navbar-start w-[400px]">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={1} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 dark:bg-gray-900">
+                        <ul tabIndex={1} className="menu menu-compact dropdown-content mt-1 p-2 shadow bg-base-100 rounded-box w-52 dark:bg-gray-900">
                             {menuItems}
                         </ul>
                     </div>
 
                     <div className="avatar">
-                        <div className="w-12 mt-6 ml-4">
+                        <div className="w-12 mt-0 ml-4">
                             <img className='rounded-lg' src={logo} alt="logo" />
                         </div>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-4xl text-blue-800 dark:text-green-600 mt-6" href='/'>Best Bikes</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-4xl text-blue-800 dark:text-green-600 -mt-1" href='/'>Best Bikes</Link>
                 </div>
 
-
-                <div className='hidden lg:block mt-4'>
+                {/* Large Devices */}
+                <div className='hidden lg:block mt-1'>
                     {
                         user?.uid &&
                         <div className='flex  justify-center items-center'>
                             <p className='text-3xl text-green-600 font-semibold dark:text-blue-700'>Hi, {user.displayName ? user.displayName : user.email} </p>
 
                             <MdOutlineWavingHand className='text-3xl text-green-600 mt-1 ml-2 dark:text-blue-700'></MdOutlineWavingHand>
-                            {users.role && <div className="badge badge-primary  -mt-2 dark:bg-green-700 border-0 ml-2">{users.role}</div>}
+                            {users.role && <div className="badge badge-primary  -mt-8 dark:bg-green-700 border-0 ml-0">{users.role}</div>}
 
                             {
                                 user?.photoURL &&
@@ -193,7 +194,7 @@ const Header = () => {
 
 
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0 mt-6">
+                    <ul className="menu menu-horizontal p-0 mt-2">
                         {menuItems}
                     </ul>
                 </div>

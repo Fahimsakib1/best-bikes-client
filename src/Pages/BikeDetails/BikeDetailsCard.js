@@ -194,7 +194,7 @@ const BikeDetailsCard = ({ details, setBikeInfoDetails }) => {
 
         <div>
             <div className='lg:mx-0 md:mx-2 sm:mx-0 mx-0'>
-                <div className="flex mx-auto flex-col max-w-lg p-6 space-y-6 overflow-hidden shadow-xl bg-gray-900 text-gray-100 rounded-xl dark:bg-gray-800">
+                <div className="flex mx-auto flex-col max-w-lg p-6 space-y-6 overflow-hidden shadow-xl bg-gray-900 text-gray-100 rounded-xl dark:bg-gray-800 ">
                     <div className="flex space-x-4 justify-between flex-col sm:flex-col md:flex-row my-auto">
                         <img alt="" src={category_id === '1' ? yamahaLogo : category_id === '2' ? bajajLogo : suzukiLogo} className="object-cover w-12 h-12 rounded-full shadow bg-gray-500 text-center" />
                         <div className="flex flex-col space-y-1 lg:my-0 md:my-2 sm:my-2 my-2">
